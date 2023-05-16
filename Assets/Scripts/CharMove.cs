@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CharMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 60.0f;
+    [SerializeField] private float moveSpeed = 10.0f;
     [SerializeField] private float jumpPower = 4;
     public float rotateSpeed = 500.0f;
     private Rigidbody myRigid;
+    private float h, v;
     [SerializeField] private bool isJumping = false;
 
     private void Start()
@@ -19,12 +20,8 @@ public class CharMove : MonoBehaviour
     private void Update()
     {
         /* player 이동 */
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        Vector3 moveDir = transform.forward * v + transform.right * h;
-        Vector3 moveAmount = moveDir.normalized * moveSpeed * Time.deltaTime;
-        myRigid.MovePosition(transform.position + moveAmount);
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
         /* 회전 */
         if (Input.GetMouseButton(1))
         {
@@ -48,5 +45,11 @@ public class CharMove : MonoBehaviour
             isJumping = true;
             myRigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
+    }
+    private void FixedUpdate()
+    {
+        Vector3 moveDir = transform.forward * v + transform.right * h;
+        Vector3 moveAmount = moveDir.normalized * moveSpeed * Time.deltaTime;
+        myRigid.MovePosition(transform.position + moveAmount);
     }
 }
