@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CharMove : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10.0f;
+    [SerializeField] private GameObject forward;
+    [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float jumpPower = 4;
-    public float rotateSpeed = 500.0f;
     private Rigidbody myRigid;
     private float h, v;
     [SerializeField] private bool isJumping = false;
+    private float jumpTime;
+    [SerializeField] private float jumpCoolTime;
 
     private void Start()
     {
@@ -20,26 +22,12 @@ public class CharMove : MonoBehaviour
     private void Update()
     {
         /* player 이동 */
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
         /* 회전 */
-        if (Input.GetMouseButton(1))
-        {
-            float yRotateMove = Input.GetAxis("Mouse X") * Time.deltaTime * rotateSpeed;
+        forward.transform.eulerAngles = Camera.main.transform.eulerAngles;
+        gameObject.transform.eulerAngles = new Vector3(0,forward.transform.eulerAngles.y,0);
 
-            float yRotate = transform.eulerAngles.y + yRotateMove;
-
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, yRotate, 0);
-        }
-
-        if (myRigid.velocity.y < 0) // 플레이어가 낙하중일 때 == velocity.y가 음수
-        {
-            Debug.DrawRay(myRigid.position, Vector3.down, Color.red); //ray를 그리기
-            if (Physics.Raycast(myRigid.position, Vector3.down, 0.2f))
-            {
-                isJumping = false;
-            }
-        }
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             isJumping = true;
@@ -51,5 +39,15 @@ public class CharMove : MonoBehaviour
         Vector3 moveDir = transform.forward * v + transform.right * h;
         Vector3 moveAmount = moveDir.normalized * moveSpeed * Time.deltaTime;
         myRigid.MovePosition(transform.position + moveAmount);
+
+        if (isJumping)
+        {
+            jumpTime += Time.deltaTime;
+            if(jumpTime > jumpCoolTime)
+            {
+                jumpTime = 0;
+                isJumping = false;
+            }
+        }
     }
 }

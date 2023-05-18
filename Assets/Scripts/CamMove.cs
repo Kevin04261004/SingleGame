@@ -11,15 +11,15 @@ public class CamMove : MonoBehaviour
 
     private void Start()
     {
-        rotateSpeed = charmove.rotateSpeed;
+        //rotateSpeed = charmove.rotateSpeed;
     }
     void Update()
     {
         if (Input.GetMouseButton(1)) // 클릭한 경우
         {
-            xRotateMove = -Input.GetAxis("Mouse Y") * Time.deltaTime * rotateSpeed;
-            yRotateMove = Input.GetAxis("Mouse X") * Time.deltaTime * rotateSpeed;
-
+            xRotateMove = -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * rotateSpeed;
+            yRotateMove = Input.GetAxisRaw("Mouse X") * Time.deltaTime * rotateSpeed;
+            
             yRotate = transform.eulerAngles.y + yRotateMove;
             //xRotate = transform.eulerAngles.x + xRotateMove; 
 
