@@ -11,7 +11,7 @@ public class CameraManager : Singleton<CameraManager>
         base.Awake();
         FindAllCamerasInCurrentScene();
     }
-    /// <summary>Scene의 모든 Camera인스턴스를 Dictionary에 추가</summary>
+    /// <summary>Scene의 모든 Camera인스턴스를 Dictionary에 추가/summary>
     void FindAllCamerasInCurrentScene()
     {
         Camera[] cameras = GameObject.FindObjectsOfType<Camera>();
