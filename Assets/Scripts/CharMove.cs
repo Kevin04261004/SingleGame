@@ -16,7 +16,6 @@ public class CharMove : MonoBehaviour
     private void Start()
     {
         myRigid = GetComponent<Rigidbody>();
-
     }
 
     private void Update()
