@@ -23,9 +23,6 @@ public class CharMove : MonoBehaviour
         /* player 이동 */
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-        /* 회전 */
-        forward.transform.eulerAngles = Camera.main.transform.eulerAngles;
-        gameObject.transform.eulerAngles = new Vector3(0,forward.transform.eulerAngles.y,0);
 
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
@@ -35,6 +32,10 @@ public class CharMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        /* 회전 */
+        forward.transform.eulerAngles = Camera.main.transform.eulerAngles;
+        gameObject.transform.eulerAngles = new Vector3(0, forward.transform.eulerAngles.y, 0);
+
         Vector3 moveDir = transform.forward * v + transform.right * h;
         Vector3 moveAmount = moveDir.normalized * moveSpeed * Time.deltaTime;
         myRigid.MovePosition(transform.position + moveAmount);

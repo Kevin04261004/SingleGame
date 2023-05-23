@@ -11,6 +11,7 @@ public class CamMove : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 120;
         //rotateSpeed = charmove.rotateSpeed;
     }
     void Update()
@@ -32,6 +33,7 @@ public class CamMove : MonoBehaviour
     }
     private void LateUpdate()
     {
-        transform.position = Target.transform.position;
+        Vector3 targetPosition = Target.transform.position;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 6);
     }
 }
