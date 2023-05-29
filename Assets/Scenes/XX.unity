@@ -14326,7 +14326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charmove: {fileID: 756391504}
   Target: {fileID: 2111860912}
-  rotateSpeed: 500
+  rotateSpeed: 700
 --- !u!4 &966699136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 420674, guid: 53ac28d4b9ad6684181c2de777dc2f4f, type: 3}

@@ -11,25 +11,24 @@ public class CamMove : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Application.targetFrameRate = 120;
         //rotateSpeed = charmove.rotateSpeed;
     }
     void Update()
     {
-        if (Input.GetMouseButton(1)) // 클릭한 경우
-        {
-            xRotateMove = -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * rotateSpeed;
-            yRotateMove = Input.GetAxisRaw("Mouse X") * Time.deltaTime * rotateSpeed;
-            
-            yRotate = transform.eulerAngles.y + yRotateMove;
-            //xRotate = transform.eulerAngles.x + xRotateMove; 
+        xRotateMove = -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * rotateSpeed;
+        yRotateMove = Input.GetAxisRaw("Mouse X") * Time.deltaTime * rotateSpeed;
 
-            xRotate = xRotate + xRotateMove;
+        yRotate = transform.eulerAngles.y + yRotateMove;
+        //xRotate = transform.eulerAngles.x + xRotateMove; 
 
-            xRotate = Mathf.Clamp(xRotate, -90, 90); // 위, 아래 고정
+        xRotate = xRotate + xRotateMove;
 
-            transform.eulerAngles = new Vector3(xRotate, yRotate, 0);
-        }
+        xRotate = Mathf.Clamp(xRotate, -90, 90); // 위, 아래 고정
+
+        transform.eulerAngles = new Vector3(xRotate, yRotate, 0);
     }
     private void LateUpdate()
     {
