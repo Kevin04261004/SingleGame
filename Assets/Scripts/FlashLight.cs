@@ -13,7 +13,7 @@ public class FlashLight : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetMouseButtonDown(0))
         {
             if(flashLight.intensity >0)
             {
