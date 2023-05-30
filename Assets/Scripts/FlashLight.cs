@@ -6,7 +6,7 @@ public class FlashLight : MonoBehaviour
 {
     [SerializeField] private Light flashLight;
     [SerializeField] private GameObject player;
-    [SerializeField] private float intensity =1;
+    [SerializeField] private float intensity = 1;
     public void LateUpdate()
     {
         gameObject.transform.eulerAngles = Camera.main.transform.eulerAngles;
