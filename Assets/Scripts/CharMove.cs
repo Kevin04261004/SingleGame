@@ -6,10 +6,12 @@ public class CharMove : MonoBehaviour
 {
     [SerializeField] private GameObject forward;
     [SerializeField] private float moveSpeed = 3.0f;
+    [SerializeField] private float runSpeed = 6.0f;
     [SerializeField] private float jumpPower = 4;
     private Rigidbody myRigid;
     private float h, v;
     [SerializeField] private bool isJumping = false;
+    [SerializeField] private bool isRunning = false;
     private float jumpTime;
     [SerializeField] private float jumpCoolTime;
 
@@ -29,6 +31,18 @@ public class CharMove : MonoBehaviour
             isJumping = true;
             myRigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            UIManager.instance.Set_RuleBook_BackGround_TrueOrFalse();
+        }
     }
     private void FixedUpdate()
     {
@@ -37,7 +51,15 @@ public class CharMove : MonoBehaviour
         gameObject.transform.eulerAngles = new Vector3(0, forward.transform.eulerAngles.y, 0);
 
         Vector3 moveDir = transform.forward * v + transform.right * h;
-        Vector3 moveAmount = moveDir.normalized * moveSpeed * Time.deltaTime;
+        Vector3 moveAmount;
+        if (!isRunning)
+        {
+            moveAmount = moveDir.normalized * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            moveAmount = moveDir.normalized * runSpeed * Time.deltaTime;
+        }
         myRigid.MovePosition(transform.position + moveAmount);
 
         if (isJumping)
