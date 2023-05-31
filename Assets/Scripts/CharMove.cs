@@ -45,6 +45,10 @@ public class CharMove : MonoBehaviour
         {
             UIManager.instance.Set_RuleBook_BackGround_TrueOrFalse();
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            UIManager.instance.Set_CCTV_BackGround_TrueOrFalse();
+        }
         if (Physics.Raycast(forward.transform.position, forward.transform.forward, out hit))
         {
             Debug.DrawRay(forward.transform.position, forward.transform.forward * hit.distance, Color.red);
