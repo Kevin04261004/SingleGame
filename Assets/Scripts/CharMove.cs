@@ -14,6 +14,8 @@ public class CharMove : MonoBehaviour
     [SerializeField] private bool isRunning = false;
     private float jumpTime;
     [SerializeField] private float jumpCoolTime;
+    [SerializeField] private RaycastHit hit;
+    [SerializeField] private float handLength; // 
 
     private void Start()
     {
@@ -42,6 +44,23 @@ public class CharMove : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             UIManager.instance.Set_RuleBook_BackGround_TrueOrFalse();
+        }
+        if (Physics.Raycast(forward.transform.position, forward.transform.forward, out hit))
+        {
+            Debug.DrawRay(forward.transform.position, forward.transform.forward * hit.distance, Color.red);
+            if(hit.distance > handLength)
+            {
+                return;
+            }
+            if(hit.collider.CompareTag("doorknob") && Input.GetKeyDown(KeyCode.F))
+            {
+                hit.collider.gameObject.transform.GetComponentInParent<Door>().ToggleDoor();
+            }
+
+        }
+        else
+        {
+            Debug.DrawRay(forward.transform.position, forward.transform.forward * 1000f, Color.red);
         }
     }
     private void FixedUpdate()

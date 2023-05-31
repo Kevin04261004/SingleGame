@@ -5,7 +5,6 @@ using UnityEngine;
 public class FlashLight : MonoBehaviour
 {
     [SerializeField] private Light flashLight;
-    [SerializeField] private GameObject player;
     [SerializeField] private float intensity = 1;
     public void LateUpdate()
     {

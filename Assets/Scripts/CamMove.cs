@@ -15,7 +15,6 @@ public class CamMove : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Application.targetFrameRate = 120;
-        //rotateSpeed = charmove.rotateSpeed;
     }
     void Update()
     {
