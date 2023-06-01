@@ -9,7 +9,7 @@ using UnityEngine;
 /// 상속받은 클래스에서 해결 조건을 적절하게 걸고 Resolve를 실행시키는 작업이 필요함.
 /// 상속받은 클래스의 이름은 AnoObj_* 형식을 따름
 /// </summary>
-[System.Serializable]
+[System.Serializable, System.Obsolete]
 public class Phenomenon
 {
     Anomaly from = null;
@@ -26,7 +26,7 @@ public class Phenomenon
     /// </summary>
     public void Resolve()
     {
-        from.Child_Resolved();
+        
     }
 }
 
