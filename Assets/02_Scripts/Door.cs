@@ -11,11 +11,13 @@ public class Door : MonoBehaviour
 
     private Coroutine doorCoroutine;
 
-    private void Start()
+    public void Start()
     {
-        closedRotation = transform.rotation;
+        if(gameObject.transform.eulerAngles.y != 0)
+        {
+            isOpened = true;
+        }
     }
-
     public void ToggleDoor()
     {
         if (doorCoroutine != null)
