@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
-    [SerializeField] private CharMove charmove;
+    [SerializeField] private PlayerMovementController charmove;
     [SerializeField] private GameObject Target;
     public bool isCamMove;
     private float xRotate, yRotate, xRotateMove, yRotateMove;

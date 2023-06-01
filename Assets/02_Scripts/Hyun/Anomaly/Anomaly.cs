@@ -2,28 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 제한 시간, 현상들을 관리
+/// </summary>
 public class Anomaly : MonoBehaviour
 {
     [Header("기본 정보")]
     public string anomalyName;
-    [Header("제한 시간"), Tooltip("해당 현상 발현 이후 해결할 수 있는 제한 시간, 초과 시 게임 오버")]
+    [Tooltip("해당 이상 발현 이후 해결할 수 있는 제한 시간, 초과 시 게임 오버"), Min(0.01f)]
     public float timeLimit = 120f;
-    [Tooltip("남은 제한 시간")]
-    [SerializeField, ReadOnly] float counter_timeLimit = -1f;
 
-    [Header("발현 시 효과")]
-    [Tooltip("이상현상 전용 오브젝트를 생성\n해당 오브젝트들을 모두 해결해야 최종적으로 이상현상이 해결됨")]
-    public AnomalyObject[] createObjects;
+    [Space(10), Tooltip("해당 이상이 발생할 경우 나타나는 모든 현상들")]
+    public Phenomenon[] phenomenons;
 
-    [ReadOnly, Tooltip("해당 현상이 발생시켰으며 해결되기 위해 남은 자식들의 수")] int cnt_resolve;
+    [Header("Debug")]
+    [SerializeField, Tooltip("해당 현상이 발생시켰으며 해결해야할 문제의 수"), ReadOnly] int cnt_remainProbloms;
+    [SerializeField, Tooltip("실패까지 남은 제한 시간"), ReadOnly] float counter_timeLimit = -1f;
 
     private void Start()
     {
-        for (int i = 0; i < createObjects.Length; i++)
+        cnt_remainProbloms = 0;
+        counter_timeLimit = timeLimit;
+        for (int i = 0; i < phenomenons.Length; i++)
         {
-            AnomalyObject anoObj = Instantiate(createObjects[i]);
-            anoObj.Init(this);
-        }
+            //Phenomenon anoObj = Instantiate(phenomenons[i]);
+            //anoObj.Init(this);
+        } cnt_remainProbloms += phenomenons.Length;
     }
 
     private void Update()
@@ -32,15 +36,15 @@ public class Anomaly : MonoBehaviour
     }
     void TimeCounter()
     {
-        timeLimit -= Time.deltaTime;
-        if (timeLimit <= float.Epsilon)
+        counter_timeLimit -= Time.deltaTime;
+        if (counter_timeLimit <= float.Epsilon)
         {
             // GameManager.GameOver();
         }
     }
     public void Child_Resolved()
     {
-        if (--cnt_resolve == 0)
+        if (--cnt_remainProbloms == 0)
         {
             // 필요 시 게임매니저 등에 해결됨을 알림
             Destroy(gameObject);

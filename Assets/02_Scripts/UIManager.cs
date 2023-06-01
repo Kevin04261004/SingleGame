@@ -13,6 +13,10 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] private Image CCTVIcon_Image;
     [SerializeField] private Image timeClock_Image;
     [SerializeField] private Image middlePoint_Image;
+    
+    
+    [Tooltip("크로스헤어 기본 색상")] [SerializeField] private Color baseColor;
+    [Tooltip("크로스헤어가 상호작용 가능할 때의 색상")] [SerializeField] private Color changeColor;
 
     public void Set_TimeClock_TMP(int time)
     {
@@ -58,8 +62,12 @@ public class UIManager : Singleton <UIManager>
             CCTVIcon_Image.gameObject.SetActive(false);
         }
     }
-    public void Set_middlePoint_Image_Color(Color color)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="canInteract">상호작용 가능 여부</param>
+    public void Set_middlePoint_Image_Color(bool canInteract)
     {
-        middlePoint_Image.color = color;
+        middlePoint_Image.color = (canInteract ? changeColor : baseColor);
     }
 }
