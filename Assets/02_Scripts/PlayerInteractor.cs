@@ -21,8 +21,6 @@ public class PlayerInteractor : MonoBehaviour
         {
             Debug.DrawRay(forward.transform.position, forward.transform.forward * hit.distance, Color.red);
 
-            Debug.Log(hit.collider.gameObject.name);
-
             if (hit.collider.CompareTag("Interactable") && hit.distance <= handLength)
             {
                 UIManager.instance.Set_middlePoint_Image_Color(true);

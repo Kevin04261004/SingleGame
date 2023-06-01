@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Anomal_Door : MonoBehaviour
 {
     [SerializeField] private bool isOpened = false;
     [SerializeField] private Quaternion openedRotation;
@@ -10,6 +10,8 @@ public class Door : MonoBehaviour
     [SerializeField] private float doorSpeed;
 
     private Coroutine doorCoroutine;
+
+
     public void ToggleDoor()
     {
         if (doorCoroutine != null)
