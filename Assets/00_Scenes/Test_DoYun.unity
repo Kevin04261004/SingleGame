@@ -3424,6 +3424,12 @@ MonoBehaviour:
   timeClock_text: {fileID: 1159269894}
   RuleBook_BackGround: {fileID: 997076015}
   CCTV_BackGround: {fileID: 2078161696}
+  RuleBookIcon_Image: {fileID: 0}
+  CCTVIcon_Image: {fileID: 0}
+  timeClock_Image: {fileID: 0}
+  middlePoint_Image: {fileID: 0}
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  changeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &204579224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12608,11 +12614,8 @@ MonoBehaviour:
   forward: {fileID: 2111860912}
   moveSpeed: 6
   runSpeed: 12
-  jumpPower: 6
-  isJumping: 0
+  myRigid: {fileID: 0}
   isRunning: 0
-  jumpCoolTime: 1.5
-  handLength: 3
 --- !u!136 &756391505
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19490,7 +19493,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21493,7 +21496,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22527,7 +22530,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34656,7 +34659,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

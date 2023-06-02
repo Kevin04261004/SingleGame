@@ -876,6 +876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV2
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -1102,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 978a559fcb6b93d4898e95fd54626840, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 919132149155446097, guid: 978a559fcb6b93d4898e95fd54626840, type: 3}
       propertyPath: m_Name
       value: cctv
@@ -8337,6 +8345,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV5
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -10511,6 +10523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV1
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_HDR
       value: 1
@@ -36109,6 +36125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV3
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -37821,6 +37841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV4
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -38818,6 +38842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV6
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -38880,6 +38908,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1838771930520541375, guid: 18b61b85263438f4881439f47c1554f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 1838771930720472259, guid: 18b61b85263438f4881439f47c1554f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+    - target: {fileID: 1838771930799941940, guid: 18b61b85263438f4881439f47c1554f5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 1838771931320890944, guid: 18b61b85263438f4881439f47c1554f5, type: 3}
       propertyPath: m_Name
       value: Player

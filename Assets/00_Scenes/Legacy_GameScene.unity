@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1255,7 +1255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3247,9 +3247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forward: {fileID: 2111860912}
   moveSpeed: 3
-  jumpPower: 6
-  isJumping: 0
-  jumpCoolTime: 1.5
+  runSpeed: 6
+  myRigid: {fileID: 0}
+  isRunning: 0
 --- !u!136 &756391505
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3727,6 +3727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charmove: {fileID: 756391504}
   Target: {fileID: 2111860912}
+  isCamMove: 0
   rotateSpeed: 500
 --- !u!4 &971876197 stripped
 Transform:
@@ -4168,6 +4169,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CCTV (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4550474806731306548, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5026338727394821933, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_TargetTexture
       value: 
@@ -4596,7 +4601,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5058,7 +5063,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7149,7 +7154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
