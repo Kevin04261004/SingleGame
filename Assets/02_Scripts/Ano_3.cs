@@ -8,15 +8,17 @@ using UnityEngine;
 /// </summary>
 public class Ano_3 : Anomaly
 {
-    [SerializeField] private GameObject Door;
-    [SerializeField] private GameObject DoorKnob;
+    private Phe_3_Door Door;
     public override void AnomalyStart()
     {
-        DoorKnob.tag = "Interactable";
-        Door.GetComponent<Anomaly_Door>().ToggleDoor();
+        Door = FindObjectOfType<Phe_3_Door>();
+
+        Door.doorKnob.tag = "Interactable";
+        Door.GetComponent<Phe_3_Door>().ToggleDoor();
+        Door.Init(this);
     }
     public override void AnomalyEnd()
     {
-        ;
+
     }
 }

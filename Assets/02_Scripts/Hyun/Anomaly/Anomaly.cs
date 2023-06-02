@@ -68,7 +68,10 @@ public abstract class Anomaly : MonoBehaviour
     }
     public void FixProblem()
     {
-        if (--remainProblemCount == 0)
+        // TODO
+        // remainProblemCount가 InstantiatePhenomenon()말고
+        // Scene에 이미 존재하는 오브젝트를 사용할 때에도 카운트되도록
+        if (--remainProblemCount <= 0)
         {
             Debug.Log($"'{anomalyName}'현상이 해결되었습니다.");
             Destroy(gameObject);
@@ -85,4 +88,5 @@ public abstract class Anomaly : MonoBehaviour
     /// 이상현상이 종료될때 해야할 처리<br/>
     /// (예: 현상들 파괴)
     /// </summary>
-    public abstract void AnomalyEnd();}
+    public abstract void AnomalyEnd();
+}

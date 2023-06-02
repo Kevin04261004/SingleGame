@@ -8,6 +8,7 @@ public class Phe_9_Guard : Phenomenon
     [SerializeField, ReadOnly] float counter_nst = -1;
     [SerializeField] Area_DetectPlayer prefab_detectZone;
     Area_DetectPlayer detectZone;
+
     protected override void PhenomenonEnd()
     {
         detectZone.event_playerInArea -= CheckStayTime;

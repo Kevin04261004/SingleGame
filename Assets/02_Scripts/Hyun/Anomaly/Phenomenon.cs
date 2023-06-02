@@ -24,7 +24,7 @@ public abstract class Phenomenon : MonoBehaviour
         PhenomenonEnd();
     }
     /// <summary>
-    /// 자신을 생성시킨 Anomaly가 호출한다.
+    /// 자신을 사용(생성 또는 찾은)하는 Anomaly가 호출한다.
     /// </summary>
     public void Init(Anomaly anomalyInstance)
     {

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Anomaly_Door : MonoBehaviour
+public class Phe_3_Door : Phenomenon
 {
-    [SerializeField] private bool isOpened = false;
+    [SerializeField, ReadOnly] private bool isOpened = false;
     [SerializeField] private Quaternion openedRotation;
     [SerializeField] private Quaternion closedRotation;
     [SerializeField] private float doorSpeed;
+
+    public Phe_3_DoorKnob doorKnob { get; private set; } = null;
 
     private Coroutine doorCoroutine;
     public void ToggleDoor()
@@ -17,6 +19,26 @@ public class Anomaly_Door : MonoBehaviour
 
         doorCoroutine = StartCoroutine(OpenCloseDoor());
     }
+    private void Awake()
+    {
+        doorKnob = transform.GetChild(0).GetComponent<Phe_3_DoorKnob>();
+    }
+
+    protected override void PhenomenonEnd()
+    {
+        
+    }
+
+    protected override void PhenomenonStart()
+    {
+        
+    }
+
+    protected override void Solution()
+    {
+        
+    }
+
     private IEnumerator OpenCloseDoor()
     {
         Quaternion targetRotation = isOpened ? closedRotation : openedRotation;
@@ -33,5 +55,6 @@ public class Anomaly_Door : MonoBehaviour
 
         transform.rotation = targetRotation;
         isOpened = !isOpened;
+        if (!isOpened) TryFixThisPhenomenon();
     }
 }
