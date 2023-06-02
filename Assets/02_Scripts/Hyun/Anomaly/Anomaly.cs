@@ -11,10 +11,16 @@ public abstract class Anomaly : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField, Tooltip("실패까지 남은 제한 시간"), ReadOnly] float counter_timeLimit = -1f;
+    [SerializeField, Tooltip("해당 Anomaly가 해결되기 위해 남은 문제의 수\n(문제: 구역에 머물기, 대화하기 등)")]
+    int remainProblemCount = -1;
+    [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할")]
+    List<Phenomenon> createdPhenomenons;
 
     protected virtual void Start()
     {
         counter_timeLimit = timeLimit;
+        remainProblemCount = 0;
+        createdPhenomenons = new List<Phenomenon>();
         AnomalyStart();
     }
 
@@ -22,23 +28,51 @@ public abstract class Anomaly : MonoBehaviour
     {
         TimeCounter();
     }
+    private void OnDestroy()
+    {
+        AnomalyEnd();
+    }
     void TimeCounter()
     {
         counter_timeLimit -= Time.deltaTime;
         if (counter_timeLimit <= float.Epsilon)
         {
-            // GameManager.GameOver();
+            // GameManager.GameOver(deathSceneNum);
         }
     }
-    private void OnDestroy()
+    /// <summary>
+    /// 현상(문제) 오브젝트들을 생성할 때 사용<br/>
+    /// 생성할 현상이 해결할 수 있는 문제라면 problemCount를 증가시키고,
+    /// Anomaly가 종료될 때 현상들을 제거할 수 있게 컨테이너에 담는다.<br/>
+    /// Phenomenon의 초기화 작업도 진행한다.
+    /// </summary>
+    /// <param name="phenomenonPrefab"></param>
+    /// <returns></returns>
+    protected Phenomenon InstantiatePhenomenon(Phenomenon phenomenonPrefab)
     {
-        AnomalyEnd();
+        if (phenomenonPrefab.hasSolution) remainProblemCount++;
+        Phenomenon phenomenon = Instantiate(phenomenonPrefab);
+        createdPhenomenons.Add(phenomenon);
+        phenomenon.Init(this);
+        return phenomenon;
+    }
+    public void FixProblem()
+    {
+        if (--remainProblemCount == 0)
+        {
+            Debug.Log($"'{anomalyName}'현상이 해결되었습니다.");
+            Destroy(gameObject);
+            return;
+        }
+        Debug.Log($"'{anomalyName}'현상이 해결되기까지 {remainProblemCount}개의 문제가 남았습니다.");
     }
     /// <summary>
-    /// 이상현상이 시작될때 해야할 처리(예: 판정 구역 생성)
+    /// 이상현상이 시작될때 해야할 처리<br/>
+    /// (예: 현상들 생성)
     /// </summary>
     public abstract void AnomalyStart();
     /// <summary>
-    /// 이상현상이 종료될때 해야할 처리(예: 오브젝트 파괴)
+    /// 이상현상이 종료될때 해야할 처리<br/>
+    /// (예: 현상들 파괴)
     /// </summary>
     public abstract void AnomalyEnd();}
