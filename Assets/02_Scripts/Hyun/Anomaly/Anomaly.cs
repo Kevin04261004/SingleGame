@@ -10,17 +10,19 @@ public abstract class Anomaly : MonoBehaviour
     public float timeLimit = 120f;
 
     [Header("Debug")]
-    [SerializeField, Tooltip("실패까지 남은 제한 시간"), ReadOnly] float counter_timeLimit = -1f;
-    [SerializeField, Tooltip("해당 Anomaly가 해결되기 위해 남은 문제의 수\n(문제: 구역에 머물기, 대화하기 등)")]
+    [SerializeField, ReadOnly, Tooltip("실패까지 남은 제한 시간")] float counter_timeLimit = -1f;
+    [SerializeField, ReadOnly, Tooltip("해당 Anomaly가 해결되기 위해 남은 문제의 수\n(문제: 구역에 머물기, 대화하기 등)")]
     int remainProblemCount = -1;
     [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할")]
     List<Phenomenon> createdPhenomenons;
 
     protected virtual void Start()
     {
+        transform.position = Vector3.zero;
         counter_timeLimit = timeLimit;
         remainProblemCount = 0;
         createdPhenomenons = new List<Phenomenon>();
+        Debug.Log($"'{anomalyName}'현상이 시작되었습니다. 제한시간: {timeLimit}초");
         AnomalyStart();
     }
 
@@ -48,10 +50,10 @@ public abstract class Anomaly : MonoBehaviour
     /// </summary>
     /// <param name="phenomenonPrefab"></param>
     /// <returns></returns>
-    protected Phenomenon InstantiatePhenomenon(Phenomenon phenomenonPrefab)
+    protected T InstantiatePhenomenon<T>(T phenomenonPrefab) where T : Phenomenon
     {
         if (phenomenonPrefab.hasSolution) remainProblemCount++;
-        Phenomenon phenomenon = Instantiate(phenomenonPrefab);
+        T phenomenon = Instantiate(phenomenonPrefab);
         createdPhenomenons.Add(phenomenon);
         phenomenon.Init(this);
         return phenomenon;

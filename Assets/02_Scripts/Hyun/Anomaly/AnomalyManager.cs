@@ -13,13 +13,14 @@ public class AnomalyManager : Singleton<AnomalyManager>
     /// Anomaly가 해결될 때 List에서 제거하는 작업 필요.
     /// 또는 굳이 발생하고있는 Anomaly목록을 볼 필요가 없다면 제거해도 무방
     /// </summary>
-    public List<Anomaly> effectiveAnomalys = new List<Anomaly>();
+    [ReadOnly] public List<Anomaly> effectiveAnomalys = new List<Anomaly>();
     /// <summary>
     /// TODO<br/>
     /// 이미 발생하고 있는 Anomaly인지 확인하고 중복실행되지 않게 하는 작업 필요.
     /// List int등을 활용할 수 있음
     /// </summary>
     /// <param name="index"></param>
+    [ContextMenu("ExecuteRandomAnomalyFromList")]
     public void ExecuteAnomaly(int index = -1)
     {
         Anomaly anomaly = null;
@@ -33,5 +34,9 @@ public class AnomalyManager : Singleton<AnomalyManager>
             anomaly = Instantiate(anomalyList[index]);
         }
         effectiveAnomalys.Add(anomaly);
+    }
+    private void Start()
+    {
+        ExecuteAnomaly();
     }
 }

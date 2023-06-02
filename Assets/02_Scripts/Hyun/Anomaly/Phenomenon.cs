@@ -11,7 +11,7 @@ using UnityEngine;
 public abstract class Phenomenon : MonoBehaviour
 {
     /// <summary>자신이 소속된(자신을 생성한) Anomaly의 인스턴스</summary>
-    Anomaly from = null;
+    protected Anomaly from = null;
     /// <summary>
     /// 해당 현상이 해결할 수 있는 문제일 경우 true<br/>
     /// true일 경우 Anomaly가 해당 현상을 초기화하는 과정에서
