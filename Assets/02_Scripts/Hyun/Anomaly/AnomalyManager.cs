@@ -21,19 +21,30 @@ public class AnomalyManager : Singleton<AnomalyManager>
     /// </summary>
     /// <param name="index"></param>
     [ContextMenu("ExecuteRandomAnomalyFromList")]
-    public void ExecuteAnomaly(int index = -1)
+    public bool ExecuteAnomaly(int index = -1)
     {
         Anomaly anomaly = null;
         if (index == -1)
         {
             int randIdx = Random.Range(0, anomalyList.Length);
             anomaly = Instantiate(anomalyList[randIdx]);
+            
         }
         else
         {
             anomaly = Instantiate(anomalyList[index]);
         }
-        effectiveAnomalys.Add(anomaly);
+        if (anomaly.CheckExecuteCondition())
+        {
+            anomaly.Init();
+            effectiveAnomalys.Add(anomaly);
+            return true;
+        }
+        else
+        {
+            Destroy(anomaly);
+            return false;
+        }
     }
     private void Start()
     {

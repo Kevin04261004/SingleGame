@@ -16,7 +16,7 @@ public abstract class Anomaly : MonoBehaviour
     [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할")]
     List<Phenomenon> createdPhenomenons;
 
-    protected virtual void Start()
+    public void Init()
     {
         transform.position = Vector3.zero;
         counter_timeLimit = timeLimit;
