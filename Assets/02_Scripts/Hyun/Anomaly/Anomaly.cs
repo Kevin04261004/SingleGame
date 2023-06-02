@@ -43,6 +43,14 @@ public abstract class Anomaly : MonoBehaviour
         }
     }
     /// <summary>
+    /// 해당 Anomaly를 실행시킬 조건이 충족되었는지 확인. AnomalyManager가 실행할 Anomaly를 결정하는 조건이 된다.<br/>
+    /// 상속받은 객체에서 상황에 맞게 bool을 반환하면 된다. (기본 값: true반환)<br/>
+    /// 예) 플레이어가 관제실 안에 있을 경우 true, 아닐 경우 false
+    /// </summary>
+    /// <returns>true: 조건에 부합<br/>
+    /// false: 조건에 부합하지 않음</returns>
+    public virtual bool CheckExecuteCondition() => true;
+    /// <summary>
     /// 현상(문제) 오브젝트들을 생성할 때 사용<br/>
     /// 생성할 현상이 해결할 수 있는 문제라면 problemCount를 증가시키고,
     /// Anomaly가 종료될 때 현상들을 제거할 수 있게 컨테이너에 담는다.<br/>
