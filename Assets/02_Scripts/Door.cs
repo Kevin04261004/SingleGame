@@ -17,7 +17,6 @@ public class Door : MonoBehaviour
 
         doorCoroutine = StartCoroutine(OpenCloseDoor());
     }
-
     private IEnumerator OpenCloseDoor()
     {
         Quaternion targetRotation = isOpened ? closedRotation : openedRotation;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3368578}
   - component: {fileID: 2358182}
   - component: {fileID: 6501828}
-  - component: {fileID: 6491911687126121655}
+  - component: {fileID: 6060501537394959635}
   m_Layer: 0
   m_Name: Anomaly_Door
   m_TagString: Untagged
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6141279, y: 3.319395, z: 0.2044397}
   m_Center: {x: -0.7778183, y: 1.6596978, z: -0.010840289}
---- !u!114 &6491911687126121655
+--- !u!114 &6060501537394959635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,13 +108,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 112554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7555ffc907a357b4494f0e927e98347c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0431e25519485724a80627fe204ef541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isOpened: 0
-  openedRotation: {x: 0, y: -0.38268346, z: 0, w: 0.9238795}
-  closedRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-  doorSpeed: 1
+  openedRotation: {x: 0, y: 0, z: 0, w: 0}
+  closedRotation: {x: 0, y: 0, z: 0, w: 0}
+  doorSpeed: 0
 --- !u!1 &2517273259779726249
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,10 +127,10 @@ GameObject:
   - component: {fileID: 4591260627022886074}
   - component: {fileID: 6262766784591871800}
   - component: {fileID: 467457948431646870}
-  - component: {fileID: 2498693012102947763}
+  - component: {fileID: 5122880162970047955}
   m_Layer: 0
   m_Name: doorknob
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +213,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2498693012102947763
+--- !u!114 &5122880162970047955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,6 +222,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2517273259779726249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9c5fc769203ed4799160a0ecd32dfe, type: 3}
+  m_Script: {fileID: 11500000, guid: 4457e61b98a598340ad83db7575c47c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
