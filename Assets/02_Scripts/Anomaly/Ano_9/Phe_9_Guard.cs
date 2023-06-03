@@ -11,15 +11,14 @@ public class Phe_9_Guard : Phenomenon
 
     protected override void PhenomenonEnd()
     {
-        detectZone.event_playerInArea -= CheckStayTime;
+        detectZone.event_time_playerInArea -= CheckStayTime;
         Destroy(detectZone.gameObject);
     }
 
     protected override void PhenomenonStart()
     {
         detectZone = Instantiate(prefab_detectZone);
-        detectZone.transform.SetParent(from.transform);
-        detectZone.event_playerInArea += CheckStayTime;
+        detectZone.event_time_playerInArea += CheckStayTime;
         counter_nst = needStayTime;
     }
 

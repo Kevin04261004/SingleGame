@@ -14,29 +14,24 @@ public abstract class Phenomenon : MonoBehaviour
     protected Anomaly from = null;
     /// <summary>
     /// 해당 현상이 해결할 수 있는 문제일 경우 true<br/>
-    /// true일 경우 Anomaly가 해당 현상을 초기화하는 과정에서
-    /// 문제 카운트를 증가시킨다.
+    /// true일 경우 Anomaly가 해당 현상을 초기화하는 과정에서 문제 카운트를 증가시킨다.
     /// </summary>
     public bool hasSolution = false;
-
-    private void OnDestroy()
-    {
-        PhenomenonEnd();
-    }
     /// <summary>
     /// 자신을 사용(생성 또는 찾은)하는 Anomaly가 호출한다.
     /// </summary>
     public void Init(Anomaly anomalyInstance)
     {
         from = anomalyInstance;
+        if (!hasSolution)
+        {
+            from.event_whenAnomalyEnded += PhenomenonEnd;
+        }
         PhenomenonStart();
     }
     /// <summary>
     /// 해당 현상이 해결방법을 갖지 않으면(hasSolution == false) 빈 내용으로 구현해도 문제 없다.<br/>
-    /// 아닐 경우 반드시 구현해야 하며 문제를 해결했다면 TryFixThisPhenomenon을 호출해 해당 현상을 끝내야 한다.<br/>
-    /// TODO<br/>
-    /// hasSolution여부로 함수의 구현 여부가 정해지는데 이게 바람직한지 생각해볼 필요가 있다.
-    /// 클래스를 현상, 문제로 나누든가 하는 방안을 찾아볼 수 있음
+    /// <b>해결 방법이 있을 경우 반드시 구현해야 하며 문제를 해결했다면 TryFixThisPhenomenon을 호출해 해당 현상이 해결됬음을 알려야 한다.</b>
     /// </summary>
     protected abstract void Solution();
     protected void TryFixThisPhenomenon()
@@ -47,7 +42,8 @@ public abstract class Phenomenon : MonoBehaviour
                 "Anomaly 해결을 위한 카운트에 문제가 되므로 hasSolution을 true로 변경해야 합니다.");
             return;
         }
-        from.FixProblem();
+        from.ProblemSolved();
+        PhenomenonEnd();
     }
     
     /// <summary>
@@ -57,7 +53,9 @@ public abstract class Phenomenon : MonoBehaviour
     protected abstract void PhenomenonStart();
     /// <summary>
     /// 해당 현상이 종료될 때 해야할 처리<br/>
-    /// (예: 카메라를 원래대로 돌려놓기, 코루틴 종료 등)
+    /// (예: 카메라를 원래대로 돌려놓기, 코루틴 종료 등)<br/>
+    /// <b>※ hasSolution이 true일 경우 해당 현상이 해결됨에 따라 실행되며<br/>
+    /// false일 경우 자신을 사용한 Anomaly가 종료될 때 실행된다.</b>
     /// </summary>
     protected abstract void PhenomenonEnd();
     

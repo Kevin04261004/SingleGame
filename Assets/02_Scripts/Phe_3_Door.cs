@@ -12,6 +12,7 @@ public class Phe_3_Door : Phenomenon
     public Phe_3_DoorKnob doorKnob { get; private set; } = null;
 
     private Coroutine doorCoroutine;
+
     public void ToggleDoor()
     {
         if (doorCoroutine != null)
@@ -28,10 +29,14 @@ public class Phe_3_Door : Phenomenon
     {
         
     }
-
+    /// <summary>
+    /// 이상 현상이 시작될 때<br/>
+    /// 문이 열리고, 손잡이가 상호작용 가능하게 만든다.
+    /// </summary>
     protected override void PhenomenonStart()
     {
-        
+        doorKnob.tag = "Interactable";
+        ToggleDoor();
     }
 
     protected override void Solution()

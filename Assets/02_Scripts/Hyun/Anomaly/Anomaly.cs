@@ -14,14 +14,18 @@ public abstract class Anomaly : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("해당 Anomaly가 해결되기 위해 남은 문제의 수\n(문제: 구역에 머물기, 대화하기 등)")]
     int remainProblemCount = -1;
     [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할")]
-    List<Phenomenon> createdPhenomenons;
+    List<Phenomenon> phenomenonsFromThisAnomaly;
+
+    public delegate void WhenAnomalyEnded();
+    /// <summary>Anomaly가 종료되어 오브젝트가 파괴되기 직전에 호출된다.</summary>
+    public event WhenAnomalyEnded event_whenAnomalyEnded;
 
     public void Init()
     {
         transform.position = Vector3.zero;
         counter_timeLimit = timeLimit;
         remainProblemCount = 0;
-        createdPhenomenons = new List<Phenomenon>();
+        phenomenonsFromThisAnomaly = new List<Phenomenon>();
         Debug.Log($"'{anomalyName}'현상이 시작되었습니다. 제한시간: {timeLimit}초");
         AnomalyStart();
     }
@@ -30,10 +34,7 @@ public abstract class Anomaly : MonoBehaviour
     {
         TimeCounter();
     }
-    private void OnDestroy()
-    {
-        AnomalyEnd();
-    }
+#warning need modification: Call GameOver
     void TimeCounter()
     {
         counter_timeLimit -= Time.deltaTime;
@@ -51,9 +52,9 @@ public abstract class Anomaly : MonoBehaviour
     /// false: 조건에 부합하지 않음</returns>
     public virtual bool CheckExecuteCondition() => true;
     /// <summary>
-    /// 현상(문제) 오브젝트들을 생성할 때 사용<br/>
+    /// 현상(문제) 오브젝트들을 생성할 때 사용, 생성될 때 이름을 Hierarchy에서구분하기 쉽게 변경한다.<br/>
     /// 생성할 현상이 해결할 수 있는 문제라면 problemCount를 증가시키고,
-    /// Anomaly가 종료될 때 현상들을 제거할 수 있게 컨테이너에 담는다.<br/>
+    /// Anomaly가 보유한 현상들을 확인할 수 있게 컨테이너에 담는다.<br/>
     /// Phenomenon의 초기화 작업도 진행한다.
     /// </summary>
     /// <param name="phenomenonPrefab"></param>
@@ -62,31 +63,57 @@ public abstract class Anomaly : MonoBehaviour
     {
         if (phenomenonPrefab.hasSolution) remainProblemCount++;
         T phenomenon = Instantiate(phenomenonPrefab);
-        createdPhenomenons.Add(phenomenon);
+        phenomenon.gameObject.name = $"{this.GetType().Name}Obj_{phenomenonPrefab.gameObject.name}";
+        phenomenonsFromThisAnomaly.Add(phenomenon);
         phenomenon.Init(this);
         return phenomenon;
     }
-    public void FixProblem()
+    /// <summary>
+    /// 현상(문제) 오브젝트를 Scene에 이미 존재하는 것을 가져와 사용할 때 사용<br/>
+    /// 생성할 현상이 해결할 수 있는 문제라면 problemCount를 증가시키고,
+    /// Anomaly가 보유한 현상들을 확인할 수 있게 컨테이너에 담는다.<br/>
+    /// Phenomenon의 초기화 작업도 진행한다.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="phenomenonType"></param>
+    /// <returns>null: Scene에서 T타입의 Phenomenon을 찾지 못함</returns>
+    protected T FindPhenomenonObjectInScene<T>() where T : Phenomenon
     {
-        // TODO
-        // remainProblemCount가 InstantiatePhenomenon()말고
-        // Scene에 이미 존재하는 오브젝트를 사용할 때에도 카운트되도록
-        if (--remainProblemCount <= 0)
+        T phenomenon = FindObjectOfType<T>();
+        if (phenomenon == null)
+        {
+            Debug.LogError($"Scene에서 '{typeof(T)}'컴포넌트가 부착된 Phenomenon을 찾지 못하였습니다.");
+            return null;
+        }
+        if (phenomenon.hasSolution) remainProblemCount++;
+        phenomenonsFromThisAnomaly.Add(phenomenon);
+        phenomenon.Init(this);
+        return phenomenon;
+    }
+    public void ProblemSolved()
+    {
+        if (--remainProblemCount == 0)
         {
             Debug.Log($"'{anomalyName}'현상이 해결되었습니다.");
-            Destroy(gameObject);
+            DestroyAnomaly();
             return;
         }
         Debug.Log($"'{anomalyName}'현상이 해결되기까지 {remainProblemCount}개의 문제가 남았습니다.");
     }
+    public void DestroyAnomaly()
+    {
+        AnomalyEnd();
+        event_whenAnomalyEnded?.Invoke();
+        Destroy(gameObject);
+    }
     /// <summary>
     /// 이상현상이 시작될때 해야할 처리<br/>
-    /// (예: 현상들 생성)
+    /// (예: Phenomenon 생성, 코루틴 실행 등)
     /// </summary>
     public abstract void AnomalyStart();
     /// <summary>
     /// 이상현상이 종료될때 해야할 처리<br/>
-    /// (예: 현상들 파괴)
+    /// (예: Phenomenon 파괴, 코루틴 종료 등)
     /// </summary>
     public abstract void AnomalyEnd();
 }

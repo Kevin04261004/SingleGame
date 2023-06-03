@@ -8,13 +8,13 @@ using UnityEngine;
 public class Area_DetectPlayer : MonoBehaviour
 {
     public delegate void PlayerInArea(float time);
-    public event PlayerInArea event_playerInArea;
+    public event PlayerInArea event_time_playerInArea;
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            event_playerInArea?.Invoke(Time.deltaTime);
+            event_time_playerInArea?.Invoke(Time.deltaTime);
         }
     }
 }

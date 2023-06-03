@@ -15,7 +15,6 @@ public class Ano_9 : Anomaly
     public override void AnomalyStart()
     {
         guard = InstantiatePhenomenon(prefab_guard);
-        guard.transform.SetParent(this.transform);
         guard.gameObject.transform.localPosition = pos_spawn_guard;
     }
 }
