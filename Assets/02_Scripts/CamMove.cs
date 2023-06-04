@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
+    [SerializeField] private PlayerMovementController playerController;
     [SerializeField] private PlayerMovementController charmove;
     [SerializeField] private GameObject Target;
     public bool isCamMove;
     private float xRotate, yRotate, xRotateMove, yRotateMove;
     public float rotateSpeed;
 
+    private void Awake()
+    {
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
+    }
     private void Start()
     {
         Cursor.visible = false;
@@ -18,6 +23,10 @@ public class CamMove : MonoBehaviour
     }
     void Update()
     {
+        if(!playerController.Get_canMove())
+        {
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(isCamMove)

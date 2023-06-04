@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    [SerializeField] private bool canMove;
     [SerializeField] private GameObject forward;
     [Tooltip("걷기 속도")][SerializeField] private float moveSpeed = 3.0f;
     [Tooltip("달리기 속도")][SerializeField] private float runSpeed = 6.0f;
@@ -18,6 +19,13 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
+        if(!canMove)
+        {
+            h = 0; v = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
         /* player 이동 */
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
@@ -62,5 +70,13 @@ public class PlayerMovementController : MonoBehaviour
             moveAmount = moveDir.normalized * runSpeed * Time.deltaTime;
         }
         myRigid.MovePosition(transform.position + moveAmount);
+    }
+    public bool Get_canMove()
+    {
+        return canMove;
+    }
+    public void Set_canMove_Bool(bool _canMove)
+    {
+        canMove = _canMove;
     }
 }
