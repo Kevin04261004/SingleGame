@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phe_11_Person : Phenomenon
+public class Phe_11_Person : Phenomenon, IDialogue
 {
+    public void Fixed()
+    {
+        TryFixThisPhenomenon();
+    }
+
     protected override void PhenomenonEnd()
     {
         UIManager.instance.Set_DialogueGameObject_Bool(false);
@@ -12,11 +17,13 @@ public class Phe_11_Person : Phenomenon
 
     protected override void PhenomenonStart()
     {
-        //nothing
+        UIManager.instance.Set_Phenomenom(this);
+
     }
 
     protected override void Solution()
     {
         //nothing
     }
+    
 }

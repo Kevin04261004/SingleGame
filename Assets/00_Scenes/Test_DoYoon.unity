@@ -4195,6 +4195,7 @@ MonoBehaviour:
   - {fileID: 33632900}
   - {fileID: 1519260500}
   - {fileID: 79178879}
+  phenomenon: {fileID: 0}
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   changeColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &204579224
@@ -8368,7 +8369,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   typeSpeed: 0.2
   content: 
-  name: 
+  char_name: 
   Btn_01: 
   Btn_02: 
   Btn_03: 

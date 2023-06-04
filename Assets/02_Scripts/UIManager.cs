@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +15,8 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] private Text content_text;
     [SerializeField] private Text name_text;
     [SerializeField] private Text[] answer_text;
-
+    [SerializeField] private Phenomenon phenomenon;
+    
     [Tooltip("크로스헤어 기본 색상")] [SerializeField] private Color baseColor;
     [Tooltip("크로스헤어가 상호작용 가능할 때의 색상")] [SerializeField] private Color changeColor;
     private void Awake()
@@ -64,7 +62,6 @@ public class UIManager : Singleton <UIManager>
         {
             CCTV_BackGround.gameObject.SetActive(true);
             middlePoint_Image.gameObject.SetActive(false);
-            timeClock_Image.gameObject.SetActive(false);
             RuleBookIcon_Image.gameObject.SetActive(false);
             CCTVIcon_Image.gameObject.SetActive(false);
         }
@@ -77,7 +74,6 @@ public class UIManager : Singleton <UIManager>
     {
         Dialogue_GameObject.SetActive(Open);
         middlePoint_Image.gameObject.SetActive(!Open);
-        timeClock_Image.gameObject.SetActive(!Open);
         RuleBookIcon_Image.gameObject.SetActive(!Open);
         CCTVIcon_Image.gameObject.SetActive(!Open);
     }
@@ -111,6 +107,15 @@ public class UIManager : Singleton <UIManager>
         if (isTrue)
         {
             playerController.Set_canMove_Bool(true);
+            if(phenomenon is IDialogue)
+            {
+                (phenomenon as IDialogue).Fixed();
+            }
         }
+    }
+
+    public void Set_Phenomenom(Phenomenon instance)
+    {
+        phenomenon = instance;
     }
 }

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IDialogue
+{
+    public void Fixed();
+}
 /// <summary>
 /// Anomaly가 발생됨에 따라 발생하는 현상들<br/>
 /// '해결' 조건이 걸려있으며 해당 오브젝트를 해결 시 자신을 발현시킨 Anomaly의 제거 카운트를 감소시키는 함수를 호출한다.<br/>
@@ -10,6 +14,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class Phenomenon : MonoBehaviour
 {
+    
     /// <summary>자신이 소속된(자신을 생성한) Anomaly의 인스턴스</summary>
     protected Anomaly from = null;
     /// <summary>

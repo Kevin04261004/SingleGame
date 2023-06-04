@@ -5,12 +5,7 @@ using UnityEngine;
 public class Interactable_11_Person : MonoBehaviour, IInteratable
 {
     [SerializeField] private PlayerMovementController playerController;
-    [SerializeField] private string name;
-    [SerializeField] private string content;
-    [SerializeField] private string btn1;
-    [SerializeField] private string btn2;
-    [SerializeField] private string btn3;
-
+    [SerializeField] private DialogueData data = new DialogueData();
     private void OnEnable()
     {
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
@@ -19,6 +14,6 @@ public class Interactable_11_Person : MonoBehaviour, IInteratable
     {
         playerController.Set_canMove_Bool(false);
         UIManager.instance.Set_DialogueGameObject_Bool(true);
-        DialogueManager.instance.StartReadDialogue(name, content,btn1,btn2,btn3);
+        DialogueManager.instance.StartReadDialogue(data);
     }
 }
