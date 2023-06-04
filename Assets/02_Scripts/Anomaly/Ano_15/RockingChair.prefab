@@ -103,11 +103,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSolution: 0
-  rotationAxis: {fileID: 0}
-  maxSwingAngle_usual: 10
-  swingSpeed_usual: 2
-  maxSwingAngle_anomaly: 30
-  swingSpeed_anomaly: 20
+  rotationPivot: {fileID: 876791345879634078}
+  maxSwingAngle_usual: 5.6
+  swingSpeed_usual: 2.7
+  maxSwingAngle_anomaly: 10
+  swingSpeed_anomaly: 80
+  cur_swingAngle: 0
+  cur_swingSpeed: 0
+  animCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8800935952707931436
 GameObject:
   m_ObjectHideFlags: 0

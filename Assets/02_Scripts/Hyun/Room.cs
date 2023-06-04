@@ -22,7 +22,7 @@ public class Room : MonoBehaviour
             Transform current = t_queue.Dequeue();
             if (current.gameObject.TryGetComponent<CCTV>(out CCTV cctv))
             {
-                cctv.SetRoomInstance(this);
+                //cctv.SetRoomInstance(this);
                 _cctvList.Add(cctv);
             }
             for (int j = 0; j < current.childCount; j++)
