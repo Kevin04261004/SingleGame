@@ -22,8 +22,6 @@ public class PlayerMovementController : MonoBehaviour
         if(!canMove)
         {
             h = 0; v = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             return;
         }
         /* player ¿Ãµø */
@@ -78,5 +76,15 @@ public class PlayerMovementController : MonoBehaviour
     public void Set_canMove_Bool(bool _canMove)
     {
         canMove = _canMove;
+        if(!canMove)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

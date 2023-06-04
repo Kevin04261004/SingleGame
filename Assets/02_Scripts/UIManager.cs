@@ -105,8 +105,8 @@ public class UIManager : Singleton <UIManager>
     public void OnClick_Bool_Btn(bool isTrue)
     {
         answer_text[0].transform.parent.gameObject.SetActive(false);
-        answer_text[0].transform.parent.gameObject.SetActive(false);
-        answer_text[0].transform.parent.gameObject.SetActive(false);
+        answer_text[1].transform.parent.gameObject.SetActive(false);
+        answer_text[2].transform.parent.gameObject.SetActive(false);
 
         if (isTrue)
         {
