@@ -8,6 +8,12 @@ using UnityEngine;
 public interface IInteratable
 {
     public void Interact();
+    /// <summary>
+    /// 현재 상호작용이 가능한 상태인지 판별한다.<br/>
+    /// 예를 들어, 문이 열리고 닫히는 도중에는(isOpening, isClosing) 해당 함수의 반환값을 false로 반환하여<br/>
+    /// UI가 붉은 점이 되지 않도록 조건을 걸 수 있다.
+    /// </summary>
+    public virtual bool IsInteractable() => true;
 }
 
 public class PlayerInteractor : MonoBehaviour
@@ -26,7 +32,12 @@ public class PlayerInteractor : MonoBehaviour
                 UIManager.instance.Set_middlePoint_Image_Color(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    InteractableObject interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
+                    IInteratable interactable = hit.collider.gameObject.GetComponent<IInteratable>();
+                    if (interactable == null)
+                    {
+                        Debug.LogError($"'Interactable' 태그의 오브젝트가 {typeof(IInteratable).Name}형식의 컴포넌트를 갖고있지 않습니다.");
+                        return;
+                    }
                     interactable.Interact();
                 }
             }

@@ -34,7 +34,6 @@ public abstract class Anomaly : MonoBehaviour
     {
         TimeCounter();
     }
-#warning need modification: Call GameOver
     void TimeCounter()
     {
         counter_timeLimit -= Time.deltaTime;
