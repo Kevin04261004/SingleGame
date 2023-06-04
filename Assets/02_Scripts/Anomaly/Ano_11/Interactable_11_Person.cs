@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable_11_Person : InteractableObject
+public class Interactable_11_Person : MonoBehaviour, IInteratable
 {
     [SerializeField] private PlayerMovementController playerController;
     [SerializeField] private string name;
@@ -15,7 +15,7 @@ public class Interactable_11_Person : InteractableObject
     {
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
     }
-    public override void Interact()
+    public void Interact()
     {
         playerController.Set_canMove_Bool(false);
         UIManager.instance.Set_DialogueGameObject_Bool(true);
