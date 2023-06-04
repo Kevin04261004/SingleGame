@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Anomaly_Counter_Person : InteractableObject
+public class Anomaly_Counter_Person : MonoBehaviour, IInteratable
 {
-    public override void Interact()
+    public void Interact()
     {
         Debug.Log(1);
     }
