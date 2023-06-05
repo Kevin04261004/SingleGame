@@ -11,14 +11,23 @@ public class LightManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(RandomBlink());
-        SecondFloorLight_Off();
     }
-    public void SecondFloorLight_Off()
+    public void SecondFloorLight_Bool(bool _On)
     {
-        light_Off(4);
-        light_Off(5);
-        light_Off(6);
+        if(!_On)
+        {
+            light_Off(4);
+            light_Off(5);
+            light_Off(6);
+        }
+        else
+        {
+            light_On(4);
+            light_On(5);
+            light_On(6);
+        }
     }
+    
     IEnumerator RandomBlink()
     {
         while (true)
