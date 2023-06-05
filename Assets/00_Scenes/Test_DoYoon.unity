@@ -1087,6 +1087,7 @@ MonoBehaviour:
   - {fileID: 2378979920952580182, guid: ba875bf36708a234c97250d6024b6b8a, type: 3}
   - {fileID: 6445631860161967549, guid: e962d94450679e447b8d357dbf7dac0e, type: 3}
   - {fileID: 8253081435101931882, guid: e85e60243f46a6c40bdd237c95ea5b8d, type: 3}
+  - {fileID: 3081723101709736539, guid: 032db48eb49d67c4d99c29fdf5b67741, type: 3}
   effectiveAnomalys: []
 --- !u!1001 &52883006
 PrefabInstance:

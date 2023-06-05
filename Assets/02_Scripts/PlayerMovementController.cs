@@ -19,7 +19,17 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-        if(!canMove)
+        /* RuleBook on/off */
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            UIManager.instance.Set_RuleBook_BackGround_TrueOrFalse();
+        }
+        /* CCTV on/off */
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            UIManager.instance.Set_CCTV_BackGround_TrueOrFalse();
+        }
+        if (!canMove)
         {
             h = 0; v = 0;
             return;
@@ -36,18 +46,6 @@ public class PlayerMovementController : MonoBehaviour
         else
         {
             isRunning = false;
-        }
-
-        /* RuleBook on/off */
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            UIManager.instance.Set_RuleBook_BackGround_TrueOrFalse();
-        }
-
-        /* CCTV on/off */
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            UIManager.instance.Set_CCTV_BackGround_TrueOrFalse();
         }
     }
     private void FixedUpdate()
