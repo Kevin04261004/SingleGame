@@ -389,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashLight: {fileID: 1838771930628004147}
   intensity: 1
+  playerController: {fileID: 0}
 --- !u!1 &1838771931320890944
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142cc631272249e48bf893a55b63480a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   forward: {fileID: 1838771930520541372}
   moveSpeed: 6
   runSpeed: 12

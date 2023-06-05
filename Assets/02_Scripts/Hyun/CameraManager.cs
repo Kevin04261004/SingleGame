@@ -2,8 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class RenderTextureData
+{
+    public string cam_name;
+    public RenderTexture rt;
+}
+
 public class CameraManager : Singleton<CameraManager>
 {
+    [SerializeField] UnityEngine.UI.Image tempImage;
+    [SerializeField] Material tempMat;
+    public RenderTextureData[] cameraList;
+
     private static Dictionary<string, Camera> camList = new Dictionary<string, Camera>(32);
 
     protected override void Awake()
@@ -36,5 +47,16 @@ public class CameraManager : Singleton<CameraManager>
             if (cameras[i].gameObject.name == objName) return cameras[i];
         }
         return null;
+    }
+    int temp_idx;
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (++temp_idx > cameraList.Length - 1) temp_idx = 0;
+            Material mat = new Material(tempMat);
+            mat.mainTexture = cameraList[temp_idx].rt;
+            tempImage.material = mat;
+        }
     }
 }

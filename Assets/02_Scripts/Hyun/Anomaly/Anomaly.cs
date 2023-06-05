@@ -20,27 +20,42 @@ public abstract class Anomaly : MonoBehaviour
     /// <summary>Anomaly가 종료되어 오브젝트가 파괴되기 직전에 호출된다.</summary>
     public event WhenAnomalyEnded event_whenAnomalyEnded;
 
+    Coroutine coroutine_timeCounter = null;
+
     public void Init()
     {
         transform.position = Vector3.zero;
         counter_timeLimit = timeLimit;
         remainProblemCount = 0;
         phenomenonsFromThisAnomaly = new List<Phenomenon>();
+        coroutine_timeCounter = StartCoroutine(TimeCounter());
         Debug.Log($"'{anomalyName}'현상이 시작되었습니다. 제한시간: {timeLimit}초");
         AnomalyStart();
     }
-
-    protected virtual void Update()
+    IEnumerator TimeCounter()
     {
-        TimeCounter();
-    }
-    void TimeCounter()
-    {
-        counter_timeLimit -= Time.deltaTime;
-        if (counter_timeLimit <= float.Epsilon)
+        WaitForEndOfFrame waitFrame = new WaitForEndOfFrame();
+        while (true)
         {
-            // GameManager.GameOver(deathSceneNum);
+            if ((counter_timeLimit -= Time.deltaTime) <= float.Epsilon) break;
+            yield return waitFrame;
         }
+        coroutine_timeCounter = null;
+    }
+    /// <summary>
+    /// 제한시간을 카운트하는 코루틴을 종료시키는 함수<br/>
+    /// 예: 상호작용 시 대화창이 뜨는 현상은 대화 선택지에 따라 현상 종료가 결정되므로,
+    /// 필요 시 해당 Anomlay의 제한 시간 카운트를 멈출 수 있다.
+    /// </summary>
+    public void StopTimeCounter()
+    {
+        if (coroutine_timeCounter == null)
+        {
+            Debug.LogWarning("제한 시간 타이머가 존재하지 않습니다. 이미 멈추었거나 실행되지 않았을 수 있습니다.");
+            return;
+        }
+        StopCoroutine(coroutine_timeCounter);
+        coroutine_timeCounter = null;
     }
     /// <summary>
     /// 해당 Anomaly를 실행시킬 조건이 충족되었는지 확인. AnomalyManager가 실행할 Anomaly를 결정하는 조건이 된다.<br/>
@@ -103,6 +118,7 @@ public abstract class Anomaly : MonoBehaviour
     {
         AnomalyEnd();
         event_whenAnomalyEnded?.Invoke();
+        AnomalyManager.instance.RemoveAnomalyFromEffectiveList(this);
         Destroy(gameObject);
     }
     /// <summary>
@@ -112,7 +128,8 @@ public abstract class Anomaly : MonoBehaviour
     public abstract void AnomalyStart();
     /// <summary>
     /// 이상현상이 종료될때 해야할 처리<br/>
-    /// (예: Phenomenon 파괴, 코루틴 종료 등)
+    /// (예: Phenomenon 파괴, 코루틴 종료 등)<br/>
+    /// <b>※ Anomaly 게임 오브젝트는 이후 자동으로 파괴되므로 따로 파괴하면 안 된다.</b>
     /// </summary>
     public abstract void AnomalyEnd();
 }
