@@ -48,6 +48,6 @@ public class AnomalyManager : Singleton<AnomalyManager>
     }
     private void Start()
     {
-        ExecuteAnomaly(1);
+        ExecuteAnomaly(3);
     }
 }

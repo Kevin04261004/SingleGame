@@ -57,6 +57,8 @@ public class UIManager : Singleton <UIManager>
             timeClock_Image.gameObject.SetActive(true);
             RuleBookIcon_Image.gameObject.SetActive(true);
             CCTVIcon_Image.gameObject.SetActive(true);
+
+            playerController.Set_canMove_Bool(true);
         }
         else
         {
@@ -64,6 +66,7 @@ public class UIManager : Singleton <UIManager>
             middlePoint_Image.gameObject.SetActive(false);
             RuleBookIcon_Image.gameObject.SetActive(false);
             CCTVIcon_Image.gameObject.SetActive(false);
+            playerController.Set_canMove_Bool(false);
         }
     }
     public void Set_middlePoint_Image_Color(bool canInteract)
