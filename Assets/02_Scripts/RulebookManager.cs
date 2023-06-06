@@ -16,22 +16,35 @@ public class RulebookManager : MonoBehaviour
     }
     public void OnClickLeftBtn()
     {
-        if(curpage == 2)
+        pages[(curpage - 1) * 2].gameObject.SetActive(false);
+        pages[(curpage - 1) * 2 + 1].gameObject.SetActive(false);
+        curpage--;
+        pages[(curpage - 1) * 2].gameObject.SetActive(true);
+        pages[(curpage - 1) * 2 + 1].gameObject.SetActive(true);
+        SetBtns();
+    }
+    public void OnClickRightBtn()
+    {
+        if (curpage > pages.Length / 2)
         {
-            pages[2].gameObject.SetActive(false);
-            pages[3].gameObject.SetActive(false);
+            return;
         }
+        pages[(curpage-1) * 2].gameObject.SetActive(false);
+        pages[(curpage-1) * 2 + 1].gameObject.SetActive(false);
+        curpage++;
+        pages[(curpage - 1) * 2].gameObject.SetActive(true);
+        pages[(curpage - 1) * 2 + 1].gameObject.SetActive(true);
         SetBtns();
     }
 
     public void SetBtns()
     {
-        if(curpage == 1)
+        if (curpage == 1)
         {
             leftBtn.gameObject.SetActive(false);
             rightBtn.gameObject.SetActive(true);
         }
-        else if (curpage == pages.Length/2)
+        else if (curpage == pages.Length / 2) 
         {
             leftBtn.gameObject.SetActive(true);
             rightBtn.gameObject.SetActive(false);

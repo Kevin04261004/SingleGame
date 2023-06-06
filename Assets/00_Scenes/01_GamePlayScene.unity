@@ -5719,6 +5719,8 @@ MonoBehaviour:
   pages:
   - {fileID: 1254210528}
   - {fileID: 424624897}
+  - {fileID: 611639163}
+  - {fileID: 1444018121}
   curpage: 1
 --- !u!1001 &259064257
 PrefabInstance:
@@ -8667,8 +8669,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110, y: -140}
-  m_SizeDelta: {x: 800, y: 800}
+  m_AnchoredPosition: {x: -110, y: -200}
+  m_SizeDelta: {x: 800, y: 720}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &424624899
 MonoBehaviour:
@@ -8703,35 +8705,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "6. 3\uCE35 \uAC1D\uC2E4 \uC911 \uC77C\uBD80 \uAC1D\uC2E4 \uC785\uAD6C\uC5D0\uC11C
-    \uD53C\uAC00 \uD758\uB7EC\uB098\uC62C \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4.
-    \uD53C\uAC00 \uD758\uB7EC\uB098\uC628 \uAC1D\uC2E4\uC5D0 \uAC00\uC11C [\uCCAD\uC18C\uBD80\uB294
-    \uC5C6\uC2B5\uB2C8\uB2E4.]\uB77C\uACE0 \uD55C \uB4A4, \uB2E4\uB978 \uC7A5\uC18C\uB97C
-    \uAC14\uB2E4 \uC624\uBA74 \uD53C\uB294 \uC0AC\uB77C\uC838 \uC788\uC744 \uAC83\uC785\uB2C8\uB2E4.
-    \uD758\uB7EC\uB098\uC628 \uD53C\uC758 \uC815\uCCB4\uB97C \uD655\uC778\uD558\uB824
-    \uD558\uC9C0 \uB9C8\uC2ED\uC2DC\uC624.\r\n7. 2\uCE35 \uBCF5\uB3C4\uB97C \uC9C0\uB098\uAC00\uB358
-    \uC911 \uBA38\uB9AC\uAC00 \uAE34 \uC5EC\uC790\uC544\uC774\uAC00 \uB9D0\uC744
-    \uAC78\uC5B4\uC62C \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4. \uC774\uB54C \uC5EC\uC790\uC544\uC774\uC640
-    \uB9D0\uC744 \uC774\uC5B4\uAC00\uC8FC\uC138\uC694. \uC544\uC774\uB294 \uC624\uB79C\uC2DC\uAC04
+  m_Text: "5. \uD734\uB300 CCTV\uC758 \uBAA8\uB4E0 \uD654\uBA74\uC5D0 \uB178\uC774\uC988\uAC00
+    \uB084 \uB54C\uAC00 \uC788\uC2B5\uB2C8\uB2E4. \uC911\uC559 \uAD00\uC81C\uC2E4\uC5D0
+    \uB4E4\uB7EC \uBA54\uC778 CCTV\uB97C \uD655\uC778\uD55C \uB4A4, \uB2E4\uC2DC
+    \uD734\uB300 CCTV\uB97C \uD655\uC778\uD558\uBA74 \uC815\uC0C1\uC801\uC73C\uB85C
+    \uC791\uB3D9\uD560 \uAC83\uC785\uB2C8\uB2E4.\r\n\n6. 3\uCE35 \uAC1D\uC2E4 \uC911
+    \uC77C\uBD80 \uAC1D\uC2E4 \uC785\uAD6C\uC5D0\uC11C \uD53C\uAC00 \uD758\uB7EC\uB098\uC62C
+    \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4. \uD53C\uAC00 \uD758\uB7EC\uB098\uC628
+    \uAC1D\uC2E4\uC5D0 \uAC00\uC11C [\uCCAD\uC18C\uBD80\uB294 \uC5C6\uC2B5\uB2C8\uB2E4.]\uB77C\uACE0
+    \uD55C \uB4A4, \uB2E4\uB978 \uC7A5\uC18C\uB97C \uAC14\uB2E4 \uC624\uBA74 \uD53C\uB294
+    \uC0AC\uB77C\uC838 \uC788\uC744 \uAC83\uC785\uB2C8\uB2E4. \uD758\uB7EC\uB098\uC628
+    \uD53C\uC758 \uC815\uCCB4\uB97C \uD655\uC778\uD558\uB824 \uD558\uC9C0 \uB9C8\uC2ED\uC2DC\uC624.\r\n\n7.
+    2\uCE35 \uBCF5\uB3C4\uB97C \uC9C0\uB098\uAC00\uB358 \uC911 \uBA38\uB9AC\uAC00
+    \uAE34 \uC5EC\uC790\uC544\uC774\uAC00 \uB9D0\uC744 \uAC78\uC5B4\uC62C \uC218\uB3C4
+    \uC788\uC2B5\uB2C8\uB2E4. \uC774\uB54C \uC5EC\uC790\uC544\uC774\uC640 \uB9D0\uC744
+    \uC774\uC5B4\uAC00\uC8FC\uC138\uC694. \uC544\uC774\uB294 \uC624\uB79C\uC2DC\uAC04
     \uC678\uB85C\uC6C0\uC744 \uD0C0\uC11C \uB2F9\uC2E0\uACFC \uB180\uACE0\uC2F6\uC5B4\uD560
-    \uAC83\uC785\uB2C8\uB2E4.\r\n8. 2\uCE35 \uBCF5\uB3C4\uB97C \uC9C0\uB098\uAC00\uB358
+    \uAC83\uC785\uB2C8\uB2E4.\r\n\n8. 2\uCE35 \uBCF5\uB3C4\uB97C \uC9C0\uB098\uAC00\uB358
     \uC911 \uBA38\uB9AC\uAC00 \uAE34 \uC5EC\uC790\uC544\uC774\uAC00 \uB9D0\uC744
     \uAC78\uC5B4\uC62C \uC218\uB3C4 \uC788\uC2B5\uB2C8\uB2E4. \uC774 \uB54C \uC808\uB300
     \uB300\uB2F5\uC744 \uD558\uC9C0 \uB9C8\uC2DC\uACE0 \uC911\uC559 \uAD00\uC81C\uC2E4\uC744
     \uB4E4\uC5B4\uAC14\uB2E4 \uB098\uC624\uC2ED\uC2DC\uC624. \uADF8\uB7EC\uBA74 \uC790\uC5F0\uD788
-    \uC544\uC774\uB294 \uC0AC\uB77C\uC838 \uC788\uC744 \uAC83\uC785\uB2C8\uB2E4.\r\n9.
-    3\uCE35 \uAC1D\uC2E4 \uBCF5\uB3C4\uC5D0\uC11C \uC774\uB530\uAE08 \uCCAD\uC0C9
-    \uBAA8\uC790\uB97C \uC4F4 \uACBD\uBE44\uC6D0\uC774 \uBC30\uD68C\uD55C\uB2E4\uB294
-    \uB9D0\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uADF8\uB97C \uBC1C\uACAC \uC989\uC2DC
-    \uB4A4\uB3CC\uC544 \uAD00\uC81C\uC2E4\uB85C \uB3C4\uB9DD\uCE58\uC2ED\uC2DC\uC624.
-    \uAD00\uC81C\uC2E4\uC5D0\uC11C \uC57D 10\uCD08\uAC04 \uAE30\uB2E4\uB9AC\uBA74
-    \uADF8\uB294 \uC5C6\uC5B4\uC9C8 \uAC83\uC785\uB2C8\uB2E4.\r\n10. \uC800\uD76C
-    \uBAA8\uD154 \uC548\uC804 \uADDC\uCE59\uC5D0\uB294 9\uBC88 \uBB38\uD56D\uC740
-    \uC5C6\uC2B5\uB2C8\uB2E4. 9\uBC88 \uBB38\uD56D\uC740 \uC774\uC804\uC5D0 \uBAA8\uD154\uC5D0\uC11C
-    \uBC1C\uC0DD\uD55C \uBAA8\uC885\uC758 \uC0AC\uAC74 \uC774\uD6C4 \uBE44\uC6CC
-    \uB450\uACE0 \uC788\uB294 \uC0C1\uD0DC\uC774\uBA70, 9\uBC88 \uBB38\uD56D\uC774
-    \uBCF4\uC77C \uACBD\uC6B0 \uD574\uB2F9 \uBB38\uD56D\uC5D0 \uB098\uC640 \uC788\uB294
-    \uC218\uCE59\uC744 \uC808\uB300 \uB530\uB974\uC2DC\uBA74 \uC548 \uB429\uB2C8\uB2E4.\r"
+    \uC544\uC774\uB294 \uC0AC\uB77C\uC838 \uC788\uC744 \uAC83\uC785\uB2C8\uB2E4.\r\n"
 --- !u!222 &424624900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13078,6 +13073,102 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 494626, guid: 812c9b36537fa8146bed44183a36cf7a, type: 3}
   m_PrefabInstance: {fileID: 586492843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &611639163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611639164}
+  - component: {fileID: 611639166}
+  - component: {fileID: 611639165}
+  m_Layer: 5
+  m_Name: RuleBook_Page3_TMP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &611639164
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611639163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1853431096}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 134, y: -250}
+  m_SizeDelta: {x: 800, y: 700}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &611639165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611639163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2259975dfa7ff3141ade9cb09a7cdb25, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "9. 3\uCE35 \uAC1D\uC2E4 \uBCF5\uB3C4\uC5D0\uC11C \uC774\uB530\uAE08 \uCCAD\uC0C9
+    \uBAA8\uC790\uB97C \uC4F4 \uACBD\uBE44\uC6D0\uC774 \uBC30\uD68C\uD55C\uB2E4\uB294
+    \uB9D0\uC774 \uC788\uC2B5\uB2C8\uB2E4. \uADF8\uB97C \uBC1C\uACAC \uC989\uC2DC
+    \uB4A4\uB3CC\uC544 \uAD00\uC81C\uC2E4\uB85C \uB3C4\uB9DD\uCE58\uC2ED\uC2DC\uC624.
+    \uAD00\uC81C\uC2E4\uC5D0\uC11C \uC57D 10\uCD08\uAC04 \uAE30\uB2E4\uB9AC\uBA74
+    \uADF8\uB294 \uC5C6\uC5B4\uC9C8 \uAC83\uC785\uB2C8\uB2E4.\r\n\n10. \uC800\uD76C
+    \uBAA8\uD154 \uC548\uC804 \uADDC\uCE59\uC5D0\uB294 7\uBC88 \uBB38\uD56D\uC740
+    \uC5C6\uC2B5\uB2C8\uB2E4. 7\uBC88 \uBB38\uD56D\uC740 \uC774\uC804\uC5D0 \uBAA8\uD154\uC5D0\uC11C
+    \uBC1C\uC0DD\uD55C \uBAA8\uC885\uC758 \uC0AC\uAC74 \uC774\uD6C4 \uBE44\uC6CC
+    \uB450\uACE0 \uC788\uB294 \uC0C1\uD0DC\uC774\uBA70, 7\uBC88 \uBB38\uD56D\uC774
+    \uBCF4\uC77C \uACBD\uC6B0 \uD574\uB2F9 \uBB38\uD56D\uC5D0 \uB098\uC640 \uC788\uB294
+    \uC218\uCE59\uC744 \uC808\uB300 \uB530\uB974\uC2DC\uBA74 \uC548 \uB429\uB2C8\uB2E4.\r\n\n11.
+    \uC190\uB2D8\uC774 \uCE74\uC6B4\uD130\uC5D0 \uC640\uC11C [?\uC694\uC740 \uC740\uC721\uC778
+    \uD55C\uBB38\uC8FC]\uB77C\uACE0 \uB9D0\uC744 \uAC78 \uACBD\uC6B0, \uB2F9\uD669\uD558\uC9C0
+    \uB9C8\uC2DC\uACE0 [\uC624\uB298\uC740 \uC5FC\uC18C\uACE0\uAE30\uC758 \uD488\uC9C8\uC774
+    \uC88B\uC2B5\uB2C8\uB2E4.]\uB77C\uACE0 \uB300\uB2F5\uD558\uC2ED\uC2DC\uC624.
+    \uADF8\uB807\uB2E4\uBA74 \uADF8\uB294 \uC21C\uC21C\uD788 \uBB3C\uB7EC\uAC08 \uAC83\uC785\uB2C8\uB2E4.\r\n"
+--- !u!222 &611639166
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611639163}
+  m_CullTransparentMesh: 1
 --- !u!1001 &612313790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26501,28 +26592,23 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1. \uADFC\uBB34 \uC2DC\uAC04\uC740 00\uC2DC\uBD80\uD130 06\uC2DC\uAE4C\uC9C0\uC785\uB2C8\uB2E4.\n2.
+  m_Text: "1. \uADFC\uBB34 \uC2DC\uAC04\uC740 00\uC2DC\uBD80\uD130 06\uC2DC\uAE4C\uC9C0\uC785\uB2C8\uB2E4.\n\n2.
     \uCE74\uC6B4\uD130\uC5D0 [444\uD638\uC5D0 \uC218\uAC74\uC774 \uB2E4 \uB5A8\uC5B4\uC84C\uC2B5\uB2C8\uB2E4.
     \uAC00\uC838\uB2E4 \uC8FC\uC138\uC694.] \uB77C\uB294 \uB9D0\uC744 \uD558\uB294
     \uC190\uB2D8\uC774 \uC62C \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC774 \uB54C, [\uC8C4\uC1A1\uD569\uB2C8\uB2E4.
     \uC5FC\uC18C\uC758 \uD138\uC740 \uC5C6\uC2B5\uB2C8\uB2E4.]\uB77C\uACE0 \uD558\uBA74
     \uADF8\uB294 \uB3CC\uC544\uAC08 \uAC83\uC785\uB2C8\uB2E4. \uC6B0\uB9AC \uBAA8\uD154\uC5D0
-    4\uCE35\uC740 \uC5C6\uC2B5\uB2C8\uB2E4.\r\n3. \uC6B0\uB9AC \uBAA8\uD154\uC758
+    4\uCE35\uC740 \uC5C6\uC2B5\uB2C8\uB2E4.\r\n\n3. \uC6B0\uB9AC \uBAA8\uD154\uC758
     \uCC3D\uACE0 \uBB38\uC740 \uD56D\uC0C1 \uB2EB\uD600 \uC788\uC2B5\uB2C8\uB2E4.
     \uC5F4\uB824 \uC788\uB2E4\uBA74 \uAC00\uC11C \uB2EB\uC544 \uC8FC\uC2ED\uC2DC\uC624.
     \uC774 \uB54C, \uC548\uC744 \uB4E4\uC5EC\uB2E4\uBCF4\uC9C0 \uB9C8\uC2ED\uC2DC\uC624.
     \uC138\uC0C1\uC5D0\uB294, \uBCF4\uC9C0 \uB9D0\uC544\uC57C \uD560 \uAC83\uB3C4
-    \uC788\uC2B5\uB2C8\uB2E4.\r\n4. \uAD00\uCC30\uD558\uB2E4 \uBCF4\uBA74 304\uD638\uC758
+    \uC788\uC2B5\uB2C8\uB2E4.\r\n\n4. \uAD00\uCC30\uD558\uB2E4 \uBCF4\uBA74 304\uD638\uC758
     \uBB38\uC774 \uC5F4\uB824 \uC788\uC744 \uB54C\uAC00 \uC788\uC2B5\uB2C8\uB2E4.
     \uC5F4\uB824 \uC788\uB294 \uBB38\uC740 \uC9C1\uC811 \uB2EB\uACE0 \uC7A0\uAC00\uC8FC\uC138\uC694.
     \uBB38\uC744 \uC7A0\uAE00 \uB54C \uC18D\uC0AD\uC774\uB294 \uC18C\uB9AC\uAC00
     \uB0A0 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC808\uB300 \uC7A0\uADF8\uB294 \uD589\uB3D9\uC744
-    \uBA48\uCD94\uC9C0 \uB9D0\uACE0 \uB05D\uAE4C\uC9C0 \uC7A0\uAC00\uC57C \uD569\uB2C8\uB2E4.\r\n5.
-    \uD734\uB300 CCTV\uC758 \uBAA8\uB4E0 \uD654\uBA74\uC5D0 \uB178\uC774\uC988\uAC00
-    \uB084 \uB54C\uAC00 \uC788\uC2B5\uB2C8\uB2E4. \uC911\uC559 \uAD00\uC81C\uC2E4\uC5D0
-    \uB4E4\uB7EC \uBA54\uC778 CCTV\uB97C \uD655\uC778\uD55C \uB4A4, \uB2E4\uC2DC
-    \uD734\uB300 CCTV\uB97C \uD655\uC778\uD558\uBA74 \uC815\uC0C1\uC801\uC73C\uB85C
-    \uC791\uB3D9\uD560 \uAC83\uC785\uB2C8\uB2E4.\r"
+    \uBA48\uCD94\uC9C0 \uB9D0\uACE0 \uB05D\uAE4C\uC9C0 \uC7A0\uAC00\uC57C \uD569\uB2C8\uB2E4.\r"
 --- !u!222 &1254210531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30295,6 +30381,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416178, guid: fe546dac68b4ae943a161dec60c98fed, type: 3}
   m_PrefabInstance: {fileID: 1984408269}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1444018121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1444018122}
+  - component: {fileID: 1444018124}
+  - component: {fileID: 1444018123}
+  m_Layer: 5
+  m_Name: RuleBook_Page4_TMP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1444018122
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444018121}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1853431096}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -110, y: -200}
+  m_SizeDelta: {x: 800, y: 720}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1444018123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444018121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 2259975dfa7ff3141ade9cb09a7cdb25, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "12. 2\uCE35 \uBCF5\uB3C4\uC758 CCTV\uD654\uBA74\uC5D0 \uCEE4\uB2E4\uB780
+    \uD574\uACE8 \uBB38\uC591\uC774 \uB098\uD0C0\uB0A0 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+    \uD574\uACE8 \uBB38\uC591\uC774 \uB2E4 \uCC28\uC624\uB974\uAE30 \uC804\uC5D0
+    2\uCE35 \uBCF5\uB3C4\uC5D0 \uC785\uC7A5\uD574\uC57C \uD569\uB2C8\uB2E4.\n\n13.
+    \uAC74\uBB3C \uD14C\uB77C\uC2A4 \uBC14\uAE65\uC5D0 \uB204\uAD70\uAC00\uAC00 \uC11C\uC788\uB294
+    \uAC83\uCC98\uB7FC \uBCF4\uC77C \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uB450 \uBC88
+    \uC774\uC0C1 \uAD00\uCC30\uD558\uC9C0 \uB9C8\uC2ED\uC2DC\uC624. 3\uCE35 \uB192\uC774\uC758
+    \uAC74\uBB3C \uC678\uBCBD\uC5D0 \uC11C\uC788\uC744 \uC218 \uC788\uB294 \u201C\uC0AC\uB78C\u201D\uC740
+    \uC5C6\uC2B5\uB2C8\uB2E4. \uB2F9\uC2E0\uC774 \uADF8\uAC83\uC744 \uC778\uC9C0\uD588\uB2E4\uB294
+    \uC0AC\uC2E4\uC744 \uC54C\uC9C0 \uBABB\uD558\uAC8C \uD558\uC2ED\uC2DC\uC624.\r\n\n14.
+    2\uCE35 \uBCF5\uB3C4\uC5D0 \uC544\uBB34\uB3C4 \uC5C6\uB294\uB370 \uC804\uB4F1\uC774
+    \uC810\uBA78\uD55C\uB2E4\uBA74 \uD574\uB2F9 \uBCF5\uB3C4\uB97C \uBC97\uC5B4\uB098
+    \uAD00\uC81C\uC2E4\uC5D0\uC11C \uD574\uB2F9 \uC7A5\uC18C\uB97C \uD655\uC778\uD558\uC2ED\uC2DC\uC624.
+    \uB2E4\uC2DC \uB3CC\uC544\uC640 \uC788\uC744 \uAC83\uC785\uB2C8\uB2E4.\r\n\n15.
+    1\uCE35 \uAD6C\uC11D\uC5D0\uB294 \uC190\uB2D8\uB4E4\uC758 \uD734\uC2DD\uC744
+    \uC704\uD55C \uD754\uB4E4\uC758\uC790\uAC00 \uAD6C\uBE44\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4.
+    \uD754\uB4E4\uC758\uC790\uAC00 \uACFC\uD558\uAC8C \uD754\uB4E4\uB9AC\uB294 \uAC83\uC774
+    \uBCF4\uC778\uB2E4\uBA74 \uC190\uC804\uB4F1\uC744 \uB450 \uBC88 \uBE44\uCDB0\uC8FC\uC2ED\uC2DC\uC624.\r\n"
+--- !u!222 &1444018124
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444018121}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1445096637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34242,7 +34425,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1853431096}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -34292,7 +34475,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1666282225}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258725948}
+        m_TargetAssemblyTypeName: RulebookManager, Assembly-CSharp
+        m_MethodName: OnClickRightBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1666282225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37439,6 +37634,8 @@ RectTransform:
   - {fileID: 577730133}
   - {fileID: 1254210529}
   - {fileID: 424624898}
+  - {fileID: 611639164}
+  - {fileID: 1444018122}
   - {fileID: 2142662044}
   - {fileID: 1666282223}
   m_Father: {fileID: 231546035}
@@ -42662,7 +42859,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1853431096}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -42712,7 +42909,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2142662046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258725948}
+        m_TargetAssemblyTypeName: RulebookManager, Assembly-CSharp
+        m_MethodName: OnClickLeftBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2142662046
 MonoBehaviour:
   m_ObjectHideFlags: 0
