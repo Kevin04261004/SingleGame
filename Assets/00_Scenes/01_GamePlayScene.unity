@@ -1837,8 +1837,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2064398376514372374, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064398376514372374, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
       propertyPath: m_Range
-      value: 8
+      value: 9.97
       objectReference: {fileID: 0}
     - target: {fileID: 2064398376514372374, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
       propertyPath: m_Intensity
@@ -1848,13 +1852,29 @@ PrefabInstance:
       propertyPath: m_InnerSpotAngle
       value: 179
       objectReference: {fileID: 0}
+    - target: {fileID: 2064398376514372374, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064398376514372374, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2064398376514372374, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
+      propertyPath: m_Shadows.m_Resolution
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5727422611714302359, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.139
       objectReference: {fileID: 0}
     - target: {fileID: 5727422611714302359, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.976
+      value: -2.594
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709793390941541366, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be8dee6ec685e54080e3e3cb3c0101b, type: 3}
@@ -6351,8 +6371,16 @@ PrefabInstance:
       value: LED (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -9779,8 +9807,16 @@ PrefabInstance:
       value: LED (4)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -12168,8 +12204,16 @@ PrefabInstance:
       value: LED (7)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -17718,8 +17762,16 @@ PrefabInstance:
       value: LED (11)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -18950,8 +19002,16 @@ PrefabInstance:
       value: LED (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -21871,8 +21931,16 @@ PrefabInstance:
       value: LED (8)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -23330,8 +23398,16 @@ PrefabInstance:
       value: LED (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -24305,9 +24381,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: LED
       objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893004, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -27861,8 +27949,16 @@ PrefabInstance:
       value: LED (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -29721,8 +29817,16 @@ PrefabInstance:
       value: LED (10)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -35240,8 +35344,16 @@ PrefabInstance:
       value: LED (9)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
@@ -42536,8 +42648,16 @@ PrefabInstance:
       value: LED (5)
       objectReference: {fileID: 0}
     - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
       propertyPath: m_Lightmapping
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447806533869893006, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c4342b07876bd4bafbbd1a9d33828c, type: 3}
