@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete]
 /// <summary>
 /// 모든 Room을 찾고, 그 안에 해당하는 CCTV들을 모두 표시
 /// </summary>
@@ -14,20 +15,20 @@ public class CameraViewer : MonoBehaviour
         cctvList = GetAllCCTVFromRooms();
         for (int i = 0; i < cctvList.Length; i++)
         {
-            GameObject go = new GameObject($"Screen_{cctvList[i].attachedRoom.roomName}");
-            go.transform.SetParent(transform);
+            //GameObject go = new GameObject($"Screen_{cctvList[i].attachedRoom.roomName}");
+            //go.transform.SetParent(transform);
 
-            MeshFilter mf = go.AddComponent<MeshFilter>();
-            mf.mesh = CreateScreenMesh(2f);
+            //MeshFilter mf = go.AddComponent<MeshFilter>();
+            //mf.mesh = CreateScreenMesh(2f);
 
-            Material mt = new Material(Shader.Find("Unlit/Texture"));
-            RenderTexture rt = cctvList[i].renderTexture;
-            mt.mainTexture = rt;
+            //Material mt = new Material(Shader.Find("Unlit/Texture"));
+            //RenderTexture rt = cctvList[i].renderTexture;
+            //mt.mainTexture = rt;
 
-            MeshRenderer mr = go.AddComponent<MeshRenderer>();
-            mr.material = mt;
+            //MeshRenderer mr = go.AddComponent<MeshRenderer>();
+            //mr.material = mt;
 
-            go.transform.localPosition = new Vector3((i % 3) * 2, 0, (i / 3) * 2);
+            //go.transform.localPosition = new Vector3((i % 3) * 2, 0, (i / 3) * 2);
         }
     }
     /// <summary>

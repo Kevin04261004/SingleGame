@@ -49,7 +49,10 @@ namespace StageSystem
         private void Awake()
         {
             FindAndFillAreaComponentsFromAllChildren();
-            // StageManager로 생성하게 될 경우 Awake에서 제외
+        }
+        private void Start()
+        {
+            // StageManager로 생성하게 될 경우 Start에서 제외
             Init();
         }
         private void FindAndFillAreaComponentsFromAllChildren()

@@ -7,19 +7,34 @@ using UnityEngine;
 /// </summary>
 public interface IInteratable
 {
+    /// <summary>
+    /// 짧은 순간에 <b>키를 눌렀다 떼면 실행</b>되는 함수
+    /// </summary>
     public void Interact();
+    /// <summary>
+    /// 키를 누르고 일정 시간 뒤에도 떼지 않으면(홀드 상태) <b>키를 떼기 전까지 매 프레임마다 실행</b>될 함수
+    /// </summary>
+    public void Interact_Hold();
+    /// <summary>
+    /// 키를 누르고 일정 시간 뒤에도 (홀드 상태) <b>떼지 않다가 키를 떼면 실행</b>될 함수
+    /// </summary>
+    public void Interact_Hold_End();
     /// <summary>
     /// 현재 상호작용이 가능한 상태인지 판별한다.<br/>
     /// 예를 들어, 문이 열리고 닫히는 도중에는(isOpening, isClosing) 해당 함수의 반환값을 false로 반환하여<br/>
-    /// UI가 붉은 점이 되지 않도록 조건을 걸 수 있다.
+    /// UI가 붉은 점이 되지 않고 상호작용이 안되도록 할 수 있다.
     /// </summary>
-    public virtual bool IsInteractable() => true;
+    public bool IsInteractable();
 }
 
 public class PlayerInteractor : MonoBehaviour
 {
     public float handLength = 3f;
     public Transform forward = null;
+
+    bool isPressedInteractKey = false;
+    private float interactKeyPressTime = 0f;
+    private const float holdThreshold = 0.2f;
 
     private void Update()
     {
@@ -29,20 +44,55 @@ public class PlayerInteractor : MonoBehaviour
 
             if (hit.collider.CompareTag("Interactable") && hit.distance <= handLength)
             {
-                UIManager.instance.Set_middlePoint_Image_Color(true);
-                if (Input.GetKeyDown(KeyCode.F))
+                IInteratable interactable = hit.collider.gameObject.GetComponent<IInteratable>();
+                if (interactable == null)
                 {
-                    IInteratable interactable = hit.collider.gameObject.GetComponent<IInteratable>();
-                    if (interactable == null)
+                    Debug.LogError($"'Interactable' 태그의 오브젝트가 {typeof(IInteratable).Name}형식의 컴포넌트를 갖고있지 않습니다.");
+                    return;
+                }
+                if (interactable.IsInteractable())
+                {
+                    UIManager.instance.Set_middlePoint_Image_Color(true);
+
+                    if (Input.GetKeyDown(KeyCode.F))
                     {
-                        Debug.LogError($"'Interactable' 태그의 오브젝트가 {typeof(IInteratable).Name}형식의 컴포넌트를 갖고있지 않습니다.");
-                        return;
+                        isPressedInteractKey = true;
+                        interactKeyPressTime = Time.time;
                     }
-                    interactable.Interact();
+                    if (Input.GetKeyUp(KeyCode.F))
+                    {
+                        isPressedInteractKey = false;
+                        float pressDuration = Time.time - interactKeyPressTime;
+                        if (pressDuration <= holdThreshold)
+                        {
+                            interactable.Interact();
+                        }
+                        else
+                        {
+                            interactable.Interact_Hold_End();
+                        }
+                    }
+                    if (isPressedInteractKey)
+                    {
+                        float pressDuration = Time.time - interactKeyPressTime;
+                        if (pressDuration > holdThreshold)
+                        {
+                            interactable.Interact_Hold();
+                        }
+                    }
+                }
+                else
+                {
+                    UIManager.instance.Set_middlePoint_Image_Color(false);
                 }
             }
             else
             {
+                if (isPressedInteractKey)
+                {
+                    isPressedInteractKey = false;
+                    interactKeyPressTime = Time.time;
+                }
                 UIManager.instance.Set_middlePoint_Image_Color(false);
             }
         }

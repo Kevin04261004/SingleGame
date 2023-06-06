@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class CCTV : MonoBehaviour
 {
-    public Room attachedRoom { get; private set; } = null;
     Camera camComp = null;
-    public RenderTexture renderTexture { get; private set; } = null;
+    [field: SerializeField] public string cctvName { get; private set; }
+    public RenderTexture renderTexture = null;
+    public Material materialByRenderTexture = null;
+
     private void Awake()
     {
+        if (renderTexture == null || materialByRenderTexture == null)
+        {
+            Debug.LogError("필수로 할당해야하는 정보가 null입니다.");
+            return;
+        }
         camComp = GetComponent<Camera>();
-        renderTexture = new RenderTexture(Screen.width, Screen.height, 32);
-        camComp.targetTexture = renderTexture;
     }
-    public void SetRoomInstance(Room instance) => attachedRoom = instance;
+
+    public RenderTexture GetRenderTexture() => renderTexture;
+    public Material GetMaterialMadeByRenderTexture() => materialByRenderTexture;
 }

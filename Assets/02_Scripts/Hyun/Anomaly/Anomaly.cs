@@ -13,7 +13,7 @@ public abstract class Anomaly : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("실패까지 남은 제한 시간")] float counter_timeLimit = -1f;
     [SerializeField, ReadOnly, Tooltip("해당 Anomaly가 해결되기 위해 남은 문제의 수\n(문제: 구역에 머물기, 대화하기 등)")]
     int remainProblemCount = -1;
-    [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할")]
+    [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할"), ReadOnly]
     List<Phenomenon> phenomenonsFromThisAnomaly;
 
     public delegate void WhenAnomalyEnded();
@@ -68,30 +68,35 @@ public abstract class Anomaly : MonoBehaviour
     /// <summary>
     /// 현상(문제) 오브젝트들을 생성할 때 사용, 생성될 때 이름을 Hierarchy에서구분하기 쉽게 변경한다.<br/>
     /// 생성할 현상이 해결할 수 있는 문제라면 problemCount를 증가시키고,
-    /// Anomaly가 보유한 현상들을 확인할 수 있게 컨테이너에 담는다.<br/>
-    /// Phenomenon의 초기화 작업도 진행한다.
+    /// Anomaly가 보유한 현상들을 확인할 수 있게 컨테이너에 담는다.
     /// </summary>
-    /// <param name="phenomenonPrefab"></param>
+    /// <param name="phenomenonPrefab">생성시킬 Phenomenon의 Prefab</param>
+    /// <param name="callInitMethod">true: Phenomenon 생성 후 자동으로 초기화(시작)한다.<br/>
+    /// false: Phenomenon 생성 후 자동으로 초기화(시작)하지 않으며, 직접 초기화함수를 호출해야 한다.<br/>
+    /// 생성과 동시에 시작시키고 싶지 않은 특수한 경우에 사용한다.</param>
     /// <returns></returns>
-    protected T InstantiatePhenomenon<T>(T phenomenonPrefab) where T : Phenomenon
+    protected T InstantiatePhenomenon<T>(T phenomenonPrefab, bool callInitMethod = true) where T : Phenomenon
     {
         if (phenomenonPrefab.hasSolution) remainProblemCount++;
         T phenomenon = Instantiate(phenomenonPrefab);
         phenomenon.gameObject.name = $"{this.GetType().Name}Obj_{phenomenonPrefab.gameObject.name}";
         phenomenonsFromThisAnomaly.Add(phenomenon);
-        phenomenon.Init(this);
+        if (callInitMethod)
+        {
+            phenomenon.Init(this);
+        }
         return phenomenon;
     }
     /// <summary>
     /// 현상(문제) 오브젝트를 Scene에 이미 존재하는 것을 가져와 사용할 때 사용<br/>
     /// 생성할 현상이 해결할 수 있는 문제라면 problemCount를 증가시키고,
-    /// Anomaly가 보유한 현상들을 확인할 수 있게 컨테이너에 담는다.<br/>
-    /// Phenomenon의 초기화 작업도 진행한다.
+    /// Anomaly가 보유한 현상들을 확인할 수 있게 컨테이너에 담는다.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="phenomenonType"></param>
+    /// <param name="callInitMethod">true: Scene의 Phenomenon을 찾은 후 자동으로 초기화(시작)한다.<br/>
+    /// false: Scene의 Phenomenon을 찾은 후 자동으로 초기화(시작)하지 않으며, 직접 초기화함수를 호출해야 한다.<br/>
+    /// 찾음과 동시에 시작시키고 싶지 않은 특수한 경우에 사용한다.</param>
     /// <returns>null: Scene에서 T타입의 Phenomenon을 찾지 못함</returns>
-    protected T FindPhenomenonObjectInScene<T>() where T : Phenomenon
+    protected T FindPhenomenonObjectInScene<T>(bool callInitMethod = true) where T : Phenomenon
     {
         T phenomenon = FindObjectOfType<T>();
         if (phenomenon == null)
@@ -101,7 +106,10 @@ public abstract class Anomaly : MonoBehaviour
         }
         if (phenomenon.hasSolution) remainProblemCount++;
         phenomenonsFromThisAnomaly.Add(phenomenon);
-        phenomenon.Init(this);
+        if (callInitMethod)
+        {
+            phenomenon.Init(this);
+        }
         return phenomenon;
     }
     public void ProblemSolved()
@@ -110,6 +118,11 @@ public abstract class Anomaly : MonoBehaviour
         {
             Debug.Log($"'{anomalyName}'현상이 해결되었습니다.");
             DestroyAnomaly();
+            return;
+        }
+        if (remainProblemCount < 0)
+        {
+            Debug.LogError("하나의 현상이 해결되기 위한 문제의 수는 음수가 될 수 없습니다.\nAnomaly의 재사용 시 제대로 된 초기화가 진행되지 않았거나 몇 개의 Anomaly가 같은 기능을 올바르게 사용중인지 확인하십시오.");
             return;
         }
         Debug.Log($"'{anomalyName}'현상이 해결되기까지 {remainProblemCount}개의 문제가 남았습니다.");

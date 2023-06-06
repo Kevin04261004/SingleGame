@@ -94,4 +94,8 @@ public class Phe_15_RockingChair : Phenomenon, IInteratable
             yield return waitFrame;
         }
     }
+
+    public void Interact_Hold() { }
+    public void Interact_Hold_End() { }
+    public bool IsInteractable() => true;
 }

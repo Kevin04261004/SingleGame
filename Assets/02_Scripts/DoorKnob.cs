@@ -8,4 +8,9 @@ public class DoorKnob : MonoBehaviour, IInteratable
     {
         transform.GetComponentInParent<Door>().ToggleDoor();
     }
+
+    public void Interact_Hold() { }
+    public void Interact_Hold_End() { }
+
+    public bool IsInteractable() => true;
 }

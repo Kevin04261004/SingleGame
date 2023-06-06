@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("Room -> Stage, Area")]
 public class Room : MonoBehaviour
 {
     [HideInInspector]

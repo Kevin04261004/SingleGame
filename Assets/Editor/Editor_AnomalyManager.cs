@@ -41,7 +41,23 @@ public class Editor_AnomalyManager : Editor
                     return;
                 }
             }
-            
+        }
+        if (GUILayout.Button("모든 Anomaly실행"))
+        {
+            if (!Application.isPlaying)
+            {
+                Debug.LogWarning($"{amanager.GetType().Name}: 게임을 실행중일때에만 생성할 수 있습니다.");
+                return;
+            }
+            if (amanager.everyAnoIsExecuting)
+            {
+                Debug.LogWarning($"한 개의 Anomaly도 실행하지 못했습니다.\n List의 모든 Anomaly가 실행중일 수 있습니다.");
+                return;
+            }
+            for (int i = 0; i < amanager.anomalyList.Length; i++)
+            {
+                amanager.ExecuteAnomaly(i);
+            }
         }
     }
 }

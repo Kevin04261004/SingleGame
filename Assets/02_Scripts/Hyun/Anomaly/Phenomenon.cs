@@ -14,7 +14,6 @@ public interface IDialogue
 [System.Serializable]
 public abstract class Phenomenon : MonoBehaviour
 {
-    
     /// <summary>자신이 소속된(자신을 생성한) Anomaly의 인스턴스</summary>
     protected Anomaly from = null;
     /// <summary>

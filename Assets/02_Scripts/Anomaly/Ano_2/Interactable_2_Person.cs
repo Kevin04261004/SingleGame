@@ -16,4 +16,8 @@ public class Interactable_2_Person : MonoBehaviour, IInteratable
         UIManager.instance.Set_DialogueGameObject_Bool(true);
         DialogueManager.instance.StartReadDialogue(data);
     }
+
+    public void Interact_Hold() { }
+    public void Interact_Hold_End() { }
+    public bool IsInteractable() => true;
 }
