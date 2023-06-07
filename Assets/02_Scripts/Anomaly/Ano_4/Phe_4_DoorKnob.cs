@@ -15,6 +15,11 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
     {
         parent = transform.parent.GetComponent<Phe_4_Door>();
     }
+
+    void Update()
+    {
+
+    }
     public delegate void HasEnded();
     HasEnded ended;
     public void Init(HasEnded whenEndedProcess)
@@ -39,12 +44,14 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
             if (holdingTime >= parent.requireTimeForLockingDoor)
             {
                 isStartedTryLockDoor = false;
+                parent.Request_MakeNoise(false);
                 ended();
             }
         }
         else if (!parent.isOpen)
         {
             isStartedTryLockDoor = true;
+            parent.Request_MakeNoise();
         }
     }
     public void Interact_Hold_End()
@@ -54,11 +61,14 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
             // 문을 한 번에 끝까지 잠그지 않았을 경우
             if (holdingTime < parent.requireTimeForLockingDoor)
             {
+                parent.Request_MakeNoise(false);
 #warning needModification: callGameOver
                 // GameOver
+                Debug.Log("플레이어가 Ano4의 문을 끝까지 잠그지 않았습니다.");
             }
             else
             {
+                parent.Request_MakeNoise(false);
                 ended();
             }
         }

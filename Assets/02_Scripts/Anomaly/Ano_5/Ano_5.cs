@@ -7,18 +7,20 @@ using UnityEngine;
 /// </summary>
 public class Ano_5 : Anomaly
 {
+    [SerializeField] Phe_5_NoiseCameraVolume prefab_volumeObj;
     [SerializeField] Phe_5_NoiseCameraVolume volumeObj;
     public override void AnomalyEnd()
     {
-        
+        Destroy(volumeObj.gameObject);
     }
 
     public override void AnomalyStart()
     {
-        InstantiatePhenomenon<Phe_5_NoiseCameraVolume>(volumeObj);
+        volumeObj = InstantiatePhenomenon<Phe_5_NoiseCameraVolume>(prefab_volumeObj);
     }
     public override bool CheckExecuteCondition()
     {
-        return (FindObjectOfType<StageSystem.Stage>()?.playerLocatedArea != StageSystem.Area.AreaType.controlRoom);
+        Debug.Log($"in control: {FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.controlRoom}");
+        return (FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.controlRoom);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InputSystem;
 
 /// <summary>
 /// 플레이어가 상호작용할 수 있는 오브젝트들이 상속받아야 할 기능
@@ -36,6 +37,13 @@ public class PlayerInteractor : MonoBehaviour
     private float interactKeyPressTime = 0f;
     private const float holdThreshold = 0.2f;
 
+    IInteratable interactable = null;
+
+    private void Start()
+    {
+        InputManager.instance.event_keyInput += GetInput;
+    }
+
     private void Update()
     {
         if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit hit))
@@ -44,7 +52,7 @@ public class PlayerInteractor : MonoBehaviour
 
             if (hit.collider.CompareTag("Interactable") && hit.distance <= handLength)
             {
-                IInteratable interactable = hit.collider.gameObject.GetComponent<IInteratable>();
+                interactable = hit.collider.gameObject.GetComponent<IInteratable>();
                 if (interactable == null)
                 {
                     Debug.LogError($"'Interactable' 태그의 오브젝트가 {typeof(IInteratable).Name}형식의 컴포넌트를 갖고있지 않습니다.");
@@ -54,24 +62,24 @@ public class PlayerInteractor : MonoBehaviour
                 {
                     UIManager.instance.Set_middlePoint_Image_Color(true);
 
-                    if (Input.GetKeyDown(KeyCode.F))
-                    {
-                        isPressedInteractKey = true;
-                        interactKeyPressTime = Time.time;
-                    }
-                    if (Input.GetKeyUp(KeyCode.F))
-                    {
-                        isPressedInteractKey = false;
-                        float pressDuration = Time.time - interactKeyPressTime;
-                        if (pressDuration <= holdThreshold)
-                        {
-                            interactable.Interact();
-                        }
-                        else
-                        {
-                            interactable.Interact_Hold_End();
-                        }
-                    }
+                    //if (Input.GetKeyDown(KeyCode.F))
+                    //{
+                    //    isPressedInteractKey = true;
+                    //    interactKeyPressTime = Time.time;
+                    //}
+                    //if (Input.GetKeyUp(KeyCode.F))
+                    //{
+                    //    isPressedInteractKey = false;
+                    //    float pressDuration = Time.time - interactKeyPressTime;
+                    //    if (pressDuration <= holdThreshold)
+                    //    {
+                    //        interactable.Interact();
+                    //    }
+                    //    else
+                    //    {
+                    //        interactable.Interact_Hold_End();
+                    //    }
+                    //}
                     if (isPressedInteractKey)
                     {
                         float pressDuration = Time.time - interactKeyPressTime;
@@ -93,7 +101,34 @@ public class PlayerInteractor : MonoBehaviour
                     isPressedInteractKey = false;
                     interactKeyPressTime = Time.time;
                 }
+                interactable = null;
                 UIManager.instance.Set_middlePoint_Image_Color(false);
+            }
+        }
+    }
+
+    void GetInput(KeyType keyType, InputType inputType)
+    {
+        if (interactable == null) return;
+        if (keyType == KeyType.interact)
+        {
+            if (inputType == InputType.down)
+            {
+                isPressedInteractKey = true;
+                interactKeyPressTime = Time.time;
+            }
+            if (inputType == InputType.up)
+            {
+                isPressedInteractKey = false;
+                float pressDuration = Time.time - interactKeyPressTime;
+                if (pressDuration <= holdThreshold)
+                {
+                    interactable.Interact();
+                }
+                else
+                {
+                    interactable.Interact_Hold_End();
+                }
             }
         }
     }
