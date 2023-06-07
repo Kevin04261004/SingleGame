@@ -9,10 +9,6 @@ namespace StageSystem
         [SerializeField, ReadOnly] Area[] areasInStage = null;
         [SerializeField, ReadOnly] Area playerPos = null;
         public Area.AreaType playerLocatedArea => playerPos.areaType;
-
-        [SerializeField] public string temp_playerAreaName;
-        [SerializeField] public TMPro.TextMeshProUGUI temp_playerArea;
-
         public void CallBack_PlayerEnteringArea(Area area, Area.EnterOrExit enterOrExit)
         {
             if (enterOrExit == Area.EnterOrExit.enter)
@@ -23,8 +19,6 @@ namespace StageSystem
                     areasInStage[i].SetCollidersEnable((areasInStage[i] == area));
                 }
                 playerPos = area;
-                temp_playerAreaName = playerPos.areaName;
-                temp_playerArea.text = playerPos?.areaName;
             }
             else
             {
@@ -34,8 +28,6 @@ namespace StageSystem
                     areasInStage[i].SetCollidersEnable(!(areasInStage[i] == area));
                 }
                 playerPos = null;
-                temp_playerAreaName = "";
-                temp_playerArea.text = playerPos?.areaName;
             }
         }
 

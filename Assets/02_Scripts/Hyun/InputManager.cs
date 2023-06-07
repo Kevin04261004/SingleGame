@@ -46,7 +46,7 @@ namespace InputSystem
             }
             needToGetInput = kcList.ToArray();
 
-            Debug.Log($"입력받을 키 타입의 종류: {keyCodeToKeyType.Count} | 입력받을 키: {needToGetInput}");
+            Debug.Log($"입력받을 키 타입의 종류: {keyCodeToKeyType.Count}종류 | 입력받을 키: {needToGetInput.Length}개");
 
             event_keyInput += GetInputs;
         }

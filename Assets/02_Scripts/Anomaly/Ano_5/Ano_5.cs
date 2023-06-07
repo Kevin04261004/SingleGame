@@ -20,7 +20,6 @@ public class Ano_5 : Anomaly
     }
     public override bool CheckExecuteCondition()
     {
-        Debug.Log($"in control: {FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.controlRoom}");
         return (FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.controlRoom);
     }
 }

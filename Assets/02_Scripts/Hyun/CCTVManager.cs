@@ -18,7 +18,12 @@ public class CCTVManager : Singleton<CCTVManager>
         cctvList = GameObject.FindObjectsOfType<CCTV>();
         for (int i = 0; i < cctvList.Length; i++)
         {
-            nameToCCTV.Add(cctvList[i].cctvName, cctvList[i]);
+            if (!nameToCCTV.ContainsKey(cctvList[i].cctvName))
+            {
+                nameToCCTV.Add(cctvList[i].cctvName, cctvList[i]);
+                continue;
+            }
+            Debug.LogWarning("Scene에 배치된 CCTV 중 같은 이름의 CCTV가 여럿 존재합니다.");
         }
     }
     public CCTV GetCCTVWithName(string cctvName)
