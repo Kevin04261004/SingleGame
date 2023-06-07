@@ -7,16 +7,24 @@ namespace StageSystem
     [System.Serializable, RequireComponent(typeof(Collider))]
     public class Area : MonoBehaviour
     {
+        public enum AreaType
+        {
+            controlRoom, mainHall, counter,
+            corrider_1f, corrider_2f, corrider_3f,
+            landing_1_5f, landing_2_5f, landing_3_5f
+        }
         public enum EnterOrExit
         {
             enter, exit
         }
-        public string areaName = "Default Area";
+        public string areaName = "DefaultArea";
         int triggerCount = 0;
 
         public delegate void EnteringArea(Area area, EnterOrExit enterOrExit);
         EnteringArea when_player_enterOrExit_area;
         Collider[] colliders;
+
+        [field: SerializeField] public AreaType areaType { get; private set; } = AreaType.controlRoom;
 
         private void Awake()
         {

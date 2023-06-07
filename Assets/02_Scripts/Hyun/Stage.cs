@@ -8,6 +8,7 @@ namespace StageSystem
     {
         [SerializeField, ReadOnly] Area[] areasInStage = null;
         [SerializeField, ReadOnly] Area playerPos = null;
+        public Area.AreaType playerLocatedArea => playerPos.areaType;
 
         [SerializeField] public string temp_playerAreaName;
         [SerializeField] public TMPro.TextMeshProUGUI temp_playerArea;

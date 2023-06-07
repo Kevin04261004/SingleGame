@@ -33,7 +33,12 @@ public class Editor_AnomalyManager : Editor
             {
                 if (idx == -1)
                 {
-                    while (!amanager.ExecuteAnomaly(idx)) { }
+                    int tryCnt = 0;
+                    while (!amanager.ExecuteAnomaly(idx) && ++tryCnt < 10) { }
+                    if (tryCnt == 10)
+                    {
+                        Debug.LogWarning($"Anomaly를 실행하지 못했습니다.\n {idx}번째 Anomaly의 실행 조건이 충족되지 않았을 수 있습니다.");
+                    }
                 }
                 else
                 {
