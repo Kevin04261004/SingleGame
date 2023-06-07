@@ -1266,13 +1266,14 @@ GameObject:
   - component: {fileID: 56025772}
   - component: {fileID: 56025771}
   - component: {fileID: 56025770}
+  - component: {fileID: 56025773}
   m_Layer: 5
   m_Name: Button_1_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &56025769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1340,8 +1341,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 204486588}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnClick_Bool_Btn
-        m_Mode: 6
+        m_MethodName: OnClick_Btn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1388,6 +1389,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56025768}
   m_CullTransparentMesh: 1
+--- !u!114 &56025773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56025768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242a87c5caf6f4949b4985a29b837f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnswer: 0
 --- !u!4 &56819626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 492412, guid: b5c6f1e15b5541a4990e2f0b2715e6be, type: 3}
@@ -7381,13 +7395,14 @@ GameObject:
   - component: {fileID: 339035324}
   - component: {fileID: 339035323}
   - component: {fileID: 339035322}
+  - component: {fileID: 339035325}
   m_Layer: 5
   m_Name: Button_2_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &339035321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7455,8 +7470,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 204486588}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnClick_Bool_Btn
-        m_Mode: 6
+        m_MethodName: OnClick_Btn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7503,6 +7518,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339035320}
   m_CullTransparentMesh: 1
+--- !u!114 &339035325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339035320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242a87c5caf6f4949b4985a29b837f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnswer: 0
 --- !u!4 &341755984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 408810, guid: 49b7895d0e133d24ca6c78d4ea46be33, type: 3}
@@ -15569,13 +15597,14 @@ GameObject:
   - component: {fileID: 748461280}
   - component: {fileID: 748461279}
   - component: {fileID: 748461278}
+  - component: {fileID: 748461281}
   m_Layer: 5
   m_Name: Button_3_Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &748461277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15643,8 +15672,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 204486588}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnClick_Bool_Btn
-        m_Mode: 6
+        m_MethodName: OnClick_Btn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15691,6 +15720,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748461276}
   m_CullTransparentMesh: 1
+--- !u!114 &748461281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748461276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242a87c5caf6f4949b4985a29b837f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnswer: 0
 --- !u!1001 &749252995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40388,7 +40430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1929235492
 RectTransform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Phe_11_Person : Phenomenon, IDialogue
     public void Fixed()
     {
         TryFixThisPhenomenon();
+        
     }
 
     protected override void PhenomenonEnd()

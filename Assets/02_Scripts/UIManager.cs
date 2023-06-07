@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : Singleton <UIManager>
@@ -86,7 +87,7 @@ public class UIManager : Singleton <UIManager>
         name_text.text = name;
         content_text.text = content.Substring(0, typeIndex);
     }
-    public void Set_Buttons_Bool(bool Open,string str1 = null, string str2 = null, string str3 = null)
+    public void Set_Buttons_Bool(bool Open, string str1 = null, bool btn1_true = false, string str2 = null, bool btn2_true = false, string str3 = null, bool btn3_true = false)
     {
         if(!Open)
         {
@@ -96,25 +97,35 @@ public class UIManager : Singleton <UIManager>
             return;
         }
         answer_text[0].transform.parent.gameObject.SetActive(Open);
+        answer_text[0].transform.parent.gameObject.GetComponent<Btn_Bool>().isAnswer = btn1_true;
         answer_text[1].transform.parent.gameObject.SetActive(Open);
+        answer_text[1].transform.parent.gameObject.GetComponent<Btn_Bool>().isAnswer = btn2_true;
         answer_text[2].transform.parent.gameObject.SetActive(Open);
+        answer_text[2].transform.parent.gameObject.GetComponent<Btn_Bool>().isAnswer = btn3_true;
         answer_text[0].text = str1;
         answer_text[1].text = str2;
         answer_text[2].text = str3;
     }
-    public void OnClick_Bool_Btn(bool isTrue)
+    public void OnClick_Btn()
     {
-        answer_text[0].transform.parent.gameObject.SetActive(false);
-        answer_text[1].transform.parent.gameObject.SetActive(false);
-        answer_text[2].transform.parent.gameObject.SetActive(false);
-
-        if (isTrue)
+        if(EventSystem.current.currentSelectedGameObject.GetComponent<Btn_Bool>().isAnswer)
         {
-            playerController.Set_canMove_Bool(true);
-            if(phenomenon is IDialogue)
+            if (phenomenon is IDialogue)
             {
                 (phenomenon as IDialogue).Fixed();
+                playerController.Set_canMove_Bool(true);
             }
+        }
+        else
+        {
+            Debug.Log("Á×À½");
+        }
+    }
+    public void Btns()
+    {
+        for(int i = 0; i < 3;i++)
+        {
+            
         }
     }
     public void Set_Phenomenom(Phenomenon instance)
