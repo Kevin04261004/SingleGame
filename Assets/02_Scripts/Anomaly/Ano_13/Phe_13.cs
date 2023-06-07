@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phe_13 : MonoBehaviour
+public class Phe_13 : Phenomenon
 {
-    // Start is called before the first frame update
-    void Start()
+    // 시야각 구현하고
+    // 플레이어 시야가 이 오브젝트에 닿으면 함수 실행해서 GameOver시키면 될듯?
+    protected override void PhenomenonEnd()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void PhenomenonStart()
+    {
+        
+    }
+
+    protected override void Solution()
     {
         
     }

@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ano_13 : MonoBehaviour
+public class Ano_13 : Anomaly
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Phe_13 prefab_stand;
+    Phe_13 stand;
+
+    public override void AnomalyEnd()
     {
-        
+        Destroy(stand.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void AnomalyStart()
+    {
+        stand = InstantiatePhenomenon<Phe_13>(prefab_stand);
+    }
+
+    protected override void OutOfTime()
     {
         
     }

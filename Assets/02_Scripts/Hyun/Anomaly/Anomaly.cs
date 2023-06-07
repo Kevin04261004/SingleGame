@@ -41,6 +41,17 @@ public abstract class Anomaly : MonoBehaviour
             yield return waitFrame;
         }
         coroutine_timeCounter = null;
+        OutOfTime();
+    }
+    /// <summary>
+    /// 제한 시간이 모두 경과되었을 때 실행할 행위<br/>
+    /// 기본적으로 GameOver시키며, 특수한 경우 오버라이딩 해서 사용할 것
+    /// </summary>
+    protected virtual void OutOfTime()
+    {
+#warning needmodification: callGameover
+        Debug.Log($"'{anomalyName}' 현상의 제한 시간이 모두 경과하였습니다.");
+        // GameOver();
     }
     /// <summary>
     /// 제한시간을 카운트하는 코루틴을 종료시키는 함수<br/>
