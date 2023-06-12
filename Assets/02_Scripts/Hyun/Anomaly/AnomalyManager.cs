@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AnomalyManager : Singleton<AnomalyManager>
 {
+    //임시
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            ExecuteAnomaly();
+        }
+    }
     [Tooltip("게임에 등장하는 이상현상 목록(Prefab)")]
     public Anomaly[] anomalyList;
     /// <summary>

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : Singleton <UIManager>
@@ -17,10 +18,12 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] private Text name_text;
     [SerializeField] private Text[] answer_text;
     [SerializeField] private Phenomenon phenomenon;
-    
+    [SerializeField] private GameObject playerMesh_GameObject;
+    [field:SerializeField] public Image Died_Image { get; private set; }
+
     [Tooltip("크로스헤어 기본 색상")] [SerializeField] private Color baseColor;
     [Tooltip("크로스헤어가 상호작용 가능할 때의 색상")] [SerializeField] private Color changeColor;
-    private void Awake()
+    private void Start()
     {
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
     }
@@ -55,6 +58,7 @@ public class UIManager : Singleton <UIManager>
     {
         if (CCTV_BackGround.gameObject.activeSelf)
         {
+            playerMesh_GameObject.SetActive(false);
             CCTV_BackGround.gameObject.SetActive(false);
             middlePoint_Image.gameObject.SetActive(true);
             timeClock_Image.gameObject.SetActive(true);
@@ -64,6 +68,7 @@ public class UIManager : Singleton <UIManager>
         }
         else
         {
+            playerMesh_GameObject.SetActive(true);
             CCTV_BackGround.gameObject.SetActive(true);
             middlePoint_Image.gameObject.SetActive(false);
             RuleBookIcon_Image.gameObject.SetActive(false);
@@ -131,5 +136,10 @@ public class UIManager : Singleton <UIManager>
     public void Set_Phenomenom(Phenomenon instance)
     {
         phenomenon = instance;
+    }
+    public void OnClick_Retry_Btn()
+    {
+        print(1);
+        SceneManager.LoadScene("00_TitleScene");
     }
 }

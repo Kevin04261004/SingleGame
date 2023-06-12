@@ -24,29 +24,32 @@ public class FadeManager : Singleton<FadeManager>
         for (int i = 0; i < 100; i++)
         {
             FadeImage.color -= temp;
-            yield return new WaitForSeconds(FadeInSpeed / 100);
+            yield return new WaitForSecondsRealtime(FadeInSpeed / 100);
         }
         FadeImage.color = new Color(0, 0, 0, 0);
         FadeImage.gameObject.SetActive(false);
-        yield return new WaitForEndOfFrame();
         isFading = false;
     }
     public IEnumerator FadeOut()
     {
-        isFading = true;
-        FadeImage.gameObject.SetActive(true);
-        FadeImage.color = new Color(0, 0, 0, 0);
-        temp = new Color(0, 0, 0, 0.01f);
-        for (int i = 0; i < 100; i++)
+        if (isFading)
         {
-
-            FadeImage.color += temp;
-            yield return new WaitForSeconds(FadeInSpeed / 100);
+            
         }
-        FadeImage.color = new Color(0, 0, 0, 1);
-        FadeImage.gameObject.SetActive(false);
-        yield return new WaitForEndOfFrame();
-        isFading = false;
+        else
+        {
+            isFading = true;
+            FadeImage.gameObject.SetActive(true);
+            FadeImage.color = new Color(0, 0, 0, 0);
+            temp = new Color(0, 0, 0, 0.01f);
+            for (int i = 0; i < 100; i++)
+            {
+                FadeImage.color += temp;
+                yield return new WaitForSecondsRealtime(FadeInSpeed / 100);
+            }
+            FadeImage.color = new Color(0, 0, 0, 1);
+            isFading = false;
+        }
     }
     public IEnumerator FlashIn()
     {
@@ -58,11 +61,10 @@ public class FadeManager : Singleton<FadeManager>
         {
 
             FadeImage.color -= temp;
-            yield return new WaitForSeconds(FadeInSpeed / 100);
+            yield return new WaitForSecondsRealtime(FadeInSpeed / 100);
         }
         FadeImage.color = new Color(1, 1, 1, 0);
         FadeImage.gameObject.SetActive(false);
-        yield return new WaitForEndOfFrame();
         isFading = false;
     }
     public IEnumerator FlashOut()
@@ -75,11 +77,10 @@ public class FadeManager : Singleton<FadeManager>
         {
 
             FadeImage.color += temp;
-            yield return new WaitForSeconds(FadeInSpeed / 100);
+            yield return new WaitForSecondsRealtime(FadeInSpeed / 100);
         }
         FadeImage.color = new Color(1, 1, 1, 1);
         FadeImage.gameObject.SetActive(false);
-        yield return new WaitForEndOfFrame();
         isFading = false;
     }
 }

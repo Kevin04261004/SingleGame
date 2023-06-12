@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8264874115622151891
+--- !u!1 &3703218510082563914
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 34808126863890229}
-  - component: {fileID: 8253081435101931882}
+  - component: {fileID: 3703218510082563915}
+  - component: {fileID: 3703218510082563916}
   m_Layer: 0
-  m_Name: Anomaly_9
+  m_Name: RulebookManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &34808126863890229
+--- !u!4 &3703218510082563915
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264874115622151891}
+  m_GameObject: {fileID: 3703218510082563914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.0038, y: -5.3082123, z: 0.8037548}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8253081435101931882
+--- !u!114 &3703218510082563916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264874115622151891}
+  m_GameObject: {fileID: 3703218510082563914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f14b87008f75db4e9e76b6524224489, type: 3}
+  m_Script: {fileID: 11500000, guid: 5462305525d5a9545842bfc2b1605650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anomalyName: AppearGuard
-  timeLimit: 120
-  counter_timeLimit: -1
-  remainProblemCount: -1
-  phenomenonsFromThisAnomaly: []
-  prefab_guard: {fileID: 1532652812649981607, guid: cdce0a28d0861a343af1efb04b46382f, type: 3}
-  pos_spawn_guard: {x: -5, y: 11, z: 9}
+  leftBtn: {fileID: 0}
+  rightBtn: {fileID: 0}
+  pages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  curpage: 1

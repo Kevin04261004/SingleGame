@@ -16,5 +16,9 @@ public class TimeManager : MonoBehaviour
             realTime = 0;
             UIManager.instance.Set_TimeClock_TMP(gameTime);
         }
+        if(gameTime >= 10*6*6)
+        {
+            GameManager.instance.GameClear();
+        }
     }
 }
