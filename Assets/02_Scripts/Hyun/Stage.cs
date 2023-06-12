@@ -8,6 +8,8 @@ namespace StageSystem
     {
         [SerializeField, ReadOnly] Area[] areasInStage = null;
         [SerializeField, ReadOnly] Area playerPos = null;
+        [Header("Debug")]
+        [SerializeField, ReadOnly] string playerPos_name;
         public Area.AreaType playerLocatedArea => playerPos.areaType;
         public void CallBack_PlayerEnteringArea(Area area, Area.EnterOrExit enterOrExit)
         {
@@ -19,6 +21,7 @@ namespace StageSystem
                     areasInStage[i].SetCollidersEnable((areasInStage[i] == area));
                 }
                 playerPos = area;
+                playerPos_name = playerPos.areaName;
             }
             else
             {
@@ -28,6 +31,7 @@ namespace StageSystem
                     areasInStage[i].SetCollidersEnable(!(areasInStage[i] == area));
                 }
                 playerPos = null;
+                playerPos_name = string.Empty;
             }
         }
 

@@ -41,7 +41,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Start()
     {
-        InputManager.instance.event_keyInput += GetInput;
+        InputManager.instance.event_keyInput += GetInput_Interactable;
     }
 
     private void Update()
@@ -107,7 +107,7 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-    void GetInput(KeyType keyType, InputType inputType)
+    void GetInput_Interactable(KeyType keyType, InputType inputType)
     {
         if (interactable == null) return;
         if (keyType == KeyType.interact)

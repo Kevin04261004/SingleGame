@@ -52,3 +52,5 @@ MonoBehaviour:
     keyCode: 109
   - keyType: 2
     keyCode: 9
+  - keyType: 3
+    keyCode: 323

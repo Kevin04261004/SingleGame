@@ -54,4 +54,5 @@ MonoBehaviour:
   - {fileID: 8472111135280769568, guid: dd323a6d7ba9a454d81d934e48ad8a2a, type: 3}
   - {fileID: 7590845545513380627, guid: 9f9efdbfe98d7b0488f7a98bda43caea, type: 3}
   - {fileID: 4809838366290966417, guid: 0e2b7aa20932c2a47835242e3b8f1eb4, type: 3}
+  - {fileID: -6533843172461976940, guid: 0d10a88d791a68641b9daa89847e494e, type: 3}
   effectiveAnomalys: []

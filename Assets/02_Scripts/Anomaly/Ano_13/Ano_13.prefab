@@ -44,3 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10929a3e342a624f9c4cc8257ca0c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anomalyName: 
+  timeLimit: 120
+  counter_timeLimit: -1
+  remainProblemCount: -1
+  phenomenonsFromThisAnomaly: []
+  prefab_stand: {fileID: 8338040803305614369, guid: 281fd917888160840900538b5efc14b0, type: 3}
+  spawnPos_stand: {x: -15, y: 17, z: 22}
+  rotation_stand: {x: 0, y: 0, z: 0}

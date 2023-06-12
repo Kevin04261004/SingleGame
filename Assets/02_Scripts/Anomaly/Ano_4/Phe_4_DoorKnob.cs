@@ -10,15 +10,13 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
     Phe_4_Door parent = null;
     [SerializeField, ReadOnly] bool isStartedTryLockDoor = false;
     [SerializeField, ReadOnly] float holdingTime = 0f;
+    [SerializeField] GameObject prefab_keyObj;
+    [SerializeField] Transform keyPivot;
+    [SerializeField] Vector3 key_spawn_pos;
 
     private void Awake()
     {
         parent = transform.parent.GetComponent<Phe_4_Door>();
-    }
-
-    void Update()
-    {
-
     }
     public delegate void HasEnded();
     HasEnded ended;
@@ -52,6 +50,9 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
         {
             isStartedTryLockDoor = true;
             parent.Request_MakeNoise();
+            Instantiate(prefab_keyObj, keyPivot);
+            keyPivot.gameObject.GetComponent<Animator>().SetBool("Play", true);
+            keyPivot.gameObject.GetComponent<Animator>().SetBool("Play", false);
         }
     }
     public void Interact_Hold_End()

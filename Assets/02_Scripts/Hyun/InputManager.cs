@@ -9,7 +9,7 @@ namespace InputSystem
     /// </summary>
     public enum KeyType
     {
-        interact, toggle_portableCCTV, toggle_ruleBook
+        interact, toggle_portableCCTV, toggle_ruleBook, toggle_flashLight
     }
     /// <summary>
     /// 키 누름, 누르고 있음, 떼어냄의 구분
@@ -30,6 +30,7 @@ namespace InputSystem
         }
         
         public delegate void KeyInput(KeyType keyType, InputType inputType);
+        /// <summary>void (KeyType, InputType)</summary>
         public event KeyInput event_keyInput;
 
         KeyCode[] needToGetInput;

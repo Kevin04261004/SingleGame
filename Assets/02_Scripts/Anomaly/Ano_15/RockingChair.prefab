@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 1863215879522459451}
   m_Layer: 8
   m_Name: RockingChair
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 16
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871ff993b7ba0434dad2996672d579b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasSolution: 0
+  hasSolution: 1
   rotationPivot: {fileID: 876791345879634078}
   maxSwingAngle_usual: 5.6
   swingSpeed_usual: 2.7
@@ -149,6 +149,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  need_flashLight_cnt: 2
+  remain_flashLight_cnt: -1
 --- !u!65 &1863215879522459451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,7 +175,6 @@ GameObject:
   - component: {fileID: 8800935952707632424}
   - component: {fileID: 8800935952708971674}
   - component: {fileID: 8800935952710063774}
-  - component: {fileID: 8800935952713802882}
   m_Layer: 8
   m_Name: lo_Prop_Chair_B_LOD1
   m_TagString: Untagged
@@ -246,19 +247,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8800935952713802882
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800935952707931436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.857939, y: 1.7011598, z: 1.1873357}
-  m_Center: {x: 0.001056686, y: 0.85144144, z: -0.0016337633}
 --- !u!1 &8800935952707939904
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +258,6 @@ GameObject:
   - component: {fileID: 8800935952707650110}
   - component: {fileID: 8800935952708997890}
   - component: {fileID: 8800935952709603076}
-  - component: {fileID: 8800935952713806540}
   m_Layer: 8
   m_Name: lo_Prop_Chair_B_LOD0
   m_TagString: Untagged
@@ -343,16 +330,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8800935952713806540
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8800935952707939904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.857939, y: 1.7184892, z: 1.1873357}
-  m_Center: {x: 0.001056686, y: 0.85539174, z: -0.0016337633}

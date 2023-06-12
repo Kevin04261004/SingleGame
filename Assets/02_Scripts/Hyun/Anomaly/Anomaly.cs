@@ -138,6 +138,14 @@ public abstract class Anomaly : MonoBehaviour
         }
         Debug.Log($"'{anomalyName}'현상이 해결되기까지 {remainProblemCount}개의 문제가 남았습니다.");
     }
+    /// <summary>
+    /// 남은 문제(현상)수에 상관 없이 Anomaly를 해결<br/>
+    /// 특수한 경우에 사용(예: 제한 시간 종료 시 해결됨 등)
+    /// </summary>
+    public void Force_SolveAnomaly()
+    {
+        DestroyAnomaly();
+    }
     public void DestroyAnomaly()
     {
         AnomalyEnd();

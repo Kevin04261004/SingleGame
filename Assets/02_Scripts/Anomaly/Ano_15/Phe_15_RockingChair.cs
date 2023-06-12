@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phe_15_RockingChair : Phenomenon, IInteratable
+public class Phe_15_RockingChair : Phenomenon, IFlashLight
 {
     [SerializeField] Transform rotationPivot = null;
     // 최대 회전각: 평소, 현상
@@ -20,16 +20,14 @@ public class Phe_15_RockingChair : Phenomenon, IInteratable
 
     [SerializeField] AnimationCurve animCurve;
 
+    [SerializeField, Tooltip("플래시 라이트로 비춰야 하는 횟수"), Min(1)] int need_flashLight_cnt = 2;
+    [SerializeField, ReadOnly] int remain_flashLight_cnt = -1;
+
     private void Awake()
     {
         cur_swingAngle = maxSwingAngle_usual;
         cur_swingSpeed = swingSpeed_usual;
         StartCoroutine(Swing());
-    }
-
-    public void Interact()
-    {
-        throw new System.NotImplementedException();
     }
 
     protected override void PhenomenonEnd()
@@ -42,11 +40,12 @@ public class Phe_15_RockingChair : Phenomenon, IInteratable
     {
         cur_swingAngle = maxSwingAngle_anomaly;
         cur_swingSpeed = swingSpeed_anomaly;
+        remain_flashLight_cnt = need_flashLight_cnt;
     }
 
     protected override void Solution()
     {
-        
+
     }
 
     IEnumerator Swing()
@@ -94,8 +93,31 @@ public class Phe_15_RockingChair : Phenomenon, IInteratable
             yield return waitFrame;
         }
     }
+    /// <summary>
+    /// 의자를 바라본채로 불을 킬 경우 true,
+    /// 그 이후 불을 다시 끌 경우 false로 변하며 카운트 감소
+    /// </summary>
+    bool isLightOn = false;
 
-    public void Interact_Hold() { }
-    public void Interact_Hold_End() { }
-    public bool IsInteractable() => true;
+    public void OnLighting_Start()
+    {
+        if (!isLightOn) isLightOn = true;
+    }
+
+    public void OnLighting()
+    {
+        
+    }
+
+    public void OnLighting_End()
+    {
+        if (isLightOn)
+        {
+            isLightOn = false;
+            if (--remain_flashLight_cnt == 0)
+            {
+                TryFixThisPhenomenon();
+            }
+        }
+    }
 }
