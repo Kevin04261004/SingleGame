@@ -15,6 +15,7 @@ public class title_UIManager : MonoBehaviour
     }
     public void OnClick_StartGame_Btn()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("01_GamePlayScene");
     }
     public void OnClick_Option_Btn()
