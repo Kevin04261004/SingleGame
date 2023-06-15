@@ -44252,7 +44252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142cc631272249e48bf893a55b63480a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
   forward: {fileID: 1838771930298550874}
   moveSpeed: 4
   runSpeed: 8

@@ -5,21 +5,38 @@ using UnityEngine.UI;
 
 public class AnomalyManager : Singleton<AnomalyManager>
 {
-    //임시
+#warning temporary
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            ExecuteAnomaly();
+            ExecuteRandomAnomaly_IfNotAllAnoExecuted();
         }
+    }
+    protected override void Awake()
+    {
+        base.Awake();
+        if (executeDelay == null || executeDelay.Length == 0)
+        {
+            Debug.LogError("실행 딜레이가 지정되지 않았습니다.");
+            return;
+        }
+        StartCoroutine(ExecuteCoroutine(executeDelay));
     }
     [Tooltip("게임에 등장하는 이상현상 목록(Prefab)")]
     public Anomaly[] anomalyList;
+    [SerializeField] int[] executeDelay;
     /// <summary>
     /// 현재 발생되고 있는 이상현상 리스트
     /// </summary>
     [ReadOnly] public List<Anomaly> effectiveAnomalys = new List<Anomaly>();
     public bool everyAnoIsExecuting => (effectiveAnomalys.Count == anomalyList.Length);
+    /// <summary>
+    /// anomaly 목록에서 하나를 실행시킴<br/>
+    /// 중복 여부등에 의해 실행에 실패할 수 있음
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     public bool ExecuteAnomaly(int index = -1)
     {
         Anomaly anomaly = null;
@@ -44,6 +61,22 @@ public class AnomalyManager : Singleton<AnomalyManager>
             Destroy(anomaly.gameObject);
             return false;
         }
+    }
+    /// <summary>
+    /// anomaly 목록에서 하나를 실행시킴<br/>
+    /// 모든 Anomaly가 실행중인 경우를 제외하고, 반드시 하나를 실행시킴
+    /// </summary>
+    /// <returns></returns>
+    public bool ExecuteRandomAnomaly_IfNotAllAnoExecuted()
+    {
+        while (!everyAnoIsExecuting)
+        {
+            if (ExecuteAnomaly())
+            {
+                return true;
+            }
+        }
+        return false;
     }
     public void RemoveAnomalyFromEffectiveList(Anomaly instance)
     {
@@ -78,5 +111,23 @@ public class AnomalyManager : Singleton<AnomalyManager>
             }
         }
         return false;
+    }
+
+    IEnumerator ExecuteCoroutine(int[] delayList)
+    {
+        int curIdx = 0;
+
+        WaitForSeconds waitDelay;
+
+        while (curIdx++ < delayList.Length)
+        {
+            waitDelay = new WaitForSeconds(delayList[curIdx]);
+            Debug.Log($"{delayList[curIdx]}초 후 Anomaly를 실행합니다..");
+            while (true)
+            {
+                yield return waitDelay;
+                ExecuteRandomAnomaly_IfNotAllAnoExecuted();
+            }
+        }
     }
 }
