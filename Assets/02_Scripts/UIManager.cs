@@ -42,7 +42,8 @@ public class UIManager : Singleton <UIManager>
             timeClock_Image.gameObject.SetActive(true);
             RuleBookIcon_Image.gameObject.SetActive(true);
             CCTVIcon_Image.gameObject.SetActive(true);
-            playerController.Set_canMove_Bool(true);
+            //playerController.Set_canMove_Bool(true);
+            playerController.PreventMovement_SubtractStack();
         }
         else
         {
@@ -51,7 +52,8 @@ public class UIManager : Singleton <UIManager>
             timeClock_Image.gameObject.SetActive(false);
             RuleBookIcon_Image.gameObject.SetActive(false);
             CCTVIcon_Image.gameObject.SetActive(false);
-            playerController.Set_canMove_Bool(false);
+            //playerController.Set_canMove_Bool(false);
+            playerController.PreventMovement_AddStack();
         }
     }
     public void Set_CCTV_BackGround_TrueOrFalse()
@@ -64,7 +66,8 @@ public class UIManager : Singleton <UIManager>
             timeClock_Image.gameObject.SetActive(true);
             RuleBookIcon_Image.gameObject.SetActive(true);
             CCTVIcon_Image.gameObject.SetActive(true);
-            playerController.Set_canMove_Bool(true);
+            //playerController.Set_canMove_Bool(true);
+            playerController.PreventMovement_SubtractStack();
         }
         else
         {
@@ -73,7 +76,8 @@ public class UIManager : Singleton <UIManager>
             middlePoint_Image.gameObject.SetActive(false);
             RuleBookIcon_Image.gameObject.SetActive(false);
             CCTVIcon_Image.gameObject.SetActive(false);
-            playerController.Set_canMove_Bool(false);
+            //playerController.Set_canMove_Bool(false);
+            playerController.PreventMovement_AddStack();
         }
     }
     public void Set_middlePoint_Image_Color(bool canInteract)
@@ -118,7 +122,8 @@ public class UIManager : Singleton <UIManager>
             if (phenomenon is IDialogue)
             {
                 (phenomenon as IDialogue).Fixed();
-                playerController.Set_canMove_Bool(true);
+                //playerController.Set_canMove_Bool(true);
+                playerController.PreventMovement_SubtractStack();
             }
         }
         else

@@ -4610,6 +4610,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99595bd0d03112b4480b3101e8806de5, type: 3}
+--- !u!1 &205910356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205910357}
+  m_Layer: 0
+  m_Name: KeyPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205910357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205910356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1590183156}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &206783249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33240,7 +33271,8 @@ Transform:
   m_LocalPosition: {x: -1.45, y: 1.55, z: -0}
   m_LocalScale: {x: 0.25, y: 0.5, z: 0.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 205910357}
   m_Father: {fileID: 1753342817}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33257,10 +33289,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStartedTryLockDoor: 0
-  holdingTime: 0
-  prefab_keyObj: {fileID: 0}
-  keyPivot: {fileID: 0}
-  key_spawn_pos: {x: 0, y: 0, z: 0}
+  lockEnded: 0
+  prefab_keyObj: {fileID: 596675664714573563, guid: 80cb27965f69eee41899f963b36cc944, type: 3}
+  keyPivot: {fileID: 205910357}
 --- !u!65 &1590183158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36260,9 +36291,7 @@ MonoBehaviour:
   hasSolution: 1
   hingeAngle_opened: -30
   hingeAngle_closed: 0
-  <requireTimeForLockingDoor>k__BackingField: 6
   time_for_openAndClosing: 1.6
-  noiseDelay: 0.4
 --- !u!65 &1753342814
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class CamMove : MonoBehaviour
     }
     void Update()
     {
-        if(!playerController.Get_canMove())
+        if(!playerController.allowedMovement)
         {
             return;
         }

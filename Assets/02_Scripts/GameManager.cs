@@ -15,7 +15,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void Died()
     {
-        playerMovementController.Set_canMove_Bool(false);
+        //playerMovementController.Set_canMove_Bool(false);
+        playerMovementController.PreventMovement_AddStack();
         Time.timeScale = 0;
         StartCoroutine(DiedImageOpen());
     }

@@ -85,7 +85,7 @@ public class FlashLight : MonoBehaviour
     }
     public void Update()
     {
-        if (!playerController.Get_canMove())
+        if (!playerController.allowedMovement)
         {
             flashLight.intensity = 0;
             return;
