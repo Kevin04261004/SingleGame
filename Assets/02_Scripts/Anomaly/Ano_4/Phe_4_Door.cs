@@ -7,15 +7,7 @@ public class Phe_4_Door : Phenomenon
     public bool isOpen { get; private set; } = false;
     [SerializeField] float hingeAngle_opened;
     [SerializeField] float hingeAngle_closed;
-    [field: SerializeField, Tooltip("문을 닫고난 후 잠그는 데 필요한 시간"), Min(0.2f)] public float requireTimeForLockingDoor { get; private set; } = 4f;
     [SerializeField] float time_for_openAndClosing = 1f;
-    AudioSource noiseAS;
-    [SerializeField] float noiseDelay = 0.4f;
-
-    private void Awake()
-    {
-        noiseAS = GetComponent<AudioSource>();
-    }
 
     protected override void PhenomenonEnd()
     {
@@ -64,38 +56,6 @@ public class Phe_4_Door : Phenomenon
 
         isOpen = !isOpen;
         coroutine_toggleDoor = null;
-    }
-
-    public void Request_MakeNoise(bool on = true)
-    {
-        if (on)
-        {
-            if (coroutine_makeNoise != null)
-            {
-                return;
-            }
-            coroutine_makeNoise = StartCoroutine(MakeNoise());
-        }
-        else
-        {
-            if (coroutine_makeNoise == null)
-            {
-                return;
-            }
-            StopCoroutine(coroutine_makeNoise);
-            coroutine_makeNoise = null;
-        }
-    }
-    Coroutine coroutine_makeNoise = null;
-
-    IEnumerator MakeNoise()
-    {
-        WaitForSeconds waitDel = new WaitForSeconds(noiseDelay);
-        while (true)
-        {
-            noiseAS.Play();
-            yield return waitDel;
-        }
     }
 
     protected override void Solution()

@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3635055009331483817}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -46.06997, y: 2.668673, z: 16.967945}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -54,3 +54,5 @@ MonoBehaviour:
     keyCode: 9
   - keyType: 3
     keyCode: 323
+  - keyType: 4
+    keyCode: 27

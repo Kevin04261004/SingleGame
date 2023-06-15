@@ -9,10 +9,10 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
 {
     Phe_4_Door parent = null;
     [SerializeField, ReadOnly] bool isStartedTryLockDoor = false;
-    [SerializeField, ReadOnly] float holdingTime = 0f;
-    [SerializeField] GameObject prefab_keyObj;
+    [SerializeField, ReadOnly] bool lockEnded = false;
+    [SerializeField] Phe_4_Key prefab_keyObj;
+    Phe_4_Key spawnedKey;
     [SerializeField] Transform keyPivot;
-    [SerializeField] Vector3 key_spawn_pos;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
     public void Init(HasEnded whenEndedProcess)
     {
         isStartedTryLockDoor = false;
-        holdingTime = 0f;
+        lockEnded = false;
         ended = whenEndedProcess;
     }
     public void Interact()
@@ -38,40 +38,44 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
     {
         if (isStartedTryLockDoor)
         {
-            holdingTime += Time.deltaTime;
-            if (holdingTime >= parent.requireTimeForLockingDoor)
+            if (lockEnded)
             {
                 isStartedTryLockDoor = false;
-                parent.Request_MakeNoise(false);
+                lockEnded = false;
                 ended();
+                Destroy(spawnedKey.gameObject);
             }
         }
         else if (!parent.isOpen)
         {
-            isStartedTryLockDoor = true;
-            parent.Request_MakeNoise();
-            Instantiate(prefab_keyObj, keyPivot);
-            keyPivot.gameObject.GetComponent<Animator>().SetBool("Play", true);
-            keyPivot.gameObject.GetComponent<Animator>().SetBool("Play", false);
+            StartLockAnim();
         }
+    }
+    void StartLockAnim()
+    {
+        isStartedTryLockDoor = true;
+        spawnedKey = Instantiate(prefab_keyObj, keyPivot);
+        spawnedKey.event_keyPulled = delegate ()
+        {
+            lockEnded = true;
+        };
     }
     public void Interact_Hold_End()
     {
         if (isStartedTryLockDoor)
         {
             // 문을 한 번에 끝까지 잠그지 않았을 경우
-            if (holdingTime < parent.requireTimeForLockingDoor)
+            if (!lockEnded)
             {
-                parent.Request_MakeNoise(false);
 #warning needModification: callGameOver
                 // GameOver
                 Debug.Log("플레이어가 Ano4의 문을 끝까지 잠그지 않았습니다.");
             }
             else
             {
-                parent.Request_MakeNoise(false);
                 ended();
             }
+            Destroy(spawnedKey.gameObject);
         }
     }
 

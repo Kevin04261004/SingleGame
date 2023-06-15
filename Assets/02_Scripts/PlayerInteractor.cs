@@ -62,24 +62,6 @@ public class PlayerInteractor : MonoBehaviour
                 {
                     UIManager.instance.Set_middlePoint_Image_Color(true);
 
-                    //if (Input.GetKeyDown(KeyCode.F))
-                    //{
-                    //    isPressedInteractKey = true;
-                    //    interactKeyPressTime = Time.time;
-                    //}
-                    //if (Input.GetKeyUp(KeyCode.F))
-                    //{
-                    //    isPressedInteractKey = false;
-                    //    float pressDuration = Time.time - interactKeyPressTime;
-                    //    if (pressDuration <= holdThreshold)
-                    //    {
-                    //        interactable.Interact();
-                    //    }
-                    //    else
-                    //    {
-                    //        interactable.Interact_Hold_End();
-                    //    }
-                    //}
                     if (isPressedInteractKey)
                     {
                         float pressDuration = Time.time - interactKeyPressTime;

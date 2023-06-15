@@ -9,7 +9,7 @@ namespace InputSystem
     /// </summary>
     public enum KeyType
     {
-        interact, toggle_portableCCTV, toggle_ruleBook, toggle_flashLight
+        interact, toggle_portableCCTV, toggle_ruleBook, toggle_flashLight, toggle_pauseMenu
     }
     /// <summary>
     /// 키 누름, 누르고 있음, 떼어냄의 구분
