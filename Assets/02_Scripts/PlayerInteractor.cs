@@ -39,18 +39,28 @@ public class PlayerInteractor : MonoBehaviour
 
     IInteratable interactable = null;
 
+    private void Awake()
+    {
+        layer_exclude_area = (int.MaxValue ^ (1 << LayerMask.NameToLayer("Area")));
+    }
+
     private void Start()
     {
         InputManager.instance.event_keyInput += GetInput_Interactable;
     }
 
+    Ray interactRay;
+    int layer_exclude_area = -1;
+
     private void Update()
     {
-        if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit hit))
-        {
-            Debug.DrawRay(forward.transform.position, forward.transform.forward * hit.distance, Color.red);
+        interactRay.origin = forward.transform.position;
+        interactRay.direction = forward.transform.forward;
 
-            if (hit.collider.CompareTag("Interactable") && hit.distance <= handLength)
+        if (Physics.Raycast(interactRay, out RaycastHit hit, handLength, layer_exclude_area))
+        {
+            Debug.DrawRay(interactRay.origin, interactRay.direction * handLength, Color.red);
+            if (hit.collider.CompareTag("Interactable"))
             {
                 interactable = hit.collider.gameObject.GetComponent<IInteratable>();
                 if (interactable == null)
@@ -87,6 +97,59 @@ public class PlayerInteractor : MonoBehaviour
                 UIManager.instance.Set_middlePoint_Image_Color(false);
             }
         }
+        else
+        {
+            if (isPressedInteractKey)
+            {
+                isPressedInteractKey = false;
+                interactKeyPressTime = Time.time;
+            }
+            interactable = null;
+            UIManager.instance.Set_middlePoint_Image_Color(false);
+        }
+        //if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit hit))
+        //{
+        //    Debug.DrawRay(forward.transform.position, forward.transform.forward * hit.distance, Color.red);
+
+        //    Debug.Log($"{hit.collider?.gameObject.name}");
+
+        //    if (hit.collider.CompareTag("Interactable") && hit.distance <= handLength)
+        //    {
+        //        interactable = hit.collider.gameObject.GetComponent<IInteratable>();
+        //        if (interactable == null)
+        //        {
+        //            Debug.LogError($"'Interactable' 태그의 오브젝트가 {typeof(IInteratable).Name}형식의 컴포넌트를 갖고있지 않습니다.");
+        //            return;
+        //        }
+        //        if (interactable.IsInteractable())
+        //        {
+        //            UIManager.instance.Set_middlePoint_Image_Color(true);
+
+        //            if (isPressedInteractKey)
+        //            {
+        //                float pressDuration = Time.time - interactKeyPressTime;
+        //                if (pressDuration > holdThreshold)
+        //                {
+        //                    interactable.Interact_Hold();
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            UIManager.instance.Set_middlePoint_Image_Color(false);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (isPressedInteractKey)
+        //        {
+        //            isPressedInteractKey = false;
+        //            interactKeyPressTime = Time.time;
+        //        }
+        //        interactable = null;
+        //        UIManager.instance.Set_middlePoint_Image_Color(false);
+        //    }
+        //}
     }
 
     void GetInput_Interactable(KeyType keyType, InputType inputType)

@@ -67,9 +67,8 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
             // 문을 한 번에 끝까지 잠그지 않았을 경우
             if (!lockEnded)
             {
-#warning needModification: callGameOver
-                // GameOver
                 Debug.Log("플레이어가 Ano4의 문을 끝까지 잠그지 않았습니다.");
+                GameManager.instance.Died();
             }
             else
             {

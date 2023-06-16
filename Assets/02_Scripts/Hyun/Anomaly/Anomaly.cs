@@ -49,9 +49,8 @@ public abstract class Anomaly : MonoBehaviour
     /// </summary>
     protected virtual void OutOfTime()
     {
-#warning needmodification: callGameover
         Debug.Log($"'{anomalyName}' 현상의 제한 시간이 모두 경과하였습니다.");
-        // GameOver();
+        GameManager.instance.Died();
     }
     /// <summary>
     /// 제한시간을 카운트하는 코루틴을 종료시키는 함수<br/>

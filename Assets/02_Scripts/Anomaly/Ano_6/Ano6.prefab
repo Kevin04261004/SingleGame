@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3183577319113359116
+--- !u!1 &1526449925701761509
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 954688000344471219}
-  - component: {fileID: -6533843172461976940}
+  - component: {fileID: 1526449925701761511}
+  - component: {fileID: 1526449925701761508}
   m_Layer: 0
-  m_Name: Ano_13
+  m_Name: Ano6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &954688000344471219
+--- !u!4 &1526449925701761511
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183577319113359116}
+  m_GameObject: {fileID: 1526449925701761509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.932835, y: 3.388204, z: 15.736776}
+  m_LocalPosition: {x: -19.172882, y: 11.997791, z: 7.007665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6533843172461976940
+--- !u!114 &1526449925701761508
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3183577319113359116}
+  m_GameObject: {fileID: 1526449925701761509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a10929a3e342a624f9c4cc8257ca0c7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d2886ccd1b914a4bb0c8c5828f9437f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anomalyName: "\uC625\uC0C1 \uC0AC\uB78C"
+  anomalyName: "3\uCE35 \uD53C"
   timeLimit: 120
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
-  prefab_stand: {fileID: 8338040803305614369, guid: 281fd917888160840900538b5efc14b0, type: 3}
-  spawnPos_stand: {x: -15, y: 17, z: 22}
-  rotation_stand: {x: 0, y: 0, z: 0}
+  prefab_blood: {fileID: 4680664860462323774, guid: b7ff8f735e153634caba41a391021a8a, type: 3}
+  bloodSpawnPos: {x: -19.5, y: 11.05, z: 6}

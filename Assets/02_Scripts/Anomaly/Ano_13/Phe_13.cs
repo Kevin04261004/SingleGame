@@ -6,8 +6,8 @@ public class Phe_13 : Phenomenon, IFlashLight
 {
     public void OnLighting()
     {
-#warning todo: call GameOver
         Debug.Log("불을 킨 상태로 바라보고 있습니다.(게임오버)");
+        GameManager.instance.Died();
     }
 
     public void OnLighting_End()
