@@ -51,4 +51,4 @@ MonoBehaviour:
   phenomenonsFromThisAnomaly: []
   prefab_stand: {fileID: 8338040803305614369, guid: 281fd917888160840900538b5efc14b0, type: 3}
   spawnPos_stand: {x: -15, y: 17, z: 22}
-  rotation_stand: {x: 0, y: 0, z: 0}
+  rotation_stand: {x: -90, y: 180, z: 0}

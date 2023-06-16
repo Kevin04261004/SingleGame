@@ -6,7 +6,7 @@ public class PlayerMovementController : MonoBehaviour
 {
     //[SerializeField] private bool canMove;
     private StackableBool isPreventedMovement = new StackableBool();
-    [SerializeField] private GameObject forward;
+    [field: SerializeField] public GameObject forward {get; private set; }
     /// <summary>현재 움직임이 허용된 상태인지 확인</summary>
     public bool allowedMovement => !isPreventedMovement;
     [Tooltip("걷기 속도")][SerializeField] private float moveSpeed = 3.0f;

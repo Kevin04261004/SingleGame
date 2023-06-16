@@ -28,7 +28,7 @@ public class FlashLight : MonoBehaviour
     [SerializeField] private float intensity = 1;
     [SerializeField] private PlayerMovementController playerController;
     [SerializeField] Transform forward;
-    [SerializeField] float flash_ray_length = 10f;
+    [SerializeField] float flash_ray_length = 15f;
 
     private void Awake()
     {

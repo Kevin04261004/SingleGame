@@ -38,10 +38,7 @@ public class Phe_6_Blood : Phenomenon, IInteratable
 
     protected override void PhenomenonEnd()
     {
-        if (adSrc.isPlaying)
-        {
-            adSrc.Stop();
-        }
+        if (adSrc.isPlaying) adSrc.Stop();
     }
 
     protected override void PhenomenonStart()

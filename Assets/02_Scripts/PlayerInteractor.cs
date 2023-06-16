@@ -41,7 +41,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Awake()
     {
-        layer_exclude_area = (int.MaxValue ^ (1 << LayerMask.NameToLayer("Area")));
+        layer_exclude_interact = int.MaxValue ^ ((1 << LayerMask.NameToLayer("Area")) | (1 << LayerMask.NameToLayer("Player")));
     }
 
     private void Start()
@@ -50,14 +50,14 @@ public class PlayerInteractor : MonoBehaviour
     }
 
     Ray interactRay;
-    int layer_exclude_area = -1;
+    int layer_exclude_interact = -1;
 
     private void Update()
     {
         interactRay.origin = forward.transform.position;
         interactRay.direction = forward.transform.forward;
 
-        if (Physics.Raycast(interactRay, out RaycastHit hit, handLength, layer_exclude_area))
+        if (Physics.Raycast(interactRay, out RaycastHit hit, handLength, layer_exclude_interact))
         {
             Debug.DrawRay(interactRay.origin, interactRay.direction * handLength, Color.red);
             if (hit.collider.CompareTag("Interactable"))
@@ -83,29 +83,50 @@ public class PlayerInteractor : MonoBehaviour
                 }
                 else
                 {
+                    if (isPressedInteractKey)
+                    {
+                        if (interactable != null && Time.time - interactKeyPressTime > holdThreshold)
+                        {
+                            interactable.Interact_Hold_End();
+                        }
+                        isPressedInteractKey = false;
+                        interactKeyPressTime = Time.time;
+                    }
+                    interactable = null;
                     UIManager.instance.Set_middlePoint_Image_Color(false);
+                    //Debug.Log("오브젝트가 상호작용 가능한 상태가 아님");
                 }
             }
             else
             {
                 if (isPressedInteractKey)
                 {
+                    if (interactable != null && Time.time - interactKeyPressTime > holdThreshold)
+                    {
+                        interactable.Interact_Hold_End();
+                    }
                     isPressedInteractKey = false;
                     interactKeyPressTime = Time.time;
                 }
                 interactable = null;
                 UIManager.instance.Set_middlePoint_Image_Color(false);
+                //Debug.Log($"태그가 맞지 않음: {hit.collider.gameObject.name}");
             }
         }
         else
         {
             if (isPressedInteractKey)
             {
+                if (interactable != null && Time.time - interactKeyPressTime > holdThreshold)
+                {
+                    interactable.Interact_Hold_End();
+                }
                 isPressedInteractKey = false;
                 interactKeyPressTime = Time.time;
             }
             interactable = null;
             UIManager.instance.Set_middlePoint_Image_Color(false);
+            //Debug.Log("거리가 닿지 않음");
         }
         //if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit hit))
         //{

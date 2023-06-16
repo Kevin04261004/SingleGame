@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
-    [SerializeField] private PlayerMovementController playerController;
-    [SerializeField] private PlayerMovementController charmove;
-    [SerializeField] private GameObject Target;
+    private PlayerMovementController playerController;
+    //[SerializeField] private PlayerMovementController charmove;
+    private GameObject Target;
     public bool isCamMove;
     private float xRotate, yRotate, xRotateMove, yRotateMove;
     public float rotateSpeed;
@@ -14,6 +14,7 @@ public class CamMove : MonoBehaviour
     private void Awake()
     {
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
+        Target = playerController.forward;
     }
     private void Start()
     {
