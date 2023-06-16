@@ -9,7 +9,7 @@ public class title_UIManager : Singleton<title_UIManager>
     [SerializeField] private GameObject Option_GO;
     [SerializeField] private Image HowToPlay_Image;
     [SerializeField] private Image RuleBook_Image;
-    public void Awake()
+    public void Start()
     {
         Screen.SetResolution(1920, 1080, true);
     }
@@ -20,7 +20,8 @@ public class title_UIManager : Singleton<title_UIManager>
     }
     public void OnClick_Option_Btn()
     {
-        Option_GO.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        Option_GO.SetActive(true);
     }
     public void OnClick_HowToPlay_Btn()
     {
@@ -28,7 +29,13 @@ public class title_UIManager : Singleton<title_UIManager>
     }
     public void OnClick_Option_Exit()
     {
-        Option_GO.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        Option_GO.SetActive(false);
+        if(SceneManager.GetActiveScene().name != "00_TitleScene")
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
     public void OnClick_HowToPlay_Exit()
     {

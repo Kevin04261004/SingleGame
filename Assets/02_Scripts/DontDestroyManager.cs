@@ -13,6 +13,7 @@ public class DontDestroyManager : Singleton<DontDestroyManager>
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
+            Time.timeScale = 0;
             BGMCanvas.SetActive(true);
         }
         if (BGMCanvas.gameObject.activeSelf)
