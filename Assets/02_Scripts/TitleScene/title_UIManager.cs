@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class title_UIManager : MonoBehaviour
+public class title_UIManager : Singleton<title_UIManager>
 {
-    [SerializeField] private Image Option_Image;
+    [SerializeField] private GameObject Option_GO;
     [SerializeField] private Image HowToPlay_Image;
     [SerializeField] private Image RuleBook_Image;
     public void Awake()
@@ -20,7 +20,7 @@ public class title_UIManager : MonoBehaviour
     }
     public void OnClick_Option_Btn()
     {
-        Option_Image.gameObject.SetActive(true);
+        Option_GO.gameObject.SetActive(true);
     }
     public void OnClick_HowToPlay_Btn()
     {
@@ -28,7 +28,7 @@ public class title_UIManager : MonoBehaviour
     }
     public void OnClick_Option_Exit()
     {
-        Option_Image.gameObject.SetActive(false);
+        Option_GO.gameObject.SetActive(false);
     }
     public void OnClick_HowToPlay_Exit()
     {

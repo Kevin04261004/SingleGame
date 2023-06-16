@@ -128,7 +128,7 @@ public class UIManager : Singleton <UIManager>
         }
         else
         {
-            Debug.Log("Á×À½");
+            GameManager.instance.Died();
         }
     }
     public void Btns()

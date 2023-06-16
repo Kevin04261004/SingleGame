@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     [SerializeField] private int gameTime = 0;
     private float realTime = 0;
-    public const float _10minPerRealSecond = 1; //게임 10분당 현실 초
+    public const float _10minPerRealSecond = 20; //게임 10분당 현실 초
     private void Update()
     {
         realTime += Time.deltaTime;
