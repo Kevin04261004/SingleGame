@@ -1117,7 +1117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48979349}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: === Rooptop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5403,7 +5403,7 @@ GameObject:
   - component: {fileID: 241409409}
   - component: {fileID: 241409411}
   - component: {fileID: 241409410}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Area_ControlRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7680,7 +7680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367934309}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Areas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14638,7 +14638,7 @@ GameObject:
   - component: {fileID: 704337158}
   - component: {fileID: 704337157}
   - component: {fileID: 704337156}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Area_MainHall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16119,7 +16119,7 @@ GameObject:
   - component: {fileID: 786611101}
   - component: {fileID: 786611103}
   - component: {fileID: 786611102}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Area_Corrider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17630,7 +17630,7 @@ GameObject:
   - component: {fileID: 870161644}
   - component: {fileID: 870161646}
   - component: {fileID: 870161645}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Area_Corrider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28841,7 +28841,7 @@ GameObject:
   - component: {fileID: 1351030879}
   - component: {fileID: 1351030881}
   - component: {fileID: 1351030880}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Area_Corrider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30202,7 +30202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1410703903}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: === ThirdFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35615,7 +35615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1724785147}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: === FirstFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36986,7 +36986,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1795322106}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: === SecondFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40852,7 +40852,7 @@ GameObject:
   - component: {fileID: 1990114835}
   - component: {fileID: 1990114837}
   - component: {fileID: 1990114836}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Area_Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
