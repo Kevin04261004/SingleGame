@@ -16,7 +16,7 @@ public class DontDestroyManager : Singleton<DontDestroyManager>
             Time.timeScale = 0;
             BGMCanvas.SetActive(true);
         }
-        if (BGMCanvas.gameObject.activeSelf)
+        if (BGMCanvas.activeSelf)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
