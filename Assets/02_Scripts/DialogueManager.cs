@@ -23,12 +23,14 @@ namespace DialogueSystem
     /// </summary>
     public enum ValueWhenClicked
     {
-        [Tooltip("유일하게 Event를 실행하지 않음. 다음 Summary로 자동 진행된다.")]
+        [Tooltip("다음 Summary로 자동 진행된다.")]
         NextSummary,
         [Tooltip("")]
         False,
         [Tooltip("")]
-        True
+        True,
+        [Tooltip("남아있는 Summary에 상관 없이 종료한다.")]
+        StopRead
     }
     /// <summary>
     /// 사용이 필요한 곳에서는 필드로 해당 클래스를 지정해 인스펙터에서 작성<br/>
@@ -39,9 +41,17 @@ namespace DialogueSystem
     public class H_DialogueData
     {
         public Summary[] summaries;
-        public delegate void ReturnedValue(ValueWhenClicked value);
+        public delegate void ButtonClicked(ValueWhenClicked value);
 
-        public void SetCallbacksToAllSelections(ReturnedValue callback)
+        // SetCallbacksToAllSelections함수로 콜백 추가하는거를
+        // H_Dialogue를 쓸 때(읽기 시작, 읽기 종료)마다 추가해줘서
+        // delegate에 여러 번 들어가는 문제가 발생함
+        // [DiaManager.Callback_ButtonClicked,
+        // UIManager.Callback_DisableButtons 가 중복으로 들어감]
+        //
+        // 다만 위 오류는 '같은 인스턴스'를 사용할 때만 발생하므로
+        // 해결하면 사라지는 Anomaly에는 문제가 없음
+        public void SetCallbacksToAllSelections(ButtonClicked callback)
         {
             for (int i = 0; i < summaries.Length; i++)
             {
@@ -53,7 +63,7 @@ namespace DialogueSystem
         public class Summary
         {
             public string context = "Default Summary Context";
-            public bool TrySetCallbackToSelections_returnValue(ReturnedValue callback)
+            public bool TrySetCallbackToSelections_returnValue(ButtonClicked callback)
             {
                 if (selections == null || selections.Count == 0)
                 {
@@ -61,7 +71,7 @@ namespace DialogueSystem
                 }
                 for (int i = 0; i < selections.Count; i++)
                 {
-                    selections[i].callback_returnedValue += callback;
+                    selections[i].callback_buttonClicked += callback;
                 }
                 return true;
             }
@@ -78,12 +88,12 @@ namespace DialogueSystem
                 /// <summary>
                 /// 버튼이 눌리면 event가 실행된다.
                 /// </summary>
-                public event ReturnedValue callback_returnedValue = null;
+                public event ButtonClicked callback_buttonClicked = null;
 
                 public ValueWhenClicked valueWhenClicked = ValueWhenClicked.NextSummary;
                 public void WhenButtonClicked()
                 {
-                    callback_returnedValue?.Invoke(valueWhenClicked);
+                    callback_buttonClicked?.Invoke(valueWhenClicked);
                 }
             }
         }
@@ -92,42 +102,37 @@ namespace DialogueSystem
 
     public class DialogueManager : Singleton<DialogueManager>
     {
-        protected override void Awake()
-        {
-            base.Awake();
-            Debug.Log("THISSSS");
-        }
-        public float typeSpeed;
-        public string content;
-        public string char_name;
-        public string Btn_01;
-        public bool btn_01_true;
-        public string Btn_02;
-        public bool btn_02_true;
-        public string Btn_03;
-        public bool btn_03_true;
-        public void StartReadDialogue(DialogueData data)
-        {
-            char_name = data.name;
-            content = data.content;
-            Btn_01 = data.btn1;
-            btn_01_true = data.btn1_true;
-            Btn_02 = data.btn2;
-            btn_02_true = data.btn2_true;
-            Btn_03 = data.btn3;
-            btn_03_true = data.btn3_true;
-            StartCoroutine(Reader());
-        }
-        IEnumerator Reader()
-        {
-            int i;
-            for (i = 1; i < content.Length; i++)
-            {
-                UIManager.instance.Set_DialogueText_Change(char_name, content, i + 1);
-                yield return new WaitForSeconds(typeSpeed);
-            }
-            UIManager.instance.Set_Buttons_Bool(true, Btn_01, btn_01_true, Btn_02, btn_02_true, Btn_03, btn_03_true);
-        }
+        //public float typeSpeed;
+        //public string content;
+        //public string char_name;
+        //public string Btn_01;
+        //public bool btn_01_true;
+        //public string Btn_02;
+        //public bool btn_02_true;
+        //public string Btn_03;
+        //public bool btn_03_true;
+        //public void StartReadDialogue(DialogueData data)
+        //{
+        //    char_name = data.name;
+        //    content = data.content;
+        //    Btn_01 = data.btn1;
+        //    btn_01_true = data.btn1_true;
+        //    Btn_02 = data.btn2;
+        //    btn_02_true = data.btn2_true;
+        //    Btn_03 = data.btn3;
+        //    btn_03_true = data.btn3_true;
+        //    StartCoroutine(Reader());
+        //}
+        //IEnumerator Reader()
+        //{
+        //    int i;
+        //    for (i = 1; i < content.Length; i++)
+        //    {
+        //        UIManager.instance.Set_DialogueText_Change(char_name, content, i + 1);
+        //        yield return new WaitForSeconds(typeSpeed);
+        //    }
+        //    UIManager.instance.Set_Buttons_Bool(true, Btn_01, btn_01_true, Btn_02, btn_02_true, Btn_03, btn_03_true);
+        //}
         private H_DialogueData current_reading = null;
         private int readIndex = -1;
         public bool isReadingSomething => current_reading != null;
@@ -146,8 +151,19 @@ namespace DialogueSystem
             StopReadingDialogue();
             Debug.Log("읽고있던 Dialogue를 중지시켰습니다.");
         }
+        void StartReadingDialogue(H_DialogueData data)
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>().PreventMovement_AddStack();
+            current_reading = data;
+            UIManager.instance.SetActiveDialogueSummaryUI(true);
+            readIndex = -1;
+            current_reading.SetCallbacksToAllSelections(Callback_ButtonClicked);
+            TryReadNextSummary();
+        }
         void StopReadingDialogue()
         {
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>().PreventMovement_SubtractStack();
+            current_reading = null;
             UIManager.instance.SetActiveDialogueSummaryUI(false);
         }
         /// <summary>
@@ -177,21 +193,26 @@ namespace DialogueSystem
             StartReadingDialogue(data);
             return true;
         }
-        
-        void StartReadingDialogue(H_DialogueData data)
+        private void Update()
         {
-            UIManager.instance.SetActiveDialogueSummaryUI(true);
-            readIndex = -1;
-            TryReadNextSummary();
+#warning temp
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                TryReadNextSummary();
+            }
         }
-        
+
         /// <summary>
         /// 현재 읽고있는 Summaries에서 다음으로 넘어갈 때 사용<br/>
         /// (예: Mouse0 입력 시 해당 함수를 호출하여 다음 내용을 진행한다.)
         /// </summary>
         public bool TryReadNextSummary()
         {
-            if (++readIndex < current_reading.summaries.Length)
+            if (current_reading == null)
+            {
+                return false;
+            }
+            else if (++readIndex < current_reading.summaries.Length)
             {
                 UIManager.instance.RequestTypingDialogueSummary(current_reading.summaries[readIndex].context, 0.17f, (current_reading.summaries[readIndex].TryGetSelections() != null ? Callback_ShowButtons : null));
                 return true;
@@ -200,6 +221,17 @@ namespace DialogueSystem
             {
                 StopReadingDialogue();
                 return false;
+            }
+        }
+        void Callback_ButtonClicked(ValueWhenClicked valueWhenClicked)
+        {
+            if (valueWhenClicked == ValueWhenClicked.StopRead)
+            {
+                StopReadingDialogue();
+            }
+            else
+            {
+                TryReadNextSummary();
             }
         }
         /// <summary>

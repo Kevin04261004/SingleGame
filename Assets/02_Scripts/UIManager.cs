@@ -206,6 +206,7 @@ public class UIManager : Singleton <UIManager>
     public bool isDialogueUIActivated => tmp_dialogueSummary.enabled;
     public void SetActiveDialogueSummaryUI(bool value)
     {
+        Dialogue_GameObject.SetActive(value);
         tmp_dialogueSummary.gameObject.SetActive(value);
     }
     public void RequestCreateSelectionButtons(H_DialogueData.Summary targetSummary)
@@ -217,7 +218,7 @@ public class UIManager : Singleton <UIManager>
             btn.gameObject.transform.SetParent(selectionButtonAlignment.transform);
 
             H_DialogueData.Summary.Selection selection = selections[i];
-            selection.callback_returnedValue += Callback_DisableButtons;
+            selection.callback_buttonClicked += Callback_DisableButtons;
             btn.onClick.AddListener(selection.WhenButtonClicked);
             btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = selection.context;
         }
@@ -227,9 +228,9 @@ public class UIManager : Singleton <UIManager>
     /// </summary>
     void Callback_DisableButtons(ValueWhenClicked valueWhenClicked)
     {
-        while (selectionButtonAlignment.transform.childCount > 0)
+        for (int i = selectionButtonAlignment.transform.childCount - 1; i >= 0; i--)
         {
-            Destroy(selectionButtonAlignment.transform.GetChild(0).gameObject);
+            Destroy(selectionButtonAlignment.transform.GetChild(i).gameObject);
         }
     }
 }

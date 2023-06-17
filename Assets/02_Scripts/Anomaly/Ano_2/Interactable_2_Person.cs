@@ -16,7 +16,8 @@ public class Interactable_2_Person : MonoBehaviour, IInteratable
         //playerController.Set_canMove_Bool(false);
         playerController.PreventMovement_AddStack();
         UIManager.instance.Set_DialogueGameObject_Bool(true);
-        DialogueManager.instance.StartReadDialogue(data);
+#warning add Dia
+        //DialogueManager.instance.StartReadDialogue(data);
     }
 
     public void Interact_Hold() { }
