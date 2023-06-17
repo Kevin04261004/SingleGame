@@ -1,7 +1,10 @@
+using System.Collections;
+using DialogueSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : Singleton <UIManager>
 {
@@ -19,6 +22,11 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] private Text[] answer_text;
     [SerializeField] private Phenomenon phenomenon;
     [SerializeField] private GameObject playerMesh_GameObject;
+    // HYUN
+    [SerializeField] TMPro.TextMeshProUGUI tmp_dialogueSummary;
+    [SerializeField] LayoutGroup selectionButtonAlignment;
+    [SerializeField] Button prefab_buttonForSelection;
+    // HYUN END
     [field:SerializeField] public Image Died_Image { get; private set; }
 
     [Tooltip("크로스헤어 기본 색상")] [SerializeField] private Color baseColor;
@@ -146,5 +154,82 @@ public class UIManager : Singleton <UIManager>
     {
         print(1);
         SceneManager.LoadScene("00_TitleScene");
+    }
+    Coroutine coroutine_typeWriter = null;
+    IEnumerator TypeWriter(TMPro.TextMeshProUGUI dest, string src, float typingDel, TypingTextEnded callback_typingEnded = null)
+    {
+        dest.text = string.Empty;
+        WaitForSeconds waitDel = new WaitForSeconds(typingDel);
+
+        System.Text.StringBuilder sb = new System.Text.StringBuilder(256);
+        int cur = 0;
+
+        while ((dest.text.Length != src.Length))
+        {
+            sb.Append(src[cur++]);
+            dest.text = sb.ToString();
+            yield return waitDel;
+        }
+        callback_typingEnded?.Invoke();
+        coroutine_typeWriter = null;
+    }
+    public delegate void TypingTextEnded();
+    /// <summary>
+    /// 내용과 타이핑 딜레이를 매개변수로 받아, Dialogue UI에 출력시킨다.
+    /// </summary>
+    /// <param name="src">출력할 전체 문장</param>
+    /// <param name="typingDel">각 문자를 차례대로 출력할 때, 문자 간 딜레이.<br/>0으로 지정 시 텍스트가 즉시 출력되고 콜백도 함께 호출된다.</param>
+    /// <param name="callback_typingEnded">텍스트 출력이 완료되면 실행할 콜백<br/>
+    /// (예: 끝까지 출력되면 선택지 버튼들을 출력한다.)
+    /// </param>
+    public void RequestTypingDialogueSummary(string src, float typingDel, TypingTextEnded callback_typingEnded = null)
+    {
+        if (!isDialogueUIActivated)
+        {
+            SetActiveDialogueSummaryUI(true);
+        }
+        if (coroutine_typeWriter != null)
+        {
+            StopCoroutine(coroutine_typeWriter);
+        }
+
+        if (typingDel == float.Epsilon)
+        {
+            tmp_dialogueSummary.text = src;
+            callback_typingEnded?.Invoke();
+        }
+        else
+        {
+            coroutine_typeWriter = StartCoroutine(TypeWriter(tmp_dialogueSummary, src, typingDel, callback_typingEnded));
+        }
+    }
+    public bool isDialogueUIActivated => tmp_dialogueSummary.enabled;
+    public void SetActiveDialogueSummaryUI(bool value)
+    {
+        tmp_dialogueSummary.gameObject.SetActive(value);
+    }
+    public void RequestCreateSelectionButtons(H_DialogueData.Summary targetSummary)
+    {
+        H_DialogueData.Summary.Selection[] selections = targetSummary.TryGetSelections();
+        for (int i = 0; i < selections?.Length; i++)
+        {
+            Button btn = Instantiate(prefab_buttonForSelection);
+            btn.gameObject.transform.SetParent(selectionButtonAlignment.transform);
+
+            H_DialogueData.Summary.Selection selection = selections[i];
+            selection.callback_returnedValue += Callback_DisableButtons;
+            btn.onClick.AddListener(selection.WhenButtonClicked);
+            btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = selection.context;
+        }
+    }
+    /// <summary>
+    /// 버튼 중 하나를 누르면(선택 완료) 모든 버튼을 제거하는 함수
+    /// </summary>
+    void Callback_DisableButtons(ValueWhenClicked valueWhenClicked)
+    {
+        while (selectionButtonAlignment.transform.childCount > 0)
+        {
+            Destroy(selectionButtonAlignment.transform.GetChild(0).gameObject);
+        }
     }
 }

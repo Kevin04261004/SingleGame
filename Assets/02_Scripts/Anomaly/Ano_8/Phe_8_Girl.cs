@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DialogueSystem;
 
 public class Phe_8_Girl : Phenomenon
 {
-    [SerializeField] private DialogueData dialogue;
+    [SerializeField] private H_DialogueData dialogue;
     [SerializeField] private Area_DetectPlayer area_startDialogue;
 
     protected override void PhenomenonEnd()
     {
-        throw new System.NotImplementedException();
+        area_startDialogue.event_time_playerInArea -= DetectPlayer;
     }
 
     protected override void PhenomenonStart()
     {
-        throw new System.NotImplementedException();
+        area_startDialogue.event_time_playerInArea += DetectPlayer;
     }
 
     protected override void Solution()
     {
-        throw new System.NotImplementedException();
+        
+    }
+
+    void DetectPlayer(float time)
+    {
+        // dialogue Ãâ·Â
     }
 }

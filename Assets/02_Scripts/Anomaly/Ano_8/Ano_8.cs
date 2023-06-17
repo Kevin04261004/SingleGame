@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Ano_8 : Anomaly
 {
+    [SerializeField] Phe_8_Girl prefab_phe8girl;
+    Phe_8_Girl phe8girl;
     public override void AnomalyEnd()
     {
-        throw new System.NotImplementedException();
+        Destroy(phe8girl.gameObject);
     }
 
     public override void AnomalyStart()
     {
-        throw new System.NotImplementedException();
+        phe8girl = InstantiatePhenomenon<Phe_8_Girl>(prefab_phe8girl);
     }
 }
