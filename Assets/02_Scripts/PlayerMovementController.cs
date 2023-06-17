@@ -20,7 +20,6 @@ public class PlayerMovementController : MonoBehaviour
         myRigid = GetComponent<Rigidbody>();
         isPreventedMovement.ResetStack();
     }
-
     private void Update()
     {
         //if (!canMove)

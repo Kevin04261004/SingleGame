@@ -10,8 +10,8 @@ namespace StageSystem
         public enum AreaType
         {
             controlRoom, mainHall, counter,
-            corrider_1f, corrider_2f, corrider_3f,
-            landing_1_5f, landing_2_5f, landing_3_5f
+            corrider_1F, corrider_2F, corrider_3F,
+            landing_1_5F, landing_2_5F, landing_3_5F
         }
         public enum EnterOrExit
         {

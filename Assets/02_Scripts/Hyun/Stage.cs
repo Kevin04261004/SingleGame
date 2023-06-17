@@ -11,6 +11,12 @@ namespace StageSystem
         [Header("Debug")]
         [SerializeField, ReadOnly] string playerPos_name;
         public Area.AreaType playerLocatedArea => playerPos.areaType;
+
+        public delegate void Player_Area_Enter(Area.AreaType areaType);
+        public event Player_Area_Enter event_player_area_enter;
+        public delegate void Player_Area_Exit(Area.AreaType areaType);
+        public event Player_Area_Exit event_player_area_exit;
+
         public void CallBack_PlayerEnteringArea(Area area, Area.EnterOrExit enterOrExit)
         {
             if (enterOrExit == Area.EnterOrExit.enter)
@@ -21,6 +27,7 @@ namespace StageSystem
                     areasInStage[i].SetCollidersEnable((areasInStage[i] == area));
                 }
                 playerPos = area;
+                event_player_area_enter?.Invoke(playerPos.areaType);
                 playerPos_name = playerPos.areaName;
             }
             else
@@ -30,6 +37,7 @@ namespace StageSystem
                 {
                     areasInStage[i].SetCollidersEnable(!(areasInStage[i] == area));
                 }
+                event_player_area_exit?.Invoke(playerPos.areaType);
                 playerPos = null;
                 playerPos_name = string.Empty;
             }
@@ -41,6 +49,8 @@ namespace StageSystem
             {
                 areasInStage[i].Init(CallBack_PlayerEnteringArea);
             }
+            event_player_area_enter += TEST_CALLBACK_PLAYER_ENTER_AREA;
+            event_player_area_exit += TEST_CALLBACK_PLAYER_EXIT_AREA;
         }
 
         private void Awake()
@@ -75,6 +85,15 @@ namespace StageSystem
             }
             Debug.Log($"{rounds}개의 오브젝트를 순회해 Stage의 하위에 있는 {l_area.Count}개의 {typeof(Area).Name}컴포넌트를 찾았습니다.");
             areasInStage = l_area.ToArray();
+        }
+
+        void TEST_CALLBACK_PLAYER_ENTER_AREA(Area.AreaType areaType)
+        {
+            Debug.Log($"플레이어가 {areaType}구역에 진입하였습니다.");
+        }
+        void TEST_CALLBACK_PLAYER_EXIT_AREA(Area.AreaType areaType)
+        {
+            Debug.Log($"플레이어가 {areaType}구역을 이탈하였습니다.");
         }
     }
 }
