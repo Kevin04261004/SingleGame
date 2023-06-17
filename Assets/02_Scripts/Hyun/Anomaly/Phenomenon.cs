@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("Dialogue를 객체화 함에 따라 더 이상 사용할 필요가 없음", true)]
 public interface IDialogue
 {
     public void Fixed();

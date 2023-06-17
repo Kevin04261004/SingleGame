@@ -36,7 +36,6 @@ public class Phe_9_Guard : Phenomenon
             Physics.OverlapBox((forward.transform.position + forward.forward * detect_range * 0.5f), new Vector3(detect_range, 0.3f, 3f) * 0.5f, Quaternion.identity, (1 << LayerMask.NameToLayer("Player")));
         if (d.Length > 0)
         {
-            Debug.Log($"{d.Length}°³ ¹ß°ß");
             for (int i = 0; i < d.Length; i++)
             {
                 Ray rr = new Ray(forward.transform.position, (d[i].transform.position - forward.transform.position) * detect_range); showRay.Add(rr);

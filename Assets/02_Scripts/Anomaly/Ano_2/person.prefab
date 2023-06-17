@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2399861065716327878}
   - component: {fileID: 81286941598753126}
   - component: {fileID: 4568674454399713994}
-  - component: {fileID: -1335180572938820663}
   - component: {fileID: 8957413455522147562}
   m_Layer: 0
   m_Name: person
@@ -100,29 +99,6 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 2
   m_Center: {x: 0, y: -0.004153014, z: 0.5454361}
---- !u!114 &-1335180572938820663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8038162272342940106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f59d7f7b434fd747ad703d4813a809b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  data:
-    name: "444\uD638 \uC190\uB2D8"
-    content: "444\uD638\uC5D0 \uC218\uAC74\uC774 \uB2E4 \uB5A8\uC5B4\uC84C\uC2B5\uB2C8\uB2E4.
-      \uAC00\uC838\uB2E4 \uC8FC\uC138\uC694."
-    btn1: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uACE7 \uAC00\uC838\uB2E4 \uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
-    btn1_true: 0
-    btn2: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC591\uC758 \uD138\uC740 \uC5C6\uC2B5\uB2C8\uB2E4."
-    btn2_true: 0
-    btn3: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC5FC\uC18C\uC758 \uD138\uC740 \uC5C6\uC2B5\uB2C8\uB2E4."
-    btn3_true: 1
 --- !u!114 &8957413455522147562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,3 +112,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasSolution: 1
+  dialogueData:
+    summaries:
+    - speaker: "\uCE74\uC6B4\uD130 \uC190\uB2D8"
+      context: "444\uD638\uC5D0 \uC218\uAC74\uC774 \uB2E4 \uB5A8\uC5B4\uC84C\uC2B5\uB2C8\uB2E4.
+        \uAC00\uC838\uB2E4 \uC8FC\uC138\uC694."
+      printDel: 0.08
+      selections:
+      - context: "\uC8C4\uC1A1\uD558\uC9C0\uB9CC, \uD638\uC2E4\uC744 \uCC29\uAC01\uD558\uC2E0
+          \uAC83 \uAC19\uC2B5\uB2C8\uB2E4. \uC800\uD76C \uD638\uD154\uC5D4 444\uD638\uAC00
+          \uC5C6\uC2B5\uB2C8\uB2E4."
+        valueWhenClicked: 1
+      - context: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC591\uC758 \uD138\uC740 \uC5C6\uC2B5\uB2C8\uB2E4."
+        valueWhenClicked: 1
+      - context: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC5FC\uC18C\uC758 \uD138\uC740
+          \uC5C6\uC2B5\uB2C8\uB2E4."
+        valueWhenClicked: 0
+    - speaker: 
+      context: "(\uC190\uB2D8\uC740 \uC774\uC0C1\uD55C \uD45C\uC815\uC744 \uC9D3\uB354\uB2C8,
+        \uBA38\uC9C0 \uC54A\uC544 \uC0AC\uB77C\uC84C\uB2E4.)"
+      printDel: 0.03
+      selections:
+      - context: "(\uC790\uB9AC\uB97C \uB5A0\uB09C\uB2E4)"
+        valueWhenClicked: 2

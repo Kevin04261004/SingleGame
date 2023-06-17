@@ -7,9 +7,7 @@ namespace StageSystem
     public class Stage : MonoBehaviour
     {
         [SerializeField, ReadOnly] Area[] areasInStage = null;
-        [SerializeField, ReadOnly] Area playerPos = null;
-        [Header("Debug")]
-        [SerializeField, ReadOnly] string playerPos_name;
+        public Area playerPos { get; private set; } = null;
         public Area.AreaType playerLocatedArea => playerPos.areaType;
 
         public delegate void Player_Area_Enter(Area.AreaType areaType);
@@ -28,7 +26,6 @@ namespace StageSystem
                 }
                 playerPos = area;
                 event_player_area_enter?.Invoke(playerPos.areaType);
-                playerPos_name = playerPos.areaName;
             }
             else
             {
@@ -39,7 +36,6 @@ namespace StageSystem
                 }
                 event_player_area_exit?.Invoke(playerPos.areaType);
                 playerPos = null;
-                playerPos_name = string.Empty;
             }
         }
 

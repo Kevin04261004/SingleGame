@@ -23,9 +23,10 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] private Phenomenon phenomenon;
     [SerializeField] private GameObject playerMesh_GameObject;
     // HYUN
-    [SerializeField] TMPro.TextMeshProUGUI tmp_dialogueSummary;
+    StageSystem.Stage stageComp = null;
     [SerializeField] LayoutGroup selectionButtonAlignment;
     [SerializeField] Button prefab_buttonForSelection;
+    [SerializeField] TMPro.TextMeshProUGUI tmp_areaName;
     // HYUN END
     [field:SerializeField] public Image Died_Image { get; private set; }
 
@@ -34,6 +35,12 @@ public class UIManager : Singleton <UIManager>
     private void Start()
     {
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
+        stageComp = GameObject.FindObjectOfType<StageSystem.Stage>();
+        stageComp.event_player_area_enter += Player_Area_Enter;
+    }
+    void Player_Area_Enter(StageSystem.Area.AreaType areaType)
+    {
+        tmp_areaName.text = stageComp.playerPos.areaName;
     }
     public void Set_TimeClock_TMP(int time)
     {
@@ -123,22 +130,22 @@ public class UIManager : Singleton <UIManager>
         answer_text[1].text = str2;
         answer_text[2].text = str3;
     }
-    public void OnClick_Btn()
-    {
-        if(EventSystem.current.currentSelectedGameObject.GetComponent<Btn_Bool>().isAnswer)
-        {
-            if (phenomenon is IDialogue)
-            {
-                (phenomenon as IDialogue).Fixed();
-                //playerController.Set_canMove_Bool(true);
-                playerController.PreventMovement_SubtractStack();
-            }
-        }
-        else
-        {
-            GameManager.instance.Died();
-        }
-    }
+    //public void OnClick_Btn()
+    //{
+    //    if(EventSystem.current.currentSelectedGameObject.GetComponent<Btn_Bool>().isAnswer)
+    //    {
+    //        if (phenomenon is IDialogue)
+    //        {
+    //            (phenomenon as IDialogue).Fixed();
+    //            //playerController.Set_canMove_Bool(true);
+    //            playerController.PreventMovement_SubtractStack();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        GameManager.instance.Died();
+    //    }
+    //}
     public void Btns()
     {
         for(int i = 0; i < 3;i++)
@@ -146,6 +153,7 @@ public class UIManager : Singleton <UIManager>
             
         }
     }
+    [System.Obsolete("" ,true)]
     public void Set_Phenomenom(Phenomenon instance)
     {
         phenomenon = instance;
@@ -156,7 +164,7 @@ public class UIManager : Singleton <UIManager>
         SceneManager.LoadScene("00_TitleScene");
     }
     Coroutine coroutine_typeWriter = null;
-    IEnumerator TypeWriter(TMPro.TextMeshProUGUI dest, string src, float typingDel, TypingTextEnded callback_typingEnded = null)
+    IEnumerator TypeWriter(Text dest, string src, float typingDel, TypingTextEnded callback_typingEnded = null)
     {
         dest.text = string.Empty;
         WaitForSeconds waitDel = new WaitForSeconds(typingDel);
@@ -182,7 +190,7 @@ public class UIManager : Singleton <UIManager>
     /// <param name="callback_typingEnded">텍스트 출력이 완료되면 실행할 콜백<br/>
     /// (예: 끝까지 출력되면 선택지 버튼들을 출력한다.)
     /// </param>
-    public void RequestTypingDialogueSummary(string src, float typingDel, TypingTextEnded callback_typingEnded = null)
+    public void RequestTypingDialogueSummary(string speaker, string src, float typingDel, TypingTextEnded callback_typingEnded = null)
     {
         if (!isDialogueUIActivated)
         {
@@ -192,22 +200,22 @@ public class UIManager : Singleton <UIManager>
         {
             StopCoroutine(coroutine_typeWriter);
         }
-
+        name_text.text = speaker;
         if (typingDel == float.Epsilon)
         {
-            tmp_dialogueSummary.text = src;
+            content_text.text = src;
             callback_typingEnded?.Invoke();
         }
         else
         {
-            coroutine_typeWriter = StartCoroutine(TypeWriter(tmp_dialogueSummary, src, typingDel, callback_typingEnded));
+            coroutine_typeWriter = StartCoroutine(TypeWriter(content_text, src, typingDel, callback_typingEnded));
         }
     }
-    public bool isDialogueUIActivated => tmp_dialogueSummary.enabled;
+    public bool isDialogueUIActivated => content_text.enabled;
     public void SetActiveDialogueSummaryUI(bool value)
     {
         Dialogue_GameObject.SetActive(value);
-        tmp_dialogueSummary.gameObject.SetActive(value);
+        content_text.gameObject.SetActive(value);
     }
     public void RequestCreateSelectionButtons(H_DialogueData.Summary targetSummary)
     {

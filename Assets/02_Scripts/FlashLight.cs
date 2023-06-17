@@ -25,10 +25,10 @@ public interface IFlashLight
 public class FlashLight : MonoBehaviour
 {
     [SerializeField] private Light flashLight;
-    [SerializeField] private float intensity = 1;
+    [SerializeField, Min(0.01f)] private float intensity = 1;
     [SerializeField] private PlayerMovementController playerController;
     [SerializeField] Transform forward;
-    [SerializeField] float flash_ray_length = 15f;
+    [SerializeField, Min(0.01f)] float flash_ray_length = 15f;
 
     private void Awake()
     {
@@ -41,39 +41,46 @@ public class FlashLight : MonoBehaviour
     /// <summary>
     /// 현재 손전등이 켜져있는지 여부
     /// </summary>
-    [SerializeField] public bool isLightOn => flashLight.intensity > 0;
+    [SerializeField] public bool isLightOn => flashLight.intensity > float.Epsilon;
     void GetInput(KeyType keyType, InputType inputType)
     {
         if (keyType == KeyType.toggle_flashLight)
         {
             if (inputType == InputType.down)
             {
-                if (flashLight.intensity > 0)
+                Debug.Log("손전등 토글 키 입력받음");
+                if (isLightOn) ToggleFlashLight(false);
+                else ToggleFlashLight(true);
+            }
+        }
+    }
+    void ToggleFlashLight(bool turnOn)
+    {
+        if (turnOn)
+        {
+            if (!playerController.allowedMovement) return;
+            flashLight.intensity = intensity;
+            if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit rhit))
+            {
+                if (rhit.distance <= flash_ray_length)
                 {
-                    flashLight.intensity = 0;
-                    if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit rhit))
+                    if (rhit.collider.gameObject.TryGetComponent<IFlashLight>(out IFlashLight iFlash))
                     {
-                        if (rhit.distance <= flash_ray_length)
-                        {
-                            if (rhit.collider.gameObject.TryGetComponent<IFlashLight>(out IFlashLight iFlash))
-                            {
-                                iFlash.OnLighting_End();
-                            }
-                        }
+                        iFlash.OnLighting_Start();
                     }
                 }
-                else
+            }
+        }
+        else
+        {
+            flashLight.intensity = float.Epsilon;
+            if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit rhit))
+            {
+                if (rhit.distance <= flash_ray_length)
                 {
-                    flashLight.intensity = intensity;
-                    if (Physics.Raycast(forward.transform.position, forward.transform.forward, out RaycastHit rhit))
+                    if (rhit.collider.gameObject.TryGetComponent<IFlashLight>(out IFlashLight iFlash))
                     {
-                        if (rhit.distance <= flash_ray_length)
-                        {
-                            if (rhit.collider.gameObject.TryGetComponent<IFlashLight>(out IFlashLight iFlash))
-                            {
-                                iFlash.OnLighting_Start();
-                            }
-                        }
+                        iFlash.OnLighting_End();
                     }
                 }
             }
@@ -88,7 +95,6 @@ public class FlashLight : MonoBehaviour
         if (!playerController.allowedMovement)
         {
             flashLight.intensity = 0;
-            return;
         }
         if (isLightOn)
         {

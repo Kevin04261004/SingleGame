@@ -8,7 +8,7 @@ public class Test_DialogueUser : MonoBehaviour
     [SerializeField] H_DialogueData dData;
     private void Start()
     {
-        dData.SetCallbacksToAllSelections(Clickjd);
+        dData.AddCallbacksToAllSelections(Clickjd);
     }
     private void Update()
     {

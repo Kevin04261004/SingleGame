@@ -9,14 +9,21 @@ namespace InputSystem
     /// </summary>
     public enum KeyType
     {
-        interact, toggle_portableCCTV, toggle_ruleBook, toggle_flashLight, toggle_pauseMenu
+        [Tooltip("Interactable tag의 오브젝트와 상호작용에 사용하는 입력")] interact,
+        [Tooltip("휴대용 CCTV UI를 (비)활성화 하는 입력")] toggle_portableCCTV,
+        [Tooltip("규칙서 UI를 (비)활성화 하는 입력")] toggle_ruleBook,
+        [Tooltip("손전등을 (비)활성화 하는 입력")] toggle_flashLight,
+        [Tooltip("일시 정지 UI를 (비)활성화 하는 입력")] toggle_pauseMenu,
+        [Tooltip("Dialogue가 진행중일 때, 선택지가 없는 내용의 경우 다음 내용을 출력하기 위한 입력")] progress_dialogue
     }
     /// <summary>
     /// 키 누름, 누르고 있음, 떼어냄의 구분
     /// </summary>
     public enum InputType
     {
-        down, hold, up
+        [Tooltip("키를 누르는 순간")] down,
+        [Tooltip("Down과 Up사이의 누르고 있는 순간")] hold,
+        [Tooltip("키를 떼는 순간")] up
     }
 
     public class InputManager : Singleton<InputManager>
@@ -34,7 +41,8 @@ namespace InputSystem
         public event KeyInput event_keyInput;
 
         KeyCode[] needToGetInput;
-        Dictionary<KeyCode, KeyType> keyCodeToKeyType = new Dictionary<KeyCode, KeyType>(16);
+        //Dictionary<KeyCode, KeyType> keyCodeToKeyType = new Dictionary<KeyCode, KeyType>(16);
+        Dictionary<KeyCode, List<KeyType>> keyCodeToKeyType = new Dictionary<KeyCode, List<KeyType>>(16);
 
         protected override void Awake()
         {
@@ -43,7 +51,16 @@ namespace InputSystem
             for (int i = 0; i < keybinds.Length; i++)
             {
                 kcList.Add(keybinds[i].keyCode);
-                keyCodeToKeyType.Add(keybinds[i].keyCode, keybinds[i].keyType);
+                if (keyCodeToKeyType.ContainsKey(keybinds[i].keyCode))
+                {
+                    keyCodeToKeyType[keybinds[i].keyCode].Add(keybinds[i].keyType);
+                }
+                else
+                {
+                    List<KeyType> ktList = new List<KeyType>(4);
+                    ktList.Add(keybinds[i].keyType);
+                    keyCodeToKeyType.Add(keybinds[i].keyCode, ktList);
+                }
             }
             needToGetInput = kcList.ToArray();
 
@@ -62,10 +79,35 @@ namespace InputSystem
 
         void GetInputTypes(KeyCode keyCode)
         {
-            KeyType kt = keyCodeToKeyType[keyCode];
-            if (Input.GetKeyDown(keyCode)) event_keyInput?.Invoke(kt, InputType.down);
-            if (Input.GetKey(keyCode)) event_keyInput?.Invoke(kt, InputType.hold);
-            if (Input.GetKeyUp(keyCode)) event_keyInput?.Invoke(kt, InputType.up);
+            List<KeyType> ktList = keyCodeToKeyType[keyCode];
+
+            //for (int i = 0; i < ktList.Count; i++)
+            //{
+            //    if (Input.GetKeyDown(keyCode)) event_keyInput?.Invoke(ktList[i], InputType.down);
+            //    if (Input.GetKey(keyCode)) event_keyInput?.Invoke(ktList[i], InputType.hold);
+            //    if (Input.GetKeyUp(keyCode)) event_keyInput?.Invoke(ktList[i], InputType.up);
+            //}
+            if (Input.GetKeyDown(keyCode))
+            {
+                for (int i = 0; i < ktList.Count; i++)
+                {
+                    event_keyInput?.Invoke(ktList[i], InputType.down);
+                }
+            }
+            if (Input.GetKey(keyCode))
+            {
+                for (int i = 0; i < ktList.Count; i++)
+                {
+                    event_keyInput?.Invoke(ktList[i], InputType.hold);
+                }
+            }
+            if (Input.GetKeyUp(keyCode))
+            {
+                for (int i = 0; i < ktList.Count; i++)
+                {
+                    event_keyInput?.Invoke(ktList[i], InputType.up);
+                }
+            }
         }
 
         void GetInputs(KeyType keyType, InputType inputType)

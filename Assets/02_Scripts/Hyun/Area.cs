@@ -11,7 +11,8 @@ namespace StageSystem
         {
             controlRoom, mainHall, counter,
             corrider_1F, corrider_2F, corrider_3F,
-            landing_1_5F, landing_2_5F, landing_3_5F
+            landing_1_5F, landing_2_5F, landing_3_5F,
+            rooftop_stair, rooftop
         }
         public enum EnterOrExit
         {

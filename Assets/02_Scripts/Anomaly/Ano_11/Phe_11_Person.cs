@@ -1,25 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DialogueSystem;
 
-public class Phe_11_Person : Phenomenon, IDialogue
+public class Phe_11_Person : Phenomenon, IInteratable
 {
-    public void Fixed()
+    [SerializeField] H_DialogueData dialogueData;
+    bool dialogueStarted = false;
+    public void Interact()
     {
-        TryFixThisPhenomenon();
+        dialogueStarted = true;
+        DialogueManager.instance.Try_RequestStartReadingDialogueData(dialogueData);
+    }
+
+    public void Interact_Hold()
+    {
         
+    }
+
+    public void Interact_Hold_End()
+    {
+        
+    }
+
+    public bool IsInteractable()
+    {
+        return !dialogueStarted;
     }
 
     protected override void PhenomenonEnd()
     {
-        UIManager.instance.Set_DialogueGameObject_Bool(false);
-        UIManager.instance.Set_Buttons_Bool(false);
+
     }
 
     protected override void PhenomenonStart()
     {
-        UIManager.instance.Set_Phenomenom(this);
-
+        dialogueData.AddCallbacksToAllSelections(CheckValue);
+    }
+    void CheckValue(ValueWhenClicked valueWhenClicked)
+    {
+        if (valueWhenClicked == ValueWhenClicked.False)
+        {
+            GameManager.instance.Died();
+        }
+        else if (valueWhenClicked == ValueWhenClicked.True)
+        {
+            TryFixThisPhenomenon();
+        }
     }
 
     protected override void Solution()
