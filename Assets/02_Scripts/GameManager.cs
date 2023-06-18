@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
     public void Died()
     {
         //playerMovementController.Set_canMove_Bool(false);
+        DialogueSystem.DialogueManager.instance.TryStopReadingSummaries();
         playerMovementController.PreventMovement_AddStack();
         Time.timeScale = 0;
         StartCoroutine(DiedImageOpen());

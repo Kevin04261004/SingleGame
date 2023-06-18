@@ -56,5 +56,7 @@ MonoBehaviour:
     keyCode: 323
   - keyType: 4
     keyCode: 27
+  - keyType: 6
+    keyCode: 323
   - keyType: 5
-    keyCode: 32
+    keyCode: 59

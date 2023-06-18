@@ -27,6 +27,7 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] LayoutGroup selectionButtonAlignment;
     [SerializeField] Button prefab_buttonForSelection;
     [SerializeField] TMPro.TextMeshProUGUI tmp_areaName;
+    [SerializeField] TextMeshProUGUI tmp_debug_text;
     // HYUN END
     [field:SerializeField] public Image Died_Image { get; private set; }
 
@@ -37,6 +38,7 @@ public class UIManager : Singleton <UIManager>
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
         stageComp = GameObject.FindObjectOfType<StageSystem.Stage>();
         stageComp.event_player_area_enter += Player_Area_Enter;
+        tManager = GameObject.FindObjectOfType<TimeManager>();
     }
     void Player_Area_Enter(StageSystem.Area.AreaType areaType)
     {
@@ -239,6 +241,36 @@ public class UIManager : Singleton <UIManager>
         for (int i = selectionButtonAlignment.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(selectionButtonAlignment.transform.GetChild(i).gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (tmp_debug_text.gameObject.activeSelf)
+        {
+            if (AnomalyManager.instance != null)
+            {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder(128);
+                sb.Append($"게임 플레이 시간: {string.Format("{0:0.00}", tManager.playTime)}sec\n");
+                sb.Append($"활성화된 Anomaly 개수: {AnomalyManager.instance.effectiveAnomalys.Count}개\n");
+                sb.Append($"해결한 Anomaly 개수: {AnomalyManager.instance.solvedAnomalyCount}개\n");
+                sb.Append($"다음 Anomaly 생성까지: {string.Format("{0:0.00}", AnomalyManager.instance.remain_delay_of_generation_anomaly)} / {string.Format("{0:0.00}", AnomalyManager.instance.delay_of_generation_anomaly)}sec");
+
+                tmp_debug_text.text = sb.ToString();
+            }
+            else
+            {
+                tmp_debug_text.text = string.Empty;
+            }
+        }
+    }
+    TimeManager tManager;
+    public void Toggle_Debug_Text()
+    {
+        tmp_debug_text.gameObject.SetActive(!tmp_debug_text.gameObject.activeSelf);
+        if (tmp_debug_text.gameObject.activeSelf)
+        {
+            tManager = GameObject.FindObjectOfType<TimeManager>();
         }
     }
 }

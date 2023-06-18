@@ -41,6 +41,7 @@ public class Phe_8_Girl : Phenomenon
         else if (valueWhenClicked == ValueWhenClicked.True)
         {
             after_ignore = true;
+            DialogueManager.instance.TryStopReadingSummaries();
             coroutine_timeLimit = StartCoroutine(TimeLimit_ControlRoom());
         }
     }

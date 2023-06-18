@@ -31,6 +31,7 @@ public class AnomalyManager : Singleton<AnomalyManager>
     /// </summary>
     [ReadOnly] public List<Anomaly> effectiveAnomalys = new List<Anomaly>();
     public bool everyAnoIsExecuting => (effectiveAnomalys.Count == anomalyList.Length);
+    public int solvedAnomalyCount { get; private set; } = 0;
     /// <summary>
     /// anomaly 목록에서 하나를 실행시킴<br/>
     /// 중복 여부등에 의해 실행에 실패할 수 있음
@@ -69,7 +70,8 @@ public class AnomalyManager : Singleton<AnomalyManager>
     /// <returns></returns>
     public bool ExecuteRandomAnomaly_IfNotAllAnoExecuted()
     {
-        while (!everyAnoIsExecuting)
+        int tryCnt = 99;
+        while (!everyAnoIsExecuting && --tryCnt > 0)
         {
             if (ExecuteAnomaly())
             {
@@ -89,6 +91,7 @@ public class AnomalyManager : Singleton<AnomalyManager>
         {
             if (instance == effectiveAnomalys[i])
             {
+                ++solvedAnomalyCount;
                 effectiveAnomalys.RemoveAt(i);
                 return;
             }
@@ -113,21 +116,28 @@ public class AnomalyManager : Singleton<AnomalyManager>
         return false;
     }
 
+    public float delay_of_generation_anomaly { get; private set; }
+    public float remain_delay_of_generation_anomaly { get; private set; }
+
     IEnumerator ExecuteCoroutine(int[] delayList)
     {
-        int curIdx = 0;
+        int curIdx = -1;
 
-        WaitForSeconds waitDelay;
+        WaitForEndOfFrame waitFrame = new WaitForEndOfFrame();
 
-        while (curIdx++ < delayList.Length)
+        while (++curIdx < delayList.Length)
         {
-            waitDelay = new WaitForSeconds(delayList[curIdx]);
-            Debug.Log($"{delayList[curIdx]}초 후 Anomaly를 실행합니다..");
-            while (true)
+            delay_of_generation_anomaly = delayList[curIdx];
+            remain_delay_of_generation_anomaly += delay_of_generation_anomaly;
+            Debug.Log($"{delay_of_generation_anomaly}초 후 Anomaly를 실행합니다..");
+
+            while (remain_delay_of_generation_anomaly > 0.00f)
             {
-                yield return waitDelay;
-                ExecuteRandomAnomaly_IfNotAllAnoExecuted();
+                remain_delay_of_generation_anomaly -= Time.deltaTime;
+                yield return waitFrame;
             }
+            ExecuteRandomAnomaly_IfNotAllAnoExecuted();
         }
+        remain_delay_of_generation_anomaly = 0f;
     }
 }

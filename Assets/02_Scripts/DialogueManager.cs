@@ -158,11 +158,11 @@ namespace DialogueSystem
         {
             if (!isReadingSomething)
             {
-                Debug.Log("무언가를 읽고있지 않아 중지할 수 없습니다.");
+                Debug.LogWarning("무언가를 읽고있지 않아 중지할 수 없습니다.");
                 return;
             }
             StopReadingDialogue();
-            Debug.Log("읽고있던 Dialogue를 중지시켰습니다.");
+            //Debug.Log("읽고있던 Dialogue를 중지시켰습니다.");
         }
         void StartReadingDialogue(H_DialogueData data)
         {
@@ -215,22 +215,22 @@ namespace DialogueSystem
         /// <b>※ 현재 강제로 넘길 경우 선택지 버튼이 사라지는 처리가 없으므로 가급적 사용 금지</b></param>
         public bool TryReadNextSummary(bool ignoreSelectionButton = false)
         {
-            Debug.Log($"READ: {readIndex}");
+            //Debug.Log($"READ: {readIndex}");
             if (current_reading == null)
             {
-                Debug.LogWarning("현재 읽고있는 로그가 없어");
+                //Debug.LogWarning("현재 읽고있는 로그가 없어");
                 return false;
             }
             if (readIndex < current_reading.summaries.Length - 1)
             {
                 if (current_reading.summaries[readIndex].TryGetSelections() != null && !ignoreSelectionButton)
                 {
-                    Debug.LogWarning("지금 보고있는 Summary의 선택지가 NULL이 아니고 강제도 아님");
+                    //Debug.LogWarning("지금 보고있는 Summary의 선택지가 NULL이 아니고 강제도 아님");
                     return false;
                 }
                 else
                 {
-                    Debug.LogWarning("보고있는 Summary의 선택지가 NULL이라 지나감");
+                    //Debug.LogWarning("보고있는 Summary의 선택지가 NULL이라 지나감");
                     ++readIndex;
                     UIManager.instance.RequestTypingDialogueSummary(current_reading.summaries[readIndex].speaker, current_reading.summaries[readIndex].context, current_reading.summaries[readIndex].printDel, (current_reading.summaries[readIndex].TryGetSelections() != null ? Callback_ShowButtons : null));
                     return true;
@@ -240,13 +240,13 @@ namespace DialogueSystem
             {
                 if (current_reading.summaries[readIndex].TryGetSelections() == null)
                 {
-                    Debug.LogWarning("마지막까지 읽었음");
+                    //Debug.LogWarning("마지막까지 읽었음");
                     TryStopReadingSummaries();
                     return false;
                 }
                 else if (ignoreSelectionButton)
                 {
-                    Debug.LogWarning("마지막선택지를 선택함");
+                    //Debug.LogWarning("마지막선택지를 선택함");
                     TryStopReadingSummaries();
                     return false;
                 }
@@ -275,7 +275,6 @@ namespace DialogueSystem
         {
             if (keyType == KeyType.progress_dialogue && inputType == InputType.down)
             {
-                Debug.Log("다이얼로그 넘기는 키 입력박음");
                 if (isReadingSomething)
                 {
                     TryReadNextSummary();

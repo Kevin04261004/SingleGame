@@ -132,7 +132,7 @@ MonoBehaviour:
   dialogue:
     summaries:
     - speaker: '? ? ?'
-      context: "\uC800\uAE30.. \uC544\uC800\uC528"
+      context: "\uC800..\uAE30\uC694.."
       printDel: 0.17
       selections: []
     - speaker: 
@@ -152,8 +152,8 @@ MonoBehaviour:
         \uB180 \uC0AC\uB78C\uC774 \uC5C6\uC5B4\uC694.."
       printDel: 0.08
       selections:
-      - context: "\uADF8\uB798, \uADF8\uB7FC \uC7A0\uAE50\uB9CC \uB180\uAE4C?"
-        valueWhenClicked: 0
+      - context: "\uBBF8\uC548, \uC9C0\uAE08 \uBC14\uC05C \uC77C\uB4E4\uC774 \uC788\uC5B4\uC11C."
+        valueWhenClicked: 1
       - context: "(\uBB34\uC2DC\uD55C\uB2E4.)"
         valueWhenClicked: 2
   timeLimit_go_controlRoom: 15

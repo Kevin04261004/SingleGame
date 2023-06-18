@@ -14,6 +14,7 @@ namespace InputSystem
         [Tooltip("규칙서 UI를 (비)활성화 하는 입력")] toggle_ruleBook,
         [Tooltip("손전등을 (비)활성화 하는 입력")] toggle_flashLight,
         [Tooltip("일시 정지 UI를 (비)활성화 하는 입력")] toggle_pauseMenu,
+        [Tooltip("디버그용 텍스트 UI를 (비)활성화 하는 입력")] toggle_debug_text,
         [Tooltip("Dialogue가 진행중일 때, 선택지가 없는 내용의 경우 다음 내용을 출력하기 위한 입력")] progress_dialogue
     }
     /// <summary>
@@ -50,13 +51,14 @@ namespace InputSystem
             List<KeyCode> kcList = new List<KeyCode>(16);
             for (int i = 0; i < keybinds.Length; i++)
             {
-                kcList.Add(keybinds[i].keyCode);
                 if (keyCodeToKeyType.ContainsKey(keybinds[i].keyCode))
                 {
                     keyCodeToKeyType[keybinds[i].keyCode].Add(keybinds[i].keyType);
                 }
                 else
                 {
+                    kcList.Add(keybinds[i].keyCode);
+
                     List<KeyType> ktList = new List<KeyType>(4);
                     ktList.Add(keybinds[i].keyType);
                     keyCodeToKeyType.Add(keybinds[i].keyCode, ktList);
@@ -121,6 +123,10 @@ namespace InputSystem
                 else if (keyType == KeyType.toggle_ruleBook)
                 {
                     UIManager.instance.Set_RuleBook_BackGround_TrueOrFalse();
+                }
+                else if (keyType == KeyType.toggle_debug_text)
+                {
+                    UIManager.instance.Toggle_Debug_Text();
                 }
             }
         }

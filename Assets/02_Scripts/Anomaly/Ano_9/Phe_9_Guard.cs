@@ -58,7 +58,7 @@ public class Phe_9_Guard : Phenomenon
     void DetectPlayer()
     {
         Debug.Log("플레이어가 경비원에게 발각당하였습니다.");
-        //GameManager.instance.Died();
+        GameManager.instance.Died();
     }
 
     private void OnDrawGizmos()

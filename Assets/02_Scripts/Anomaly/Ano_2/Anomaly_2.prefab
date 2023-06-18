@@ -50,4 +50,4 @@ MonoBehaviour:
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
   prefab_phe_2_person: {fileID: 8957413455522147562, guid: aaf83e2ef496fa34ca0708f648e21c6b, type: 3}
-  pos_spawn_guard: {x: -8, y: 1, z: 11}
+  pos_spawn_guard: {x: -9.5, y: 1, z: 11}

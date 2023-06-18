@@ -48,7 +48,6 @@ public class FlashLight : MonoBehaviour
         {
             if (inputType == InputType.down)
             {
-                Debug.Log("손전등 토글 키 입력받음");
                 if (isLightOn) ToggleFlashLight(false);
                 else ToggleFlashLight(true);
             }

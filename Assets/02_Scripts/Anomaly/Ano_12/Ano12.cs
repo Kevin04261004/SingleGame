@@ -51,9 +51,17 @@ public class Ano12 : Anomaly
     {
         float fill_per_sec = 1 / timeLimit;
         WaitForEndOfFrame waitFrame = new WaitForEndOfFrame();
+
+        float fillAmount = 0f;
+
         while (true)
         {
-            if ((targetImage.fillAmount += fill_per_sec * Time.deltaTime) > 0.98f)
+            fillAmount += fill_per_sec * Time.deltaTime;
+
+            if (stage.playerPos?.areaType == Area.AreaType.controlRoom) targetImage.fillAmount = 0;
+            else targetImage.fillAmount = fillAmount;
+
+            if (fillAmount > 0.99f)
             {
                 targetImage.fillAmount = 1f;
                 break;

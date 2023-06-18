@@ -45,8 +45,6 @@ namespace StageSystem
             {
                 areasInStage[i].Init(CallBack_PlayerEnteringArea);
             }
-            event_player_area_enter += TEST_CALLBACK_PLAYER_ENTER_AREA;
-            event_player_area_exit += TEST_CALLBACK_PLAYER_EXIT_AREA;
         }
 
         private void Awake()
@@ -81,15 +79,6 @@ namespace StageSystem
             }
             Debug.Log($"{rounds}개의 오브젝트를 순회해 Stage의 하위에 있는 {l_area.Count}개의 {typeof(Area).Name}컴포넌트를 찾았습니다.");
             areasInStage = l_area.ToArray();
-        }
-
-        void TEST_CALLBACK_PLAYER_ENTER_AREA(Area.AreaType areaType)
-        {
-            Debug.Log($"플레이어가 {areaType}구역에 진입하였습니다.");
-        }
-        void TEST_CALLBACK_PLAYER_EXIT_AREA(Area.AreaType areaType)
-        {
-            Debug.Log($"플레이어가 {areaType}구역을 이탈하였습니다.");
         }
     }
 }
