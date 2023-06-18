@@ -1,5 +1,88 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1559298430249104393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2227149886986530483}
+  - component: {fileID: 2974546812610617622}
+  - component: {fileID: 1054759138526877148}
+  m_Layer: 0
+  m_Name: ghost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2227149886986530483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559298430249104393}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -4.0042157, y: -0.0016741824, z: -0.00000004083153}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6660320922042932085}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2974546812610617622
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559298430249104393}
+  m_Mesh: {fileID: -5613867604693661769, guid: ffb38c9ae4cc922479cecad98d246861, type: 3}
+--- !u!23 &1054759138526877148
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559298430249104393}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &2093612645310417671
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +111,8 @@ Transform:
   m_LocalPosition: {x: -8.4204445, y: 4.4363613, z: 5.992694}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2227149886986530483}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,19 +128,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3350ae47af8676b47a47d871d0e4e2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasSolution: 0
+  hasSolution: 1
   dialogue:
     summaries:
-    - context: 
+    - speaker: '? ? ?'
+      context: "\uC800\uAE30.. \uC544\uC800\uC528"
+      printDel: 0.17
+      selections: []
+    - speaker: 
+      context: "(\uB204\uAD70\uAC00\uAC00 \uBD80\uB974\uB294 \uAC83 \uAC19\uC740\uB370..
+        \uC5B4\uB5BB\uAC8C \uD558\uC9C0?)"
+      printDel: 0.06
       selections:
-      - context: 
+      - context: "(\uC18C\uB9AC\uAC00 \uB09C \uBC29\uD5A5\uC744 \uCCD0\uB2E4\uBCF8\uB2E4.)"
         valueWhenClicked: 0
-      - context: 
+      - context: "(\uBB34\uC2DC\uD55C\uB2E4.)"
+        valueWhenClicked: 2
+      - context: "\uBB34\uC2A8 \uC77C\uC774\uB2C8?"
+        valueWhenClicked: 1
+    - speaker: "\uC5EC\uC790 \uC544\uC774?"
+      context: "\uC7A0\uAE50\uC774\uC5B4\uB3C4 \uC88B\uC73C\uB2C8 \uC800\uB791 \uB180\uC544\uC8FC\uC2E4\uB798\uC694?
+        \uC5EC\uAE34 \uC0AC\uB78C\uB4E4\uC774 \uC798 \uC624\uC9C0 \uC54A\uC544\uC11C
+        \uB180 \uC0AC\uB78C\uC774 \uC5C6\uC5B4\uC694.."
+      printDel: 0.08
+      selections:
+      - context: "\uADF8\uB798, \uADF8\uB7FC \uC7A0\uAE50\uB9CC \uB180\uAE4C?"
         valueWhenClicked: 0
-    - context: 
-      selections: []
-    - context: 
-      selections: []
-    - context: 
-      selections: []
-  area_startDialogue: {fileID: 0}
+      - context: "(\uBB34\uC2DC\uD55C\uB2E4.)"
+        valueWhenClicked: 2
+  timeLimit_go_controlRoom: 15
