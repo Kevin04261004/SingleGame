@@ -51,17 +51,26 @@ public class AnomalyManager : Singleton<AnomalyManager>
         {
             anomaly = Instantiate(anomalyList[index]);
         }
-        if (!CheckDuplicateFromEffectiveList(anomaly) && anomaly.CheckExecuteCondition())
+        try
         {
-            anomaly.Init();
-            effectiveAnomalys.Add(anomaly);
-            return true;
+            if (!CheckDuplicateFromEffectiveList(anomaly) && anomaly.CheckExecuteCondition())
+            {
+                anomaly.Init();
+                effectiveAnomalys.Add(anomaly);
+                return true;
+            }
+            else
+            {
+                Destroy(anomaly.gameObject);
+                return false;
+            }
         }
-        else
+        catch (System.Exception)
         {
             Destroy(anomaly.gameObject);
             return false;
         }
+        
     }
     /// <summary>
     /// anomaly 목록에서 하나를 실행시킴<br/>
