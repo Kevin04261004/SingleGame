@@ -8,8 +8,13 @@ public class Door : MonoBehaviour
     [SerializeField] private Quaternion openedRotation;
     [SerializeField] private Quaternion closedRotation;
     [SerializeField] private float doorSpeed;
-
+    [SerializeField] private EffectManager effectManager;
+    //[SerializeField] private
     private Coroutine doorCoroutine;
+    public void Start()
+    {
+        effectManager = FindObjectOfType<EffectManager>();
+    }
     public void ToggleDoor()
     {
         if (doorCoroutine != null)
@@ -19,6 +24,7 @@ public class Door : MonoBehaviour
     }
     private IEnumerator OpenCloseDoor()
     {
+        effectManager.PlayOpenDoor_Sound();
         Quaternion targetRotation = isOpened ? closedRotation : openedRotation;
         Quaternion startRotation = transform.rotation;
         float startTime = Time.time;

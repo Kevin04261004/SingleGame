@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class title_UIManager : Singleton<title_UIManager>
+public class title_UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject Option_GO;
     [SerializeField] private Image HowToPlay_Image;
@@ -49,5 +49,8 @@ public class title_UIManager : Singleton<title_UIManager>
     {
         RuleBook_Image.gameObject.SetActive(false);
     }
-    
+    public void OnClick_Game_Exit()
+    {
+        Application.Quit();
+    }
 }

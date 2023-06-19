@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DontDestroyManager : Singleton<DontDestroyManager>
+public class DontDestroyManager : MonoBehaviour
 {
     public float tempBGMSound = 0.5f;
     public float tempEffectSound = 0.5f;

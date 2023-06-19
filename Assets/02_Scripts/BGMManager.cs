@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class BGMManager : Singleton<BGMManager>
+public class BGMManager : MonoBehaviour
 {
     public AudioClip Title_BGM;
     public AudioClip[] BGM;
@@ -18,12 +18,10 @@ public class BGMManager : Singleton<BGMManager>
     public void BGM_Set()
     {
         soundSource = GetComponent<AudioSource>();
-        BGMSlider.value = DontDestroyManager.instance.tempBGMSound;
         StartCoroutine(Playlist());
     }
     private void Update()
     {
-        DontDestroyManager.instance.tempBGMSound = BGMSlider.value;
         soundSource.volume = BGMSlider.value;
     }
 
