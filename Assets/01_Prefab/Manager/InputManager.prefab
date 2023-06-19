@@ -49,9 +49,9 @@ MonoBehaviour:
   - keyType: 0
     keyCode: 102
   - keyType: 1
-    keyCode: 109
-  - keyType: 2
     keyCode: 9
+  - keyType: 2
+    keyCode: 114
   - keyType: 3
     keyCode: 323
   - keyType: 4
