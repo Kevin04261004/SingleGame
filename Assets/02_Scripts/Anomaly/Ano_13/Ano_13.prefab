@@ -50,5 +50,7 @@ MonoBehaviour:
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
   prefab_stand: {fileID: 8338040803305614369, guid: 281fd917888160840900538b5efc14b0, type: 3}
+  prefab_invi: {fileID: 3883924957533476095, guid: 88457a6f4479a73488426e3b3514d5f7, type: 3}
   spawnPos_stand: {x: -15, y: 17, z: 22}
+  spawnPos_invi: {x: -4.22, y: 16, z: 1}
   rotation_stand: {x: -90, y: 180, z: 0}

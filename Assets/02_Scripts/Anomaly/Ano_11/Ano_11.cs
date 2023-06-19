@@ -16,5 +16,8 @@ public class Ano_11 : Anomaly
         person = InstantiatePhenomenon(prefab_phe_11_person);
         person.gameObject.transform.localPosition = pos_spawn_guard;
     }
-
+    public override bool CheckExecuteCondition()
+    {
+        return GameObject.FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.mainHall && GameObject.FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.corrider_1F;
+    }
 }

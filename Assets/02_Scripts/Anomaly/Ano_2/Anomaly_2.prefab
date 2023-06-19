@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53477bc8b7a27a4899dafe727d825ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anomalyName: "\uCE74\uC6B4\uD130 444\uD638"
+  anomalyName: "444\uD638 \uC218\uAC74 \uC694\uCCAD"
   timeLimit: 120
   counter_timeLimit: -1
   remainProblemCount: -1

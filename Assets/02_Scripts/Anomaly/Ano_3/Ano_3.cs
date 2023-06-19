@@ -29,4 +29,9 @@ public class Ano_3 : Anomaly
     {
 
     }
+
+    public override bool CheckExecuteCondition()
+    {
+        return GameObject.FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.counter;
+    }
 }

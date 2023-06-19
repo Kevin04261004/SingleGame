@@ -20468,7 +20468,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 231487
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -33362,6 +33362,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7042792741616525322, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592032009197594101, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8800935952707683110, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -33409,6 +33417,18 @@ PrefabInstance:
     - target: {fileID: 8800935952707893616, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
       propertyPath: m_Name
       value: RockingChair
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800935952707893616, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800935952707931436, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800935952707939904, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85873287ceafd5547ac50bbf3115ff09, type: 3}
@@ -45068,6 +45088,14 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 2063233c828051a44af6b87cf9cae8b7, type: 2}
+    - target: {fileID: 5680097980404873276, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539991694137726261, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: volumeLayer.m_Bits
+      value: 294912
+      objectReference: {fileID: 0}
     - target: {fileID: 7374224805275729520, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -45111,6 +45139,10 @@ PrefabInstance:
     - target: {fileID: 7374224805275729520, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921537684334238370, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 294912
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72cd6863dc5926e49b6fa83664c95bc8, type: 3}
@@ -45796,7 +45828,7 @@ GameObject:
   - component: {fileID: 5994420867175279865}
   m_Layer: 0
   m_Name: doorknob
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

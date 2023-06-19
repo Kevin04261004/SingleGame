@@ -78,4 +78,8 @@ public class Ano12 : Anomaly
             Force_SolveAnomaly();
         }
     }
+    public override bool CheckExecuteCondition()
+    {
+        return GameObject.FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.corrider_2F;
+    }
 }

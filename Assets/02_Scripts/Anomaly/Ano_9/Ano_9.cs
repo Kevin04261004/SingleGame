@@ -17,4 +17,9 @@ public class Ano_9 : Anomaly
         guard = InstantiatePhenomenon(prefab_guard);
         guard.gameObject.transform.localPosition = pos_spawn_guard;
     }
+
+    public override bool CheckExecuteCondition()
+    {
+        return GameObject.FindObjectOfType<StageSystem.Stage>().playerLocatedArea != StageSystem.Area.AreaType.corrider_3F;
+    }
 }

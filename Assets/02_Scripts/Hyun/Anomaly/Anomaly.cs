@@ -12,7 +12,7 @@ public abstract class Anomaly : MonoBehaviour
     [Header("Debug")]
     [SerializeField, ReadOnly, Tooltip("실패까지 남은 제한 시간")] float counter_timeLimit = -1f;
     [SerializeField, ReadOnly, Tooltip("해당 Anomaly가 해결되기 위해 남은 문제의 수\n(문제: 구역에 머물기, 대화하기 등)")]
-    int remainProblemCount = -1;
+    protected int remainProblemCount = -1;
     [SerializeField, Tooltip("해당 Anomaly가 생성한 현상(문제) 오브젝트들\nAnomaly가 종료될 때 생성된 현상 오브젝트를 제거하기 위한 컨테이너 역할"), ReadOnly]
     List<Phenomenon> phenomenonsFromThisAnomaly;
 

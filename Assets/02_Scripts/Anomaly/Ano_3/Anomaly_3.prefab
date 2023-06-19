@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f0d53d8c6cfd64f9b8364881d32126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anomalyName: "\uCC3D\uACE0 \uBB38 \uC5F4\uB9AC\uB294 \uD604\uC0C1"
+  anomalyName: "\uCC3D\uACE0 \uBB38 \uC5F4\uB9BC"
   timeLimit: 120
   counter_timeLimit: -1
   remainProblemCount: -1
-  createdPhenomenons: []
+  phenomenonsFromThisAnomaly: []

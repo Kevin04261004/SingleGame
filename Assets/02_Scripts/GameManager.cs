@@ -9,6 +9,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject prefab_gameoverVolume;
     GameObject gameoverVolume;
     AudioSource gameoverSound;
+
+    public enum CauseOfDeath
+    {
+        timeOver, wrongChoice, detectedByGuard,
+    }
+
     /// <summary>
     /// 6시 되면 게임이 클리어됨.
     /// </summary>
