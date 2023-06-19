@@ -41,7 +41,7 @@ public class Phe_11_Person : Phenomenon, IInteratable
     {
         if (valueWhenClicked == ValueWhenClicked.False)
         {
-            GameManager.instance.Died();
+            GameManager.instance.Died(GameManager.CauseOfDeath.wrongChoice, ".다니습좋 이질품 의육인 은늘오");
         }
         else if (valueWhenClicked == ValueWhenClicked.True)
         {

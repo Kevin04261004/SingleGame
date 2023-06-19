@@ -49,5 +49,6 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 6: \uC561\uCCB4\uB97C \uBC29\uCE58\uD558\uBA74"
   prefab_blood: {fileID: 4680664860462323774, guid: b7ff8f735e153634caba41a391021a8a, type: 3}
   bloodSpawnPos: {x: -19.5, y: 11.05, z: 6}

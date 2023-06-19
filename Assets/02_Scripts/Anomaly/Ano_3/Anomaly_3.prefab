@@ -49,3 +49,4 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 3: \uCC3D\uACE0 \uBB38\uC744 \uB2EB\uC9C0 \uC54A\uC73C\uBA74"

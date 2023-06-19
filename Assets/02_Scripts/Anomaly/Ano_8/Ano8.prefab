@@ -49,5 +49,6 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 8: \uB367\uC5C6\uB294 \uAE30\uB2E4\uB9BC"
   prefab_phe8girl: {fileID: 6167476524359846142, guid: 8984e52c308289f438e5d19322ee00ed, type: 3}
   spawnPos_phe8: {x: -8, y: 6, z: 7}

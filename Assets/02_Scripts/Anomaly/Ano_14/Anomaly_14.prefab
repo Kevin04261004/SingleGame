@@ -49,5 +49,6 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 14: \uB3CC\uC544\uC624\uC9C0 \uC54A\uB294 \uBE5B"
   phe_14: {fileID: -7125862718525676418, guid: cb1b7772c3e4b5f438be4ce7d349ee3d, type: 3}
   lightManager: {fileID: 0}

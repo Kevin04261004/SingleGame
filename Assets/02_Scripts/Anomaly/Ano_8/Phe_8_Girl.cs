@@ -36,7 +36,7 @@ public class Phe_8_Girl : Phenomenon
     {
         if (valueWhenClicked == ValueWhenClicked.False)
         {
-            GameManager.instance.Died();
+            GameManager.instance.Died(GameManager.CauseOfDeath.wrongChoice, "규칙 7: 함께 놀 친구");
         }
         else if (valueWhenClicked == ValueWhenClicked.True)
         {
@@ -53,7 +53,7 @@ public class Phe_8_Girl : Phenomenon
 
         yield return waitSec;
         Debug.Log($"Ano8: {timeLimit_go_controlRoom}초 내로 관제실에 입장하지 못했습니다.");
-        GameManager.instance.Died();
+        GameManager.instance.Died(GameManager.CauseOfDeath.violationRule, "규칙 8: 느린 발");
 
         coroutine_timeLimit = null;
     }

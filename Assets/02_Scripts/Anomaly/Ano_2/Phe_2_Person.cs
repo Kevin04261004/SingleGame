@@ -21,7 +21,7 @@ public class Phe_2_Person : Phenomenon, IInteratable
     {
         if (valueWhenClicked == ValueWhenClicked.False)
         {
-            GameManager.instance.Died();
+            GameManager.instance.Died(GameManager.CauseOfDeath.wrongChoice, "규칙 2: 존재하지 않는 호실");
         }
         else if (valueWhenClicked == ValueWhenClicked.True)
         {

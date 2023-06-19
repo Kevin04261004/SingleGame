@@ -49,4 +49,5 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 12: \uD574\uACE8\uC774 \uBAA8\uB450 \uCC28\uC624\uB974\uBA74"
   need_to_enter: 4

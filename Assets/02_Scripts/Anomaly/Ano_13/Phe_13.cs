@@ -7,7 +7,7 @@ public class Phe_13 : Phenomenon, IFlashLight
     public void OnLighting()
     {
         Debug.Log("불을 킨 상태로 바라보고 있습니다.(게임오버)");
-        GameManager.instance.Died();
+        GameManager.instance.Died(GameManager.CauseOfDeath.violationRule, "규칙 13: 손전등을 비추면");
     }
 
     public void OnLighting_End()

@@ -8,7 +8,7 @@ public class PlayerDied : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.Died();
+            GameManager.instance.Died(GameManager.CauseOfDeath.violationRule, "규칙 3: 창고 안엔 무엇이");
         }
     }
 }

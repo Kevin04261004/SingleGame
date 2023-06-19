@@ -26,7 +26,7 @@ public class UIManager : Singleton <UIManager>
     StageSystem.Stage stageComp = null;
     [SerializeField] LayoutGroup selectionButtonAlignment;
     [SerializeField] Button prefab_buttonForSelection;
-    [SerializeField] TMPro.TextMeshProUGUI tmp_areaName;
+    [SerializeField] public TMPro.TextMeshProUGUI tmp_areaName;
     [SerializeField] TextMeshProUGUI tmp_debug_text;
     // HYUN END
     [field:SerializeField] public Image Died_Image { get; private set; }

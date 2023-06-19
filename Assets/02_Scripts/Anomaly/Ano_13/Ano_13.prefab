@@ -49,6 +49,7 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: 
   prefab_stand: {fileID: 8338040803305614369, guid: 281fd917888160840900538b5efc14b0, type: 3}
   prefab_invi: {fileID: 3883924957533476095, guid: 88457a6f4479a73488426e3b3514d5f7, type: 3}
   spawnPos_stand: {x: -15, y: 17, z: 22}

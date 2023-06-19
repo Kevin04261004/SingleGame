@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6425731457254221463}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 7131539507683416270}
   - component: {fileID: 2306575664606412524}
   - component: {fileID: 8898251061021902708}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 7131539507855419593}
   - component: {fileID: 7131539507855419590}
   - component: {fileID: 7131539507855419595}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: FlashLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,13 +439,13 @@ GameObject:
   - component: {fileID: 7131539507876547903}
   - component: {fileID: 7131539507876547873}
   - component: {fileID: 7131539507876547902}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7131539507876547903
 Transform:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7131539507876547900}
-  m_Mesh: {fileID: -8113768720884857512, guid: d48f15e124503064b9a7253ae7c70c54, type: 3}
+  m_Mesh: {fileID: -8113768720884857512, guid: 15c1c11ed2f8bb54ea97c3d28fc9291d, type: 3}
 --- !u!23 &7131539507876547902
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6428601dbba587247ba79648532c3cea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 7131539508076091717}
   - component: {fileID: 7131539508076091714}
   - component: {fileID: 7131539508076091715}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}

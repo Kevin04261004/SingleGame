@@ -49,5 +49,6 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 5: CCTV\uAC00 \uACE0\uC7A5\uB098\uBA74"
   prefab_volumeObj: {fileID: 4232799115610545511, guid: 2aace1c2f97dce14faece1afb3459786, type: 3}
   volumeObj: {fileID: 4232799115610545511, guid: 2aace1c2f97dce14faece1afb3459786, type: 3}

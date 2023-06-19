@@ -68,7 +68,7 @@ public class Phe_4_DoorKnob : MonoBehaviour, IInteratable
             if (!lockEnded)
             {
                 Debug.Log("플레이어가 Ano4의 문을 끝까지 잠그지 않았습니다.");
-                GameManager.instance.Died();
+                GameManager.instance.Died(GameManager.CauseOfDeath.violationRule, "규칙 4: 문은 끝까지 잠가야 한다");
             }
             else
             {

@@ -49,5 +49,6 @@ MonoBehaviour:
   counter_timeLimit: -1
   remainProblemCount: -1
   phenomenonsFromThisAnomaly: []
+  summaryWhenTimeOver: "\uADDC\uCE59 2: 444\uD638\uB294\uACC4\uC18D\uAE30\uB2E4\uB9B0\uB2E4"
   prefab_phe_2_person: {fileID: 8957413455522147562, guid: aaf83e2ef496fa34ca0708f648e21c6b, type: 3}
   pos_spawn_guard: {x: -9.5, y: 1, z: 11}

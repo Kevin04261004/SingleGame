@@ -58,7 +58,7 @@ public class Phe_9_Guard : Phenomenon
     void DetectPlayer()
     {
         Debug.Log("플레이어가 경비원에게 발각당하였습니다.");
-        GameManager.instance.Died();
+        GameManager.instance.Died(GameManager.CauseOfDeath.detectedBySomething, "규칙 9: 시야 내에 들어오면");
     }
 
     private void OnDrawGizmos()

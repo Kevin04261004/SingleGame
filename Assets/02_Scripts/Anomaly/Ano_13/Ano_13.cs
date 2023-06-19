@@ -33,7 +33,7 @@ public class Ano_13 : Anomaly
         Debug.Log($"'{anomalyName}' 현상의 유지 시간이 모두 경과하였습니다.");
         if (remainProblemCount > 1)
         {
-            GameManager.instance.Died();
+            GameManager.instance.Died(GameManager.CauseOfDeath.timeOver, "규칙 16: 눈에 보이는게 다가 아니다");
         }
         else
         {
