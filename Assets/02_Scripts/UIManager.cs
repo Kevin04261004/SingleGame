@@ -22,6 +22,7 @@ public class UIManager : Singleton <UIManager>
     [SerializeField] private Text[] answer_text;
     [SerializeField] private Phenomenon phenomenon;
     [SerializeField] private GameObject playerMesh_GameObject;
+    [SerializeField] private GameObject Dialogue_GO;
     // HYUN
     StageSystem.Stage stageComp = null;
     [SerializeField] LayoutGroup selectionButtonAlignment;
@@ -52,6 +53,14 @@ public class UIManager : Singleton <UIManager>
     }
     public void Set_RuleBook_BackGround_TrueOrFalse()
     {
+        if(CCTV_BackGround.gameObject.activeSelf)
+        {
+            return;
+        }
+        if(Dialogue_GO.activeSelf)
+        {
+            return;
+        }
         if(RuleBook_BackGround.gameObject.activeSelf)
         {
             RuleBook_BackGround.gameObject.SetActive(false);
@@ -75,6 +84,14 @@ public class UIManager : Singleton <UIManager>
     }
     public void Set_CCTV_BackGround_TrueOrFalse()
     {
+        if(RuleBook_BackGround.gameObject.activeSelf)
+        {
+            return;
+        }
+        if (Dialogue_GO.activeSelf)
+        {
+            return;
+        }
         if (CCTV_BackGround.gameObject.activeSelf)
         {
             playerMesh_GameObject.SetActive(false);

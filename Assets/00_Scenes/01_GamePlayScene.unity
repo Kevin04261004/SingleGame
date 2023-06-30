@@ -4877,6 +4877,7 @@ MonoBehaviour:
   - {fileID: 1977961841}
   phenomenon: {fileID: 0}
   playerMesh_GameObject: {fileID: 1838771930632085031}
+  Dialogue_GO: {fileID: 1929235491}
   selectionButtonAlignment: {fileID: 2135196809}
   prefab_buttonForSelection: {fileID: 7884683941988256828, guid: 357d6f3bd3beca242b77129e0bde218c, type: 3}
   tmp_areaName: {fileID: 1823406477}
